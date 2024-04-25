@@ -1,0 +1,2193 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/muzima.css" rel="stylesheet" />
+    <link
+      href="css/ui-darkness/jquery-ui-1.10.4.custom.min.css"
+      rel="stylesheet"
+    />
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-ui-1.10.4.custom.min.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/additional-methods.min.js"></script>
+    <script src="js/muzima.js"></script>
+
+    <title>Screening Encounter Form V 0.02</title>
+  </head>
+
+  <body class="col-md-10 col-md-offset-1">
+    <div id="pre_populate_data"></div>
+    <h2 class="text-center">Screening Encounter Form V 0.02</h2>
+
+    <form id="screening_form" name="screening_form">
+      <div class="section">
+        <h3>Demographics</h3>
+
+        <div class="form-group">
+          <input
+            class="form-control"
+            id="patient.uuid"
+            name="patient.uuid"
+            type="hidden"
+            readonly="readonly"
+          />
+        </div>
+        <div class="form-group">
+          <label for="patient.medical_record_number">AMRS ID Number:</label>
+          <input
+            class="form-control"
+            id="patient.medical_record_number"
+            name="patient.medical_record_number"
+            type="text"
+            readonly="readonly"
+            disabled="disabled"
+          />
+        </div>
+        <div class="form-group">
+          <label for="patient.family_name">Family Name:</label>
+          <input
+            class="form-control"
+            id="patient.family_name"
+            name="patient.family_name"
+            type="text"
+            readonly="readonly"
+            disabled="disabled"
+          />
+        </div>
+        <div class="form-group">
+          <label for="patient.given_name">Given Name:</label>
+          <input
+            class="form-control"
+            id="patient.given_name"
+            name="patient.given_name"
+            type="text"
+            readonly="readonly"
+            disabled="disabled"
+          />
+        </div>
+        <div class="form-group">
+          <label for="patient.middle_name">Middle Name:</label>
+          <input
+            class="form-control"
+            id="patient.middle_name"
+            name="patient.middle_name"
+            type="text"
+            readonly="readonly"
+            disabled="disabled"
+          />
+        </div>
+        <div class="form-group">
+          <label for="patient.sex">Gender:</label>
+          <select
+            class="form-control"
+            id="patient.sex"
+            name="patient.sex"
+            readonly="readonly"
+            disabled="disabled"
+          >
+            <option value="">...</option>
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="patient.birth_date">Date Of Birth:</label>
+          <input
+            class="form-control"
+            id="patient.birth_date"
+            name="patient.birth_date"
+            type="text"
+            readonly="readonly"
+            disabled="disabled"
+          />
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="form-group">
+          <label for="encounter.encounter_datetime">
+            Interview Date:<span class="required">*</span>
+          </label>
+          <input
+            class="form-control datepicker nonFutureDate past-date"
+            id="encounter.encounter_datetime"
+            name="encounter.encounter_datetime"
+            type="text"
+            readonly="readonly"
+            data-concept="655ff71c-977f-11e1-8993-905e29aff6c1^Data collection date^99DCT"
+            required="required"
+          />
+        </div>
+        <div class="form-group">
+          <label for="obs.interviewer_name"
+            >Interviewer Name <span class="required">*</span></label
+          >
+          <input
+            class="form-control"
+            id="obs.interviewer_name"
+            name="obs.interviewer_name"
+            type="text"
+            data-concept="9562d3b9-11cf-4522-a062-e9aaa94f38b4^Interviewer Name^99DCT"
+            required="required"
+          />
+        </div>
+        <div>
+          <label for="obs.village_name"
+            >Village Name <span class="required">*</span></label
+          >
+          <input
+            class="form-control"
+            id="obs.village_name"
+            name="obs.village_name"
+            type="text"
+            data-concept="6560b5ee-977f-11e1-8993-905e29aff6c1^Village^99DCT"
+            required="required"
+          />
+        </div>
+        <div class="form-group">
+          <label for="encounter.location_id">
+            Health Facility:<span class="required">*</span></label
+          >
+          <input
+            class="form-control valid-location-only"
+            id="encounter.location_id"
+            type="text"
+            placeholder="Start typing something..."
+            required="required"
+          />
+          <input
+            class="form-control"
+            name="encounter.location_id"
+            type="hidden"
+          />
+        </div>
+      </div>
+      <div class="section">
+        <div class="form-group">
+          <label for="obs.literate">
+            Are you literate? <span class="required">*</span></label
+          >
+          <fieldset id="obs.literate" name="obs.literate">
+            <input
+              id="literate_yes"
+              type="radio"
+              name="obs.literate"
+              data-concept="6a8daa8a-d0d7-493b-ab12-521a9bc18fce^Literate^99DCT"
+              value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT"
+              required="required"
+            />
+            <label for="literate_yes">Yes</label>&nbsp;&nbsp;
+            <input
+              id="literate_no"
+              type="radio"
+              name="obs.literate"
+              data-concept="6a8daa8a-d0d7-493b-ab12-521a9bc18fce^Literate^99DCT"
+              value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT"
+              required="required"
+            />
+            <label for="literate_no">No</label>
+          </fieldset>
+        </div>
+        <div class="in_school_query">
+            <label for="obs.in_school"> Are you in school?  <span class="required">*</span></label>
+            
+            <fieldset id="obs.in_school" name="obs.in_school">
+               <input id="in_school_yes" type="radio" name="in_school_ans" data-concept="f39717e7-b68b-4ec1-8094-a6c0ae930c7f^Are you in school?^99DCT"
+                    value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
+               <label for="in_school_yes">Yes</label>&nbsp;&nbsp;
+               <input id="in_school_no" type="radio" name="in_school_ans" data-concept="f39717e7-b68b-4ec1-8094-a6c0ae930c7f^Are you in school?^99DCT"
+                    value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
+               <label for="in_school_no">No</label>
+            </fieldset>
+        </div>
+        <div class="drop_out_class">
+            <label for="obs.drop_school_class"> In what class did you drop out of school?</label>
+            <input class="form-control" id="obs.drop_school_class" name="obs.drop_school_class"
+                   type="text" data-concept="80f130e3-a53b-4306-a8c9-ee1731575684^Dropped out School Class^99DCT">
+        </div>
+        <div class="class_your_in">
+            <label for="obs.current_class"> What class are you in? </label>
+            <input class="form-control" id="obs.current_class" name="obs.current_class"
+                   type="text" data-concept="9715e824-23d7-44ed-a6a8-ea6fbeced93f^Current School class^99DCT">
+        </div>
+
+        <div class="plans_after_school">
+            <label for="obs.plans_after_school"> What are you planning/anticipate to do after school?  <span class="required">*</span></label>
+
+            <fieldset id="obs.plans_after_school" name="obs.plans_after_school">
+               <input id="get_a_job" type="radio" name="obs.plans_after_school" data-concept="e1eef37b-98f5-4c86-9560-c090e5b1731f^Plans after school^99DCT"
+                    value="b0cccb19-5744-4d7c-a20f-5357d8eedfa8^Get a job^99DCT" required="required">
+               <label for="get_a_job">Get a Job</label>&nbsp;&nbsp;
+               
+               <input id="business" type="radio" name="obs.plans_after_school" data-concept="e1eef37b-98f5-4c86-9560-c090e5b1731f^Plans after school^99DCT"
+                    value="3b7d62ef-c044-4cfa-bf44-ba3fcdea70ee^Business^99DCT" required="required">
+               <label for="business">Business</label>&nbsp;&nbsp;
+               
+               <input id="further_education" type="radio" name="obs.plans_after_school" data-concept="e1eef37b-98f5-4c86-9560-c090e5b1731f^Plans after school^99DCT"
+                    value="534c8fba-8077-445a-a2dd-ab90d5af8090^Further Education^99DCT" required="required">
+                <label for="further_education">Further Education</label>&nbsp;&nbsp;
+            
+                <input id="farming" type="radio" name="obs.plans_after_school" data-concept="e1eef37b-98f5-4c86-9560-c090e5b1731f^Plans after school^99DCT"
+                    value="aac9cf84-ebe7-41c1-b2e9-06514af2c1f8^Farming^99DCT" required="required">
+                <label for="farming">Farming</label>&nbsp;&nbsp;
+        
+                <input id="other" type="radio" name="obs.plans_after_school" data-concept="e1eef37b-98f5-4c86-9560-c090e5b1731f^Plans after school^99DCT"
+                    value="656cce7e-977f-11e1-8993-905e29aff6c1^Other non-coded^99DCT" required="required">
+                <label for="other">Other</label>
+        </div>
+
+        <div class="primary_guardian">
+                <label for="obs.primary_guardian"> Who is your primary guardian?  <span class="required">*</span></label>
+                <fieldset id="obs.primary_guardian" name="obs.primary_guardian">
+                   <input class="primary_guard" id="single_bio_parent" type="radio" name="primary_guardian_ans" data-concept="807bcfed-6fb9-4ca3-bb46-8286a51906a2^Primary Guardian^99DCT"
+                        value="ce0af2a6-d6f4-4d13-8af3-ea4ad378a653^Biological Parent(Single)^99DCT" required="required">
+                   <label for="single_bio_parent">Biological Parent(Single)</label>&nbsp;&nbsp;
+                   
+                   <input class="primary_guard" id="both_bio_parent" type="radio" name="primary_guardian_ans" data-concept="807bcfed-6fb9-4ca3-bb46-8286a51906a2^Primary Guardian^99DCT"
+                        value="49e133bf-efc9-49f9-91af-1cc26fa88ec6^Biological Parents-(both)^99DCT" required="required">
+                   <label for="both_bio_parent">Biological Parents-(both)</label>&nbsp;&nbsp;
+                   
+                   <input class="primary_guard" id="grand_parent" type="radio" name="primary_guardian_ans" data-concept="807bcfed-6fb9-4ca3-bb46-8286a51906a2^Primary Guardian^99DCT"
+                        value="aa109c28-7745-480e-a3c2-d0bc9f1a2719^Grandparents^99DCT" required="required">
+                    <label for="grand_parent">Grandparents</label>&nbsp;&nbsp;
+                
+                    <input class="primary_guard" id="elder_relative" type="radio" name="primary_guardian_ans" data-concept="807bcfed-6fb9-4ca3-bb46-8286a51906a2^Primary Guardian^99DCT"
+                        value="d0c7636d-9d5e-4c1c-9656-e76689398ce5^Elder relative^99DCT" required="required">
+                    <label for="elder_relative">Elder relative</label>&nbsp;&nbsp;
+            
+                    <input class="primary_guard" id="non_relative" type="radio" name="primary_guardian_ans" data-concept="807bcfed-6fb9-4ca3-bb46-8286a51906a2^Primary Guardian^99DCT"
+                        value="dadec55d-864d-4f33-bfc2-06fccccd6a2a^Non-Relative (neighbor,friend,community person)^99DCT" required="required">
+                    <label for="other">Non-Relative (neighbor,friend,community person)</label>
+            
+                    <input class="primary_guard" id="other" type="radio" name="primary_guardian_ans" data-concept="807bcfed-6fb9-4ca3-bb46-8286a51906a2^Primary Guardian^99DCT"
+                        value="656cce7e-977f-11e1-8993-905e29aff6c1^Other non-coded^99DCT" required="required">
+                    <label for="other">Other</label>
+                </fieldset>
+        </div>
+        <div class="where_are_your_parents">
+            <div class="form-group">
+                <label for="obs.parents_location">
+                    Where are your parents? <span class="required">*</span>
+                </label>
+                <input class="form-control" id="obs.parents_location" name="obs.parents_location"
+                    type="text" data-concept="b7d8d419-2451-44ec-9b6b-9b855f9cc443^Parents location^99DCT">
+            </div>
+        </div>
+        <div class="why_single_parent">
+            <div class="form-group">
+                <label for="obs.single_parent"> If the child says single parent?<span class="required">*</span></label>
+                <input class="why_single_parent" id="divorce" type="radio" name="why_single_parent_ans" data-concept="0b6a3722-c4d3-44ba-afd4-6185eba83849^Reason for staying with single parent^99DCT"
+                    value="bf061dbe-7ead-43a9-a8db-a6869b2daea1^Parents divorced^99DCT" required="required">
+                <label for="divorce">Parents divorced</label>&nbsp;&nbsp;
+       
+                <input class="why_single_parent" id="died" type="radio" name="why_single_parent_ans" data-concept="0b6a3722-c4d3-44ba-afd4-6185eba83849^Reason for staying with single parent^99DCT"
+                    value="c4c3dd23-48a1-4f24-9415-8865ef45b9e0^Parents died^99DCT" required="required">
+                <label for="died">Died</label>&nbsp;&nbsp;
+
+                <input class="why_single_parent" id="other" type="radio" name="why_single_parent_ans" data-concept="0b6a3722-c4d3-44ba-afd4-6185eba83849^Reason for staying with single parent^99DCT"
+                    value="656cce7e-977f-11e1-8993-905e29aff6c1^Other non-coded^99DCT" required="required">
+                <label for="other">Other</label>&nbsp;&nbsp;
+            </div>
+        </div>
+        <div class="number_of_people">
+            <div class="form-group">
+                <label for="number_of_household_people">
+                    Including yourself,how many people live in your household right now? <span class="required">*</span>
+                </label>
+                <input class="form-group" id="number_of_household_people" name="number_of_household_people"
+                    type="number" min="1" data-concept="441ed2b2-623a-42a0-aa7b-d16327cfc697^Total number of household members^99DCT">
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="household_items">
+            <label for="obs.extracurricular_activities_query"> Do you or any member of your household own a ...<span class="required">*</span></label>
+            <fieldset id="obs.extracurricular_activities_query" name="extracurricular_activities_query">
+                
+                <label for="radio"> Radio</label>
+               <input id="radio_yes" type="radio" name="radio_ans" data-concept="4b09025d-f92c-444c-a972-828a98a88bf0^Own a radio^99DCT"
+                    value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
+               <label for="radio_yes">Yes</label>&nbsp;&nbsp;
+
+               <input id="radio_no" type="radio" name="radio_ans" data-concept="4b09025d-f92c-444c-a972-828a98a88bf0^Own a radio^99DCT"
+                value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
+               <label for="radio_no">No</label>&nbsp;&nbsp;
+
+               <input id="radio_do_not_know" type="radio" name="radio_ans" data-concept="4b09025d-f92c-444c-a972-828a98a88bf0^Own a radio^99DCT"
+               value="1fa4b4a6-b849-4442-94d0-f46f4460ce38^Don't Know^99DCT" required="required">
+              <label for="radio_do_not_know">Don't know</label>
+               <br>
+               <label for="tv"> Television</label>
+               <input id="tv_yes" type="radio" name="tv_ans" data-concept="5c46ba89-e523-463c-ba37-635c90d23443^Own a Tv^99DCT"
+                    value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
+               <label for="tv_yes">Yes</label>&nbsp;&nbsp;
+
+               <input id="tv_no" type="radio" name="tv_ans" data-concept="5c46ba89-e523-463c-ba37-635c90d23443^Own a Tv^99DCT"
+                value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
+               <label for="tv_no">No</label>&nbsp;&nbsp;
+
+               <input id="tv_do_not_know" type="radio" name="tv_ans" data-concept="5c46ba89-e523-463c-ba37-635c90d23443^Own a Tv^99DCT"
+               value="1fa4b4a6-b849-4442-94d0-f46f4460ce38^Don't Know^99DCT" required="required">
+              <label for="tv_do_not_know">Don't know</label>
+               <br>
+               <label for="phone"> Mobile Telephone</label>
+               <input id="phone_yes" type="radio" name="phone_ans" data-concept="205ab520-0ac5-4004-90e4-f2ba10f79a2b^Own a mobile telephone^99DCT"
+                    value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
+               <label for="phone_yes">Yes</label>&nbsp;&nbsp;
+
+               <input id="phone_no" type="radio" name="phone_ans" data-concept="205ab520-0ac5-4004-90e4-f2ba10f79a2b^Own a mobile telephone^99DCT"
+                value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
+               <label for="phone_no">No</label>&nbsp;&nbsp;
+
+               <input id="phone_do_not_know" type="radio" name="phone_ans" data-concept="205ab520-0ac5-4004-90e4-f2ba10f79a2b^Own a mobile telephone^99DCT"
+               value="1fa4b4a6-b849-4442-94d0-f46f4460ce38^Don't Know^99DCT" required="required">
+              <label for="phone_do_not_know">Don't know</label>
+              <br>
+              <label for="fridge"> Refrigerator</label>
+              <input id="fridge_yes" type="radio" name="fridge_ans" data-concept="d531e6b5-cf09-41de-8f27-f846b42c6c6f^Own a refrigerator^99DCT"
+                   value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
+              <label for="fridge_yes">Yes</label>&nbsp;&nbsp;
+
+              <input id="fridge_no" type="radio" name="fridge_ans" data-concept="d531e6b5-cf09-41de-8f27-f846b42c6c6f^Own a refrigerator^99DCT"
+               value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
+              <label for="fridge_no">No</label>&nbsp;&nbsp;
+
+              <input id="fridge_do_not_know" type="radio" name="fridge_ans" data-concept="d531e6b5-cf09-41de-8f27-f846b42c6c6f^Own a refrigerator^99DCT"
+              value="1fa4b4a6-b849-4442-94d0-f46f4460ce38^Don't Know^99DCT" required="required">
+             <label for="fridge_do_not_know">Don't know</label>
+             <br>
+             <label for="bike"> Bicycle</label>
+             <input id="bike_yes" type="radio" name="bike_ans" data-concept="b12adc9a-233b-4ac1-bed6-680dd00c7946^Own a bicycle^99DCT"
+                  value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
+             <label for="bike_yes">Yes</label>&nbsp;&nbsp;
+
+             <input id="bike_no" type="radio" name="bike_ans" data-concept="b12adc9a-233b-4ac1-bed6-680dd00c7946^Own a bicycle^99DCT"
+              value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
+             <label for="bike_no">No</label>&nbsp;&nbsp;
+
+             <input id="bike_do_not_know" type="radio" name="bike_ans" data-concept="b12adc9a-233b-4ac1-bed6-680dd00c7946^Own a bicycle^99DCT"
+             value="1fa4b4a6-b849-4442-94d0-f46f4460ce38^Don't Know^99DCT" required="required">
+            <label for="bike_do_not_know">Don't know</label>
+            <br>
+            <label for="motor_bike"> Motorcycle</label>
+            <input id="motor_bike_yes" type="radio" name="motor_bike_ans" data-concept="75c35596-4e81-4764-9e0a-7b06b87ddceb^Own a motorcycle^99DCT"
+                 value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
+            <label for="motor_bike_yes">Yes</label>&nbsp;&nbsp;
+
+            <input id="motor_bike_no" type="radio" name="motor_bike_ans" data-concept="75c35596-4e81-4764-9e0a-7b06b87ddceb^Own a motorcycle^99DCT"
+             value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
+            <label for="motor_bike_no">No</label>&nbsp;&nbsp;
+
+            <input id="motor_bike_do_not_know" type="radio" name="motor_bike_ans" data-concept="75c35596-4e81-4764-9e0a-7b06b87ddceb^Own a motorcycle^99DCT"
+            value="1fa4b4a6-b849-4442-94d0-f46f4460ce38^Don't Know^99DCT" required="required">
+           <label for="motor_bike_do_not_know">Don't know</label>
+           <br>
+           <label for="cart"> Anima-drawn cart</label>
+           <input id="cart_yes" type="radio" name="cart_ans" data-concept="a85c5276-3f4a-4e5a-bfd4-dc0595662cb3^Own an animal-drawn Cart^99DCT"
+                value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
+           <label for="cart_yes">Yes</label>&nbsp;&nbsp;
+
+           <input id="cart_no" type="radio" name="cart_ans" data-concept="a85c5276-3f4a-4e5a-bfd4-dc0595662cb3^Own an animal-drawn Cart^99DCT"
+            value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
+           <label for="cart_no">No</label>&nbsp;&nbsp;
+
+           <input id="cart_do_not_know" type="radio" name="cart_ans" data-concept="a85c5276-3f4a-4e5a-bfd4-dc0595662cb3^Own an animal-drawn Cart^99DCT"
+           value="1fa4b4a6-b849-4442-94d0-f46f4460ce38^Don't Know^99DCT" required="required">
+          <label for="cart_bike_do_not_know">Don't know</label>
+          <br>
+          <label for="truck"> Car/Truck</label>
+          <input id="truck_yes" type="radio" name="truck_ans" data-concept="05742f26-375a-4e38-b9ee-7c7d0780c538^Own an car/truck^99DCT"
+               value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
+          <label for="truck_yes">Yes</label>&nbsp;&nbsp;
+
+          <input id="truck_no" type="radio" name="truck_ans" data-concept="05742f26-375a-4e38-b9ee-7c7d0780c538^Own an car/truck^99DCT"
+           value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
+          <label for="truck_no">No</label>&nbsp;&nbsp;
+
+          <input id="truck_do_not_know" type="radio" name="truck_ans" data-concept="05742f26-375a-4e38-b9ee-7c7d0780c538^Own an car/truck^99DCT"
+          value="1fa4b4a6-b849-4442-94d0-f46f4460ce38^Don't Know^99DCT" required="required">
+         <label for="truck_do_not_know">Don't know</label>
+
+        </fieldset>
+        <br>
+        </div>
+        <div class="source_of_light">
+            <label for="obs.source_of_energy"> What is the main source of energy for lighting?<span class="required">*</span></label>
+            <fieldset id="obs.source_of_energy" name="obs.source_of_energy">
+
+                <input class="source_of_energy" id="electricity" type="radio" name="source_of_energy_ans" data-concept="79f2c8bd-68ee-4dde-9af4-3f594052df1b^Main energy source for household lighting^99DCT"
+                    value="4f3d9103-a1d2-40cb-953b-9aeeb9950147^Electricity^99DCT" required="required">
+                <label for="electricity"> Electricity</label>&nbsp;&nbsp;
+               
+                <input class="source_of_energy" id="from_gas" type="radio" name="source_of_energy_ans" data-concept="79f2c8bd-68ee-4dde-9af4-3f594052df1b^Main energy source for household lighting^99DCT"
+                    value="03fb4666-62b6-4ae3-a086-f6c0e6d9b9c3^From gas^99DCT" required="required">
+                <label for="from_gas">From gas</label>&nbsp;&nbsp;
+        
+                <input class="source_of_energy" id="solar" type="radio" name="source_of_energy_ans" data-concept="79f2c8bd-68ee-4dde-9af4-3f594052df1b^Main energy source for household lighting^99DCT"
+                    value="8f8f610c-5db5-4631-85d8-4e4c413e65c5^Solar^99DCT" required="required">
+                <label for="solar">Solar</label>&nbsp;&nbsp;
+        
+                <input class="source_of_energy" id="paraffin_lamp" type="radio" name="source_of_energy_ans" data-concept="79f2c8bd-68ee-4dde-9af4-3f594052df1b^Main energy source for household lighting^99DCT"
+                    value="1ecdd3d4-3dbc-4e50-a17a-d64f84ed9886^Paraffin Lamp^99DCT" required="required">
+                <label for="paraffin_lamp">Paraffin Lamp</label>&nbsp;&nbsp;
+        
+                <input class="source_of_energy" id="torch" type="radio" name="source_of_energy_ans" data-concept="79f2c8bd-68ee-4dde-9af4-3f594052df1b^Main energy source for household lighting^99DCT"
+                    value="499d2f21-86e8-4e81-93fa-f44b3c3e09b6^Torch^99DCT" required="required">
+                <label for="torch">Torch</label>&nbsp;&nbsp;
+        
+                <input class="source_of_energy" id="other" type="radio" name="source_of_energy_ans" data-concept="79f2c8bd-68ee-4dde-9af4-3f594052df1b^Main energy source for household lighting^99DCT"
+                    value="656cce7e-977f-11e1-8993-905e29aff6c1^Other non-coded^99DCT" required="required">
+                <label for="other">Other</label>&nbsp;&nbsp;        
+        </div>
+        
+        </p><label for="obs.drinking_water_source"> What is the main source of water for drinking?<span class="required">*</span></label>
+        <fieldset id="obs.drinking_water_source" name="obs.drinking_water_source">
+           
+            <input class="drinking_water_source" id="piped_water" type="radio" name="drinking_water_source_ans" data-concept="9243dd06-bb9a-4b7d-8bbc-e82d16c30e65^Main source of drinking water for household^99DCT"
+                value="41b2529c-e8d9-4f28-92cd-4b7847c23f5e^Piped Water^99DCT" required="required">
+            <label for="piped_water">Piped Water</label>&nbsp;&nbsp;
+           
+            <input class="drinking_water_source" id="dug_well" type="radio" name="drinking_water_source_ans" data-concept="9243dd06-bb9a-4b7d-8bbc-e82d16c30e65^Main source of drinking water for household^99DCT"
+                value="d9ba6164-60ca-4540-a080-01b4c24f64d2^Dug Well^99DCT" required="required">
+            <label for="dug_well">Dug Well</label>&nbsp;&nbsp;
+        
+            <input class="drinking_water_source" id="water_from_spring" type="radio" name="drinking_water_source_ans" data-concept="9243dd06-bb9a-4b7d-8bbc-e82d16c30e65^Main source of drinking water for household^99DCT"
+            value="2d901246-1c15-495c-8102-02b3a7fbfbc3^Water from spring^99DCT" required="required">
+            <label for="water_from_spring">Water from spring</label>&nbsp;&nbsp;
+
+            <input class="drinking_water_source" id="bottled_water" type="radio" name="drinking_water_source_ans" data-concept="9243dd06-bb9a-4b7d-8bbc-e82d16c30e65^Main source of drinking water for household^99DCT"
+            value="0db5816d-8349-400d-a617-013f1e9658f7^Bottled Water^99DCT" required="required">
+            <label for="bottled_water">Bottled Water</label>&nbsp;&nbsp;
+
+            <input class="drinking_water_source" id="bottled_water" type="radio" name="drinking_water_source_ans" data-concept="9243dd06-bb9a-4b7d-8bbc-e82d16c30e65^Main source of drinking water for household^99DCT"
+            value="c07c34ad-08e7-469c-a3d5-3c93f46ff5f8^Water from Borehole^99DCT" required="required">
+            <label for="bottled_water">Borehole</label>&nbsp;&nbsp;
+
+            <input class="drinking_water_source" id="other_water_source" type="radio" name="drinking_water_source_ans" data-concept="9243dd06-bb9a-4b7d-8bbc-e82d16c30e65^Main source of drinking water for household^99DCT"
+                value="656cce7e-977f-11e1-8993-905e29aff6c1^Other non-coded^99DCT" required="required">
+            <label for="other_water_source">Other</label>&nbsp;&nbsp;
+    
+    </div>
+    <div class="section">
+      <div class="toilet_at_home_query">
+      </p><label for="obs.toilet_at_home_query"> Do you have a toilet at home?  <span class="required">*</span></label>
+      <fieldset id="obs.toilet_at_home_query" name="obs.toilet_at_home_query">
+         <input id="toilet_at_home_query_yes" type="radio" name="toilet_at_home_query_ans" data-concept="9bcdf631-c727-48e7-98fd-795fcd544d32^Do you have a toilet at home?^99DCT"
+              value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
+         <label for="toilet_at_home_query_yes">Yes</label>&nbsp;&nbsp;
+         <input id="toilet_at_home_query_no" type="radio" name="toilet_at_home_query_ans" data-concept="9bcdf631-c727-48e7-98fd-795fcd544d32^Do you have a toilet at home?^99DCT"
+              value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
+         <label for="toilet_at_home_query_no">No</label>
+      </fieldset>
+      </div>
+      <div class="kind_of_toilet_query">
+      </p><label for="obs.kind_of_toilet_query"> What kind of toilet facility do members of your household usually use?  <span class="required">*</span></label>
+      <fieldset id="obs.kind_of_toilet_query" name="obs.kind_of_toilet_query">
+          <input id="flush_toilet" type="radio" name="kind_of_toilet_ans" data-concept="353df499-ffb9-4ca5-a63a-0ec6fb029e94^Kind of toilet facility used by household members^99DCT"
+              value="219fa3bd-df79-456c-a188-3b57cbe9440e^Flush Toilet^99DCT" required="required">
+          <label for="flush_toilet">Flush Toilet</label>&nbsp;&nbsp;
+  
+          <input id="pit_latrine" type="radio" name="kind_of_toilet_ans" data-concept="353df499-ffb9-4ca5-a63a-0ec6fb029e94^Kind of toilet facility used by household members^99DCT"
+              value="76a54a76-5a16-4767-9655-d3e1f0f6f13f^Pit Latrine^99DCT" required="required">
+          <label for="flush_toilet">Pit Latrine</label>
+          
+      </fieldset>
+      </div>
+      <div class="type_cooking_fuel_query">
+      </p><label for="obs.type_cooking_fuel_query"> What type of fuel does your householdmainly use for cooking?  <span class="required">*</span></label>
+      <fieldset id="obs.type_cooking_fuel_query" name="obs.type_cooking_fuel_query">
+          <input id="cook_with_electricity" type="radio" name="type_cooking_fuel_query_ans" data-concept="5755fdfc-586b-4816-9223-f45a1422e20a^Fuel for household cooking^99DCT"
+              value="4f3d9103-a1d2-40cb-953b-9aeeb9950147^Electricity^99DCT" required="required">
+          <label for="cook_with_electricity">Electricity</label>&nbsp;&nbsp;
+  
+          <input id="cook_with_firewood" type="radio" name="type_cooking_fuel_query_ans" data-concept="5755fdfc-586b-4816-9223-f45a1422e20a^Fuel for household cooking^99DCT"
+          value="ae3b79fe-4d32-46a0-a756-f6bfc4c19c73^Firewood^99DCT" required="required">
+          <label for="cook_with_firewood">Firewood</label>&nbsp;&nbsp;
+  
+          <input id="cook_with_charcoal" type="radio" name="type_cooking_fuel_query_ans" data-concept="5755fdfc-586b-4816-9223-f45a1422e20a^Fuel for household cooking^99DCT"
+          value="13635bd8-b5f2-470a-9ff1-80fd465f6f53^charcoal for cooking^99DCT" required="required">
+          <label for="cook_with_charcoal">Charcoal</label>&nbsp;&nbsp;
+  
+          <input id="cook_with_bootled_gas" type="radio" name="type_cooking_fuel_query_ans" data-concept="5755fdfc-586b-4816-9223-f45a1422e20a^Fuel for household cooking^99DCT"
+          value="235ff344-df36-4ae9-bbf6-a8d7828ec5ff^Bottled Gas^99DCT" required="required">
+          <label for="cook_with_bootled_gas">Bottled Gas</label>&nbsp;&nbsp;
+  
+          <input id="cook_with_paraffin" type="radio" name="type_cooking_fuel_query_ans" data-concept="5755fdfc-586b-4816-9223-f45a1422e20a^Fuel for household cooking^99DCT"
+          value="673079b3-1af7-4213-a6ed-02c20905cbf2^Paraffin/Kerosone^99DCT" required="required">
+          <label for="cook_with_paraffin">Paraffin/Kerosone</label>&nbsp;&nbsp;
+  
+          <input id="cook_with_other" type="radio" name="type_cooking_fuel_query_ans" data-concept="5755fdfc-586b-4816-9223-f45a1422e20a^Fuel for household cooking^99DCT"
+          value="656cce7e-977f-11e1-8993-905e29aff6c1^Other non-coded^99DCT" required="required">
+          <label for="cook_with_other">Other</label>
+  
+      </fieldset>
+      </div>
+      <div class="flooring_type_query">
+      </p><label for="obs.flooring_type_query"> What type of flooring does your house have?<span class="required">*</span></label>
+      <fieldset id="obs.flooring_type_query" name="obs.flooring_type_query">
+          <input id="sand_floor" type="radio" name="flooring_type_query_ans" data-concept="07f1ce88-dd02-47ff-8f0c-b39fc8616345^Type of house floor^99DCT"
+              value="47baac9f-9d34-4d5f-961a-cdfaac2c590c^Earth/Sand^99DCT" required="required">
+          <label for="sand_floor">Earth/Sand</label>&nbsp;&nbsp;
+  
+          <input id="cement_floor" type="radio" name="flooring_type_query_ans" data-concept="07f1ce88-dd02-47ff-8f0c-b39fc8616345^Type of house floor^99DCT"
+          value="254e6d65-e086-40c8-94fe-887200292c60^Building cement^99DCT" required="required">
+          <label for="cement_floor">cement</label>&nbsp;&nbsp;
+  
+  
+          <input id="tile_floor" type="radio" name="flooring_type_query_ans" data-concept="07f1ce88-dd02-47ff-8f0c-b39fc8616345^Type of house floor^99DCT"
+          value="2ea253ad-2a61-4d2d-8896-42fda71fd170^Tiles^99DCT" required="required">
+          <label for="tile_floor">tiles</label>
+          
+          <input id="other_floor" type="radio" name="flooring_type_query_ans" data-concept="07f1ce88-dd02-47ff-8f0c-b39fc8616345^Type of house floor^99DCT"
+          value="656cce7e-977f-11e1-8993-905e29aff6c1^Other non-coded^99DCT" required="required">
+          <label for="other_floor">Other</label>
+  
+      </fieldset>
+      </div>
+      <div class="wall_type_query">
+      </p><label for="obs.wall_type_query"> What type of walls is you house made of? <span class="required">*</span></label>
+      <fieldset id="obs.wall_type_query" name="obs.wall_type_query">
+          <input id="cement_wall" type="radio" name="wall_type_query_ans" data-concept="9c7bd3d9-096f-4f33-9781-2b3a23fee8ed^Type of house walls^99DCT"
+              value="254e6d65-e086-40c8-94fe-887200292c60^Building cement^99DCT" required="required">
+          <label for="cement_wall">cement</label>&nbsp;&nbsp;
+  
+          <input id="mud_wall" type="radio" name="wall_type_query_ans" data-concept="9c7bd3d9-096f-4f33-9781-2b3a23fee8ed^Type of house walls^99DCT"
+          value="64f04067-ba95-42d1-84c0-d1b9fee1d03c^Mud for building^99DCT" required="required">
+          <label for="mud_wall">mud</label>&nbsp;&nbsp;
+  
+          <input id="other_wall" type="radio" name="wall_type_query_ans" data-concept="9c7bd3d9-096f-4f33-9781-2b3a23fee8ed^Type of house walls^99DCT"
+          value="656cce7e-977f-11e1-8993-905e29aff6c1^Other non-coded^99DCT" required="required">
+          <label for="other_wall">other</label>
+      </fieldset>
+      </div>
+      <div class="roof_type_query">
+      </p><label for="obs.roof_type_query"> What type of roof is your house made of? <span class="required">*</span></label>
+      <fieldset id="obs.roof_type_query" name="obs.roof_type_query">
+          <input id="tile_roof" type="radio" name="roof_type_query_ans" data-concept="7ee0bf27-9473-48d0-b9e5-cdfe67d34ab2^Type of house roof^99DCT"
+              value="2ea253ad-2a61-4d2d-8896-42fda71fd170^Tiles^99DCT" required="required">
+          <label for="tile_roof">Tiles</label>&nbsp;&nbsp;
+  
+          <input id="grass_roof" type="radio" name="roof_type_query_ans" data-concept="7ee0bf27-9473-48d0-b9e5-cdfe67d34ab2^Type of house roof^99DCT"
+          value="5eec9066-13b0-4f9f-a236-0fbaa8d7a836^Grass^99DCT" required="required">
+          <label for="grass_roof">Grass</label>&nbsp;&nbsp;
+  
+          <input id="other_roof" type="radio" name="roof_type_query_ans" data-concept="7ee0bf27-9473-48d0-b9e5-cdfe67d34ab2^Type of house roof^99DCT"
+          value="656cce7e-977f-11e1-8993-905e29aff6c1^Other non-coded^99DCT" required="required">
+          <label for="other_roof">Other</label>&nbsp;&nbsp;
+      </fieldset>
+      </div> 
+    </div>
+    <div class="section">
+      <div class="already_enrolled_query">
+      </p><label for="obs.already_enrolled_query"> Are you already enrolled in teen club? <span class="required">*</span></label>
+      <fieldset id="obs.already_enrolled_query" name="already_enrolled_query">
+         <input id="already_enrolled_query_yes" type="radio" name="already_enrolled_query_ans" data-concept="d3dde05f-9296-4482-8e2c-788b615c5e91^Enrolled in teen club^99DCT"
+              value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
+         <label for="already_enrolled_query_yes">Yes</label>&nbsp;&nbsp;
+         <input id="already_enrolled_query_no" type="radio" name="already_enrolled_query_ans" data-concept="d3dde05f-9296-4482-8e2c-788b615c5e91^Enrolled in teen club^99DCT"
+              value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
+        <label for="already_enrolled_query_no">No</label>
+      </fieldset>
+      </div>
+      
+      <div class="teen_club_purpose_query">
+      </p><label for="obs.teen_club_purpose_query"> What do you understand as the purpose of the teen clubs? <span class="required">*</span></label>
+      <fieldset id="obs.teen_club_purpose_query" name="teen_club_purpose_query">
+         
+          <input id="empower_adole_to_build_pos_relationships" type="radio" name="teen_club_purpose_query_ans" data-concept="3d6d5b03-14be-4baa-84e2-0c661a71f263^Purpose of teen clubs^99DCT"
+              value="4f68cc43-7f2c-4ce8-8eb5-1ce1bfb796b0^To empower adolescent to build positive relationships^99DCT" required="required">
+          <label for="empower_adole_to_build_pos_relationships">To empower adolescent to build positive relationships</label>&nbsp;&nbsp;
+  
+          <input id="improve_self_esteem" type="radio" name="teen_club_purpose_query_ans" data-concept="3d6d5b03-14be-4baa-84e2-0c661a71f263^Purpose of teen clubs^99DCT"
+          value="be34f352-5c86-4ffa-b6bb-c3a4e2dc00fc^Improve their self esteem^99DCT" required="required">
+          <label for="empower_adole_to_build_pos_relationships">Improve their self esteem</label>&nbsp;&nbsp;
+  
+          <input id="acquire_life_skills" type="radio" name="teen_club_purpose_query_ans" data-concept="3d6d5b03-14be-4baa-84e2-0c661a71f263^Purpose of teen clubs^99DCT"
+          value="9a35b9c4-7e60-4ac7-aa81-9626bd0906f0^Acquire life skills through peer mentorship, adult role-modeling and structured activities^99DCT" required="required">
+          <label for="acquire_life_skills">Acquire life skills through peer mentorship, adult role-modeling and structured activities</label>&nbsp;&nbsp;
+  
+          <input id="other_purpose" type="radio" name="teen_club_purpose_query_ans" data-concept="3d6d5b03-14be-4baa-84e2-0c661a71f263^Purpose of teen clubs^99DCT"
+          value="656cce7e-977f-11e1-8993-905e29aff6c1^Other non-coded^99DCT" required="required">
+          <label for="other_purpose">Other</label>
+      </fieldset>
+      </div>
+
+      <!-- <div class="teen_club_activities_query">
+      </p><label for="obs.teen_club_activities_query"> What sort of activities do you do at the teen clubs? <span class="required">*</span></label>
+      <fieldset id="obs.teen_club_activities_query" name="teen_club_activities_query">
+         
+          <input id="teen_club_activities_games" type="radio" name="teen_club_purpose_query_ans" data-concept="80d6d139-8804-464a-820d-99c07bde4f89^Teen club activities^99DCT"
+              value="b594b14c-3ee0-4c85-ae4c-85906796a758^Games^99DCT" required="required">
+          <label for="teen_club_activities_games">Games</label>&nbsp;&nbsp;
+  
+          <input id="teen_club_activities_drama" type="radio" name="teen_club_purpose_query_ans" data-concept="80d6d139-8804-464a-820d-99c07bde4f89^Teen club activities^99DCT"
+              value="495d9e10-4a59-4f45-93d9-07989a73c34a^Drama^99DCT" required="required">
+          <label for="teen_club_activities_drama">Drama</label>&nbsp;&nbsp;
+  
+          <input id="teen_club_activities_sports" type="radio" name="teen_club_purpose_query_ans" data-concept="80d6d139-8804-464a-820d-99c07bde4f89^Teen club activities^99DCT"
+              value="76a918e7-4c7a-4e99-9957-6fe33073199f^Sports^99DCT" required="required">
+          <label for="teen_club_activities_sports">Sports</label>&nbsp;&nbsp;
+  
+          <input id="teen_club_activities_art_sessions" type="radio" name="teen_club_purpose_query_ans" data-concept="80d6d139-8804-464a-820d-99c07bde4f89^Teen club activities^99DCT"
+              value="ec6f9777-6f77-4aea-828a-5a7f2c5ea031^Art sessions^99DCT" required="required">
+          <label for="teen_club_activities_art_sessions">Art sessions</label>&nbsp;&nbsp;
+  
+          <input id="teen_club_activities_other" type="radio" name="teen_club_purpose_query_ans" data-concept="80d6d139-8804-464a-820d-99c07bde4f89^Teen club activities^99DCT"
+              value="656cce7e-977f-11e1-8993-905e29aff6c1^Other non-coded^99DCT" required="required">
+          <label for="teen_club_activities_other">Other</label>&nbsp;&nbsp;
+      </fieldset>
+      </div> -->
+      <div class="enjoyed_activity">
+        <label for="obs.enjoyed_activity">Which activity of teen club did you enjoy the most? <span class="required">*</span></label>
+        <input class="form-control" id="obs.enjoyed_activity" name="obs.enjoyed_activity"
+               type="text" data-concept="eda0a5ec-25a3-44d6-9f1b-f45a752d839b^Which activity of teen club did you enjoy the most?^99DCT" required="required">
+        </div>
+    
+
+      <div class="teen_club_topics_query">
+      </p><label for="obs.teen_club_topics_query"> What topics do you cover when you meet as teen clubs? <span class="required">*</span></label>
+      <fieldset id="obs.teen_club_topics_query" name="teen_club_topics_query">
+         
+          <input id="hiv_disclore_adherence" type="radio" name="teen_club_topics_query_ans" data-concept="0e9df979-802c-4e8b-8396-15a556424183^Topic covered in teen club^99DCT"
+              value="383900ef-2863-4d95-a08a-3bf699586a56^HIV education, disclosure, adherence^99DCT" required="required">
+          <label for="hiv_disclore_adherence">HIV education, disclosure, adherence</label>&nbsp;&nbsp;
+  
+          <input id="goal_setting" type="radio" name="teen_club_topics_query_ans" data-concept="0e9df979-802c-4e8b-8396-15a556424183^Topic covered in teen club^99DCT"
+              value="a3050ad2-d8ec-4fc6-b295-594055ca90cd^Goal-setting^99DCT" required="required">
+          <label for="goal_setting">Goal-setting</label>&nbsp;&nbsp;
+  
+          <input id="sexual_and_repro_health" type="radio" name="teen_club_topics_query_ans" data-concept="0e9df979-802c-4e8b-8396-15a556424183^Topic covered in teen club^99DCT"
+              value="049f6531-47ca-4378-b3b8-d8693cf97c84^Sexual and reproductive health^99DCT" required="required">
+          <label for="sexual_and_repro_health">Sexual and reproductive health</label>&nbsp;&nbsp;
+  
+          <input id="stigma_and_discrimination" type="radio" name="teen_club_topics_query_ans" data-concept="0e9df979-802c-4e8b-8396-15a556424183^Topic covered in teen club^99DCT"
+              value="69cd9b84-3c76-4528-986b-22d473f2ea54^Coping with stigma and discrimination^99DCT" required="required">
+          <label for="stigma_and_discrimination">Coping with stigma and discrimination</label>&nbsp;&nbsp;
+  
+          <input id="other_topics" type="radio" name="teen_club_topics_query_ans" data-concept="0e9df979-802c-4e8b-8396-15a556424183^Topic covered in teen club^99DCT"
+              value="656cce7e-977f-11e1-8993-905e29aff6c1^Other non-coded^99DCT" required="required">
+          <label for="other_topics">Other</label>&nbsp;&nbsp;
+  
+      </fieldset>
+      </div>
+
+      <div class="any_social_support_query">
+      </p><label for="obs.any_social_support_query"> Did you get any social support from teens' club? <span class="required">*</span></label>
+      <fieldset id="obs.any_social_support_query" name="any_social_support_query">
+  
+         <input id="any_social_support_query_yes" type="radio" name="any_social_support_query_ans" data-concept="7ed120af-0973-4650-b184-ebd31f78f015^Social support from teen club^99DCT"
+              value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
+         <label for="any_social_support_query_yes">Yes</label>&nbsp;&nbsp;
+  
+         <input id="any_social_support_query_no" type="radio" name="any_social_support_query_ans" data-concept="7ed120af-0973-4650-b184-ebd31f78f015^Social support from teen club^99DCT"
+              value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
+        <label for="any_social_support_query_no">No</label>
+      </fieldset>
+      </div>
+
+      <div class="kind_of_social_support_query">
+      </p><label for="obs.kind_of_social_support_query"> What kind of support? <span class="required">*</span></label>
+      <fieldset id="obs.kind_of_social_support_query" name="kind_of_social_support_query">
+  
+         <input id="school_support_kind" type="radio" name="kind_of_social_support_query_ans" data-concept="88220f57-2d23-4949-83cc-a9ddf9081a60^What support would you like to get from teens club?^99DCT"
+          value="6eebff3c-37fb-4dd6-bc38-c2bbb508e3c6^School support^99DCT" required="required">
+         <label for="school_support_kind">School support</label>&nbsp;&nbsp;
+  
+         <input id="accommodation" type="radio" name="kind_of_social_support_query_ans" data-concept="88220f57-2d23-4949-83cc-a9ddf9081a60^What support would you like to get from teens club?^99DCT"
+          value="ab31cf84-823a-491f-8713-ed209e15eac0^Accommodation( housing repair and basic household items)^99DCT" required="required">
+         <label for="accommodation">Accommodation(housing repair and basic household items)</label>&nbsp;&nbsp;
+  
+         <input id="vocational_training" type="radio" name="kind_of_social_support_query_ans" data-concept="88220f57-2d23-4949-83cc-a9ddf9081a60^What support would you like to get from teens club?^99DCT"
+          value="af310bb8-9593-4430-bd63-db91a557db99^vocational Training^99DCT" required="required">
+         <label for="vocational_training">Vocational training</label>&nbsp;&nbsp;
+  
+         <input id="agri_nutri_fishing" type="radio" name="kind_of_social_support_query_ans" data-concept="88220f57-2d23-4949-83cc-a9ddf9081a60^What support would you like to get from teens club?^99DCT"
+          value="88e769d2-fea2-4500-abe5-d3b174607deb^Agriculture/nutrition support(Fishing)^99DCT" required="required">
+         <label for="agri_nutri_fishing">Agriculture/nutrition support(Fishing)</label>&nbsp;&nbsp;
+  
+         <input id="agri_nutri_crop_farming" type="radio" name="kind_of_social_support_query_ans" data-concept="88220f57-2d23-4949-83cc-a9ddf9081a60^What support would you like to get from teens club?^99DCT"
+          value="ec2f3f77-6a07-468b-ab68-da61a67ead2e^Agriculture/nutrition support(Crop Farming)^99DCT" required="required">
+         <label for="agri_nutri_crop_farming">Agriculture/nutrition support(Crop Farming)</label>&nbsp;&nbsp;
+  
+         <input id="agri_nutri_animal_farming" type="radio" name="kind_of_social_support_query_ans" data-concept="88220f57-2d23-4949-83cc-a9ddf9081a60^What support would you like to get from teens club?^99DCT"
+         value="a49c8069-789e-4cf9-bc68-f16cc7342696^Agriculture/nutrition support(Animal Farming)^99DCT" required="required">
+         <label for="agri_nutri_animal_farming">Agriculture/nutrition support(Animal Farming)</label>&nbsp;&nbsp;
+  
+        <input id="linkage_to_jobs" type="radio" name="kind_of_social_support_query_ans" data-concept="88220f57-2d23-4949-83cc-a9ddf9081a60^What support would you like to get from teens club?^99DCT"
+        value="23b50f00-e02e-43ea-89d2-ccf82ffd9a5f^Linkage to jobs^99DCT" required="required">
+        <label for="agri_nutri_animal_farming">Linkage to jobs</label>&nbsp;&nbsp;
+  
+        <input id="other_kind_of_social_support" type="radio" name="kind_of_social_support_query_ans" data-concept="88220f57-2d23-4949-83cc-a9ddf9081a60^What support would you like to get from teens club?^99DCT"
+        value="656cce7e-977f-11e1-8993-905e29aff6c1^Other non-coded^99DCT" required="required">
+        <label for="other_kind_of_social_support">Other</label>&nbsp;&nbsp;
+  
+      </fieldset>
+      </div>
+
+      <div class="happy_with_teen_club_query">
+      </p><label for="obs.happy_with_teen_club_query"> Are you happy with teen club? <span class="required">*</span></label>
+      <fieldset id="obs.happy_with_teen_club_query" name="happy_with_teen_club_query">
+  
+         <input id="happy_yes" type="radio" name="happy_with_teen_club_query_ans" data-concept="267d6802-7ecb-450e-9b4e-5436c762b511^Are you happy with teen club?^99DCT"
+              value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
+         <label for="school_support">Yes</label>&nbsp;&nbsp;
+         
+         <input id="happy_no" type="radio" name="happy_with_teen_club_query_ans" data-concept="267d6802-7ecb-450e-9b4e-5436c762b511^Are you happy with teen club?^99DCT"
+              value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
+        <label for="happy_no">No</label>
+      </fieldset>
+
+      <div class="like_most"></p>
+        <label for="obs.like_most">What is it you like most at teen club? <span class="required">*</span></label>
+        <input class="form-control" id="obs.like_most" name="obs.like_most"
+               type="text" data-concept="c31911f3-038b-42ee-a929-6c14a96ae508^What you like most at teen club?^99DCT" required="required">
+      </div>
+      <div class="dont_like">
+        <label for="obs.dont_like">What is it you don't like at teen club? <span class="required">*</span></label>
+        <input class="form-control" id="obs.dont_like" name="obs.dont_like"
+               type="text" data-concept="d7172d9b-da71-4f79-9a62-52a9ff550e88^What you don't like at teen club?^99DCT" required="required">
+      </div>
+
+      <div class="rate_social_support">
+        <label for="obs.rate_support_query"> How do you rate the support on a scale of 1 to 3? <span class="required">*</span></label>
+        <fieldset id="obs.rate_support_query" name="rate_support_query">
+    
+            <input id="very_satisfied" type="radio" name="rate_support_query_ans" data-concept="5a86edcb-21e8-4e3a-9472-de9a6d3fbb2b^How do you rate the support on a scale of 1 to 3?^99DCT"
+                value="8a723427-24ef-4d25-bc4c-539ddc1f8ae2^Very satisfied^99DCT" required="required">
+            <label for="very_satisfied">Very satisfied</label>&nbsp;&nbsp;
+    
+            <input id="not_satisfied" type="radio" name="rate_support_query_ans" data-concept="5a86edcb-21e8-4e3a-9472-de9a6d3fbb2b^How do you rate the support on a scale of 1 to 3?^99DCT"
+                value="a93e3448-d71a-4cba-851e-0d328a927b94^Not satisfied^99DCT" required="required">
+            <label for="not_satisfied">Not satisfied</label>&nbsp;&nbsp;
+    
+            <input id="little_satisfied" type="radio" name="rate_support_query_ans" data-concept="5a86edcb-21e8-4e3a-9472-de9a6d3fbb2b^How do you rate the support on a scale of 1 to 3?^99DCT"
+                value="971caad2-d10f-4202-9d53-b6c80545a23c^Little satisfied^99DCT" required="required">
+            <label for="not_satisfied">Little satisfied</label>
+        </fieldset>
+      </div>
+    
+      <div class="rate_life_changes">
+        <label for="obs.rate_life_changes_query"> Can you rate the changes that happened to your life from the social support on a scale of 1 to 3? <span class="required">*</span></label>
+        <fieldset id="obs.rate_life_changes_query" name="rate_life_changes_query">
+    
+            <input id="very_satisfied" type="radio" name="rate_life_changes_query_ans" data-concept="4fbb5e58-b08a-4043-9798-ec22ff5571bf^Can you rate the changes that happened to your life from the social support a scale of 1 to 3?^99DCT"
+                value="8a723427-24ef-4d25-bc4c-539ddc1f8ae2^Very satisfied^99DCT" required="required">
+            <label for="very_satisfied">Very satisfied</label>&nbsp;&nbsp;
+    
+            <input id="not_satisfied" type="radio" name="rate_life_changes_query_ans" data-concept="4fbb5e58-b08a-4043-9798-ec22ff5571bf^Can you rate the changes that happened to your life from the social support a scale of 1 to 3?^99DCT"
+                value="a93e3448-d71a-4cba-851e-0d328a927b94^Not satisfied^99DCT" required="required">
+            <label for="not_satisfied">Not satisfied</label>&nbsp;&nbsp;
+    
+            <input id="little_satisfied" type="radio" name="rate_life_changes_query_ans" data-concept="4fbb5e58-b08a-4043-9798-ec22ff5571bf^Can you rate the changes that happened to your life from the social support a scale of 1 to 3?^99DCT"
+                value="971caad2-d10f-4202-9d53-b6c80545a23c^Little satisfied^99DCT" required="required">
+            <label for="not_satisfied">Little satisfied</label>
+        </fieldset>
+    </div>
+
+      </div>
+      </div>
+      <div class="section">
+        <div class="challenges">
+          <label for="obs.challenges">What challenges do you face in your daily life? <span class="required">*</span></label>
+          <input class="form-control" id="obs.challenges" name="obs.challenges"
+                 type="text" data-concept="a73a438b-d3f6-47b5-bcfd-bbceae8e7458^Challenges you face in daily life^99DCT" required="required">
+        </div>
+
+        <div class="rate_hiv_knowledge">
+          <label for="obs.rate_hiv_knowledge_query"> How would you rate your level of knowledge about HIV? <span class="required">*</span></label>
+          <fieldset id="obs.rate_hiv_knowledge_query" name="rate_hiv_knowledge_query">
+      
+              <input id="very_low" type="radio" name="rate_life_changes_query_ans" data-concept="5705c64d-41f8-4332-be83-c5ebb2df9693^Rate your HIV knowledge^99DCT"
+                  value="1e9d2c9b-106d-4ad1-8384-0791f9db7ff3^Very low^99DCT" required="required">
+              <label for="very_low">Very low</label>&nbsp;&nbsp;
+      
+              <input id="low" type="radio" name="rate_life_changes_query_ans" data-concept="5705c64d-41f8-4332-be83-c5ebb2df9693^Rate your HIV knowledge^99DCT"
+                  value="05b2aac2-56c6-43da-a1dc-6c4eca4efaca^low^99DCT" required="required">
+              <label for="low">low</label>&nbsp;&nbsp;
+  
+              <input id="high" type="radio" name="rate_life_changes_query_ans" data-concept="5705c64d-41f8-4332-be83-c5ebb2df9693^Rate your HIV knowledge^99DCT"
+                  value="a41eaeb1-1769-4b02-b511-8028e4ae85ec^High^99DCT" required="required">
+              <label for="high">High</label>&nbsp;&nbsp;
+  
+              <input id="no_response" type="radio" name="rate_life_changes_query_ans" data-concept="5705c64d-41f8-4332-be83-c5ebb2df9693^Rate your HIV knowledge^99DCT"
+                  value="81bc5d0f-6a58-4504-9f24-ea6345cb2647^No Response^99DCT" required="required">
+              <label for="no_response">No Response</label>
+          </fieldset>
+      </div>
+
+      <div class="hiv_transmission">
+        <label for="obs.hiv_transmission_query"> How is HIV transmitted? <span class="required">*</span></label>
+        <fieldset id="obs.hiv_transmission_query" name="hiv_transmission_query">
+    
+            <input id="mosquito_bite" type="radio" name="hiv_transmission_ans" data-concept="2aefa143-9f49-44c6-8848-56f2596ff1c5^How is HIV transmitted?^99DCT"
+                value="86daa7ce-0c8a-429a-9679-ad02d8fb0b73^Mosquito bite^99DCT" required="required">
+            <label for="mosquito_bite">Mosquito bite</label>&nbsp;&nbsp;
+
+            <input id="kissing" type="radio" name="hiv_transmission_ans" data-concept="2aefa143-9f49-44c6-8848-56f2596ff1c5^How is HIV transmitted?^99DCT"
+                value="764ecc35-f17d-4193-bf18-d9d701b6d564^Kissing^99DCT" required="required">
+            <label for="kissing">Kissing</label>&nbsp;&nbsp;
+
+            <input id="sexual_intercourse" type="radio" name="hiv_transmission_ans" data-concept="2aefa143-9f49-44c6-8848-56f2596ff1c5^How is HIV transmitted?^99DCT"
+                value="eadc4425-2228-4741-950e-d1f3be048e65^Sexual Intercourse^99DCT" required="required">
+            <label for="sexual_intercourse">Sexual Intercourse</label>&nbsp;&nbsp;
+
+            <input id="through_blood_transfusion" type="radio" name="hiv_transmission_ans" data-concept="2aefa143-9f49-44c6-8848-56f2596ff1c5^How is HIV transmitted?^99DCT"
+                value="938d8bcb-d128-4ac7-8179-a5ccfd10604f^Through blood transfusion^99DCT" required="required">
+            <label for="through_blood_transfusion">Through blood transfusion</label>&nbsp;&nbsp;
+
+            <input id="mother_to_child_transmission" type="radio" name="hiv_transmission_ans" data-concept="2aefa143-9f49-44c6-8848-56f2596ff1c5^How is HIV transmitted?^99DCT"
+                value="2c01d171-701e-4848-acde-d5a2258d7b0e^Mother-to-child transmission^99DCT" required="required">
+            <label for="mother_to_child_transmission">Mother-to-child transmission</label>&nbsp;&nbsp;
+        </fieldset>
+      </div>
+
+      <div class="hiv_prevention">
+        <label for="obs.hiv_prevention_query"> How is HIV/AIDS prevented? <span class="required">*</span></label>
+        <fieldset id="obs.hiv_prevention_query" name="hiv_prevention_query">
+    
+            <input id="condom" type="radio" name="hiv_prevention_ans" data-concept="302b77dd-f922-4f38-8f7a-6f76887dff8f^How is HIV/AIDS prevented?^99DCT"
+                value="3fbc0349-56aa-40c2-a03a-517da6aab82c^using condoms^99DCT" required="required">
+            <label for="condom">Condom</label>&nbsp;&nbsp;
+
+            <input id="abstinence" type="radio" name="hiv_prevention_ans" data-concept="302b77dd-f922-4f38-8f7a-6f76887dff8f^How is HIV/AIDS prevented?^99DCT"
+            value="ceb54c50-7376-4449-87a1-f4051edde7e2^by abstinence^99DCT" required="required">
+            <label for="abstinence">Abstinence</label>&nbsp;&nbsp;
+
+            <input id="fidelity" type="radio" name="hiv_prevention_ans" data-concept="302b77dd-f922-4f38-8f7a-6f76887dff8f^How is HIV/AIDS prevented?^99DCT"
+            value="4c024160-1f3e-4146-8733-4795ed0c445e^Fidelity^99DCT" required="required">
+            <label for="fidelity">Fidelity</label>&nbsp;&nbsp;
+
+            <input id="dont_know" type="radio" name="hiv_prevention_ans" data-concept="302b77dd-f922-4f38-8f7a-6f76887dff8f^How is HIV/AIDS prevented?^99DCT"
+            value="1fa4b4a6-b849-4442-94d0-f46f4460ce38^Don't Know^99DCT" required="required">
+            <label for="fidelity">Don't Know</label>&nbsp;&nbsp;
+
+          </fieldset>
+      </div>
+
+      <div class="hiv_cure_query">
+        <label for="obs.hiv_cure_query"> Can HIV/AIDS be cured? <span class="required">*</span></label>
+        <fieldset id="obs.hiv_cure_query" name="hiv_cure_query">
+    
+           <input id="hiv_cure_query_yes" type="radio" name="hiv_cure_query_ans" data-concept="0490d7ce-2def-48b0-b113-16e68aa19eba^Can HIV/AIDS be cured?^99DCT"
+                value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
+           <label for="hiv_cure_query_yes">Yes</label>&nbsp;&nbsp;
+    
+           <input id="hiv_cure_query_no" type="radio" name="hiv_cure_query_ans" data-concept="0490d7ce-2def-48b0-b113-16e68aa19eba^Can HIV/AIDS be cured?^99DCT"
+                value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
+           <label for="hiv_cure_query_no">No</label>&nbsp;&nbsp;
+        </fieldset>
+      </div>
+
+      <div class="health_person_query">
+        <label for="obs.health_person_query"> Can a healthy-looking person have HIV infection? <span class="required">*</span></label>
+        <fieldset id="obs.health_person_query" name="health_person_query">
+    
+           <input id="health_person_query_yes" type="radio" name="health_person_query_ans" data-concept="626d3564-a7ff-48e4-a869-e3e347d55357^Can a healthy-looking person have HIV infection?^99DCT"
+                value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
+           <label for="health_person_query_yes">Yes</label>&nbsp;&nbsp;
+
+           <input id="health_person_query_no" type="radio" name="health_person_query_ans" data-concept="626d3564-a7ff-48e4-a869-e3e347d55357^Can a healthy-looking person have HIV infection?^99DCT"
+                value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
+           <label for="health_person_query_no">No</label>&nbsp;&nbsp;
+        </fieldset>
+      </div>
+
+      <div class="hiv_student_query">
+        <label for="obs.hiv_student_query"> Should an HIV+ student be allowed to continue studying at your school? <span class="required">*</span></label>
+        <fieldset id="obs.hiv_student_query" name="hiv_student_query">
+    
+           <input id="hiv_student_query_yes" type="radio" name="hiv_student_query_ans" data-concept="d3ab4a01-7942-4925-848e-08a894d4c9f0^Should an HIV+ student be allowed to continue studying at your school?^99DCT"
+                value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
+           <label for="hiv_student_query_yes">Yes</label>&nbsp;&nbsp;
+
+           <input id="hiv_student_query_no" type="radio" name="hiv_student_query_ans" data-concept="d3ab4a01-7942-4925-848e-08a894d4c9f0^Should an HIV+ student be allowed to continue studying at your school?^99DCT"
+               value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
+           <label for="hiv_student_query_no">No</label>&nbsp;&nbsp;
+        </fieldset>
+      </div>
+
+      <div class="punishment_query">
+        <label for="obs.punishment_query"> Is HIV is a punishment for bad behavior? <span class="required">*</span></label>
+        <fieldset id="obs.punishment_query" name="punishment_query">
+    
+           <input id="punishment_query_yes" type="radio" name="punishment_query_ans" data-concept="da25f6e7-3816-40d7-8d1f-d91f8a157424^Is HIV is a punishment for bad behavior?^99DCT"
+                value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
+           <label for="punishment_query_yes">Yes</label>&nbsp;&nbsp;
+
+           <input id="punishment_query_no" type="radio" name="punishment_query_ans" data-concept="da25f6e7-3816-40d7-8d1f-d91f8a157424^Is HIV is a punishment for bad behavior?^99DCT"
+                value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
+           <label for="punishment_query_no">No</label>&nbsp;&nbsp;
+        </fieldset>
+      </div>
+
+      <div class="bad_luck_query">
+        <label for="obs.bad_luck_query"> Is HIV just a matter of bad luck? <span class="required">*</span></label>
+        <fieldset id="obs.bad_luck_query" name="bad_luck_query">
+    
+           <input id="bad_luck_query_yes" type="radio" name="bad_luck_query_ans" data-concept="b317bada-e3fb-403d-bc6e-1d31a1203fbb^Is HIV just a matter of bad luck?^99DCT"
+                value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
+           <label for="bad_luck_query_yes">Yes</label>&nbsp;&nbsp;
+
+           <input id="bad_luck_query_no" type="radio" name="bad_luck_query_ans" data-concept="b317bada-e3fb-403d-bc6e-1d31a1203fbb^Is HIV just a matter of bad luck?^99DCT"
+           value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
+           <label for="bad_luck_query_no">No</label>&nbsp;&nbsp;
+        </fieldset>
+      </div>
+
+      <div class="live_longer_query">
+        <label for="obs.live_longer_query"> Can HIV infected person live longer? <span class="required">*</span></label>
+        <fieldset id="obs.live_longer_query" name="live_longer_query">
+    
+           <input id="live_longer_query_yes" type="radio" name="live_longer_query_ans" data-concept="414489ec-b644-4579-a811-853dcdd4cb1e^Can an HIV infected person live longer?^99DCT"
+                value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
+           <label for="live_longer_query_yes">Yes</label>&nbsp;&nbsp;
+
+           <input id="live_longer_query_no" type="radio" name="live_longer_query_ans" data-concept="414489ec-b644-4579-a811-853dcdd4cb1e^Can an HIV infected person live longer?^99DCT"
+           value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
+           <label for="live_longer_query_no">No</label>&nbsp;&nbsp;
+
+        </fieldset>
+      </div>
+
+      <div class="afraid_query">
+        <label for="obs.afraid_query"> Are people afraid to be around you? <span class="required">*</span></label>
+        <fieldset id="obs.afraid_query" name="afraid_query">
+    
+           <input id="afraid_query_yes" type="radio" name="afraid_query_ans" data-concept="ca1fd53c-5de9-4dfd-a106-ecb6fff92f6b^Are people afraid to be around you?^99DCT"
+                value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
+           <label for="afraid_query_yes">Yes</label>&nbsp;&nbsp;
+
+           <input id="afraid_query_no" type="radio" name="afraid_query_ans" data-concept="ca1fd53c-5de9-4dfd-a106-ecb6fff92f6b^Are people afraid to be around you?^99DCT"
+                value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
+           <label for="afraid_query_no">No</label>&nbsp;&nbsp;
+        </fieldset>
+      </div>
+
+      <div class="injectable_drugs_query">
+        <label for="obs.injectable_drugs_query"> Have you ever used injectable drugs? <span class="required">*</span></label>
+        <fieldset id="obs.injectable_drugs_query" name="injectable_drugs_query">
+    
+           <input id="injectable_drugs_query_yes" type="radio" name="injectable_drugs_query_ans" data-concept="abf95156-b5e8-40d7-8935-0ff78513065e^Have you ever used injectable drugs?^99DCT"
+                value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
+           <label for="injectable_drugs_query_yes">Yes</label>&nbsp;&nbsp;
+
+           <input id="injectable_drugs_query_no" type="radio" name="injectable_drugs_query_ans" data-concept="abf95156-b5e8-40d7-8935-0ff78513065e^Have you ever used injectable drugs?^99DCT"
+                value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
+           <label for="injectable_drugs_query_no">No</label>&nbsp;&nbsp;
+        </fieldset>
+      </div>      
+
+      <div class="elicit_drugs_query">
+        <label for="obs.elicit_drugs_query"> Have you ever used elicit drugs? <span class="required">*</span></label>
+        <fieldset id="obs.elicit_drugs_query" name="elicit_drugs_query">
+    
+           <input id="elicit_drugs_query_yes" type="radio" name="elicit_drugs_query_ans" data-concept="c0b66f98-7580-4c09-885f-cb4f538e6b2c^Have you ever used elicit drugs?^99DCT"
+                value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
+           <label for="elicit_drugs_query_yes">Yes</label>&nbsp;&nbsp;
+
+           <input id="elicit_drugs_query_no" type="radio" name="elicit_drugs_query_ans" data-concept="c0b66f98-7580-4c09-885f-cb4f538e6b2c^Have you ever used elicit drugs?^99DCT"
+                value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
+           <label for="elicit_drugs_query_no">No</label>&nbsp;&nbsp;
+        </fieldset>
+      </div>      
+
+      <div class="alcohol_influence_query">
+        <label for="obs.alcohol_influence_query"> Do you have sex when you are under the influence of alcohol? <span class="required">*</span></label>
+        <fieldset id="obs.alcohol_influence_query" name="alcohol_influence_query">
+    
+           <input id="alcohol_influence_query_yes" type="radio" name="alcohol_influence_query_ans" data-concept="bf68d511-2ebf-431e-99dc-e55b38bae7fe^Do you have sex when you're under the influence of alcohol?^99DCT"
+                value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
+           <label for="alcohol_influence_query_yes">Yes</label>&nbsp;&nbsp;
+
+           <input id="alcohol_influence_query_no" type="radio" name="alcohol_influence_query_ans" data-concept="bf68d511-2ebf-431e-99dc-e55b38bae7fe^Do you have sex when you're under the influence of alcohol?^99DCT"
+              value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
+           <label for="alcohol_influence_query_no">No</label>&nbsp;&nbsp;
+        </fieldset>
+      </div>
+
+      <div class="exchange_query">
+        <label for="obs.exchange_query"> Did you ever had sex in exchange for money, goods or favor? <span class="required">*</span></label>
+        <fieldset id="obs.exchange_query" name="exchange_query">
+    
+           <input id="exchange_query_yes" type="radio" name="exchange_query_ans" data-concept="56c5db66-e09b-4f70-a6e3-5b684ac9c524^Did you have sex in exchange for money, goods or favor?^99DCT"
+                value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
+           <label for="exchange_query_yes">Yes</label>&nbsp;&nbsp;
+
+           <input id="exchange_query_no" type="radio" name="exchange_query_ans" data-concept="56c5db66-e09b-4f70-a6e3-5b684ac9c524^Did you have sex in exchange for money, goods or favor?^99DCT"
+                value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
+           <label for="exchange_query_no">No</label>&nbsp;&nbsp;
+        </fieldset>
+      </div>
+
+      <div class="older_query">
+        <label for="obs.older_query"> Did you ever had sex with someone who is younger or older than them by 5 years? <span class="required">*</span></label>
+        <fieldset id="obs.older_query" name="older_query">
+    
+           <input id="older_query_yes" type="radio" name="older_query_ans" data-concept="98759c39-5164-43fe-99ab-44dffb5cf966^Did you ever have sex with someone who is younger or you're older than them by 5 years?^99DCT"
+                value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
+           <label for="older_query_yes">Yes</label>&nbsp;&nbsp;
+
+           <input id="older_query_no" type="radio" name="older_query_ans" data-concept="98759c39-5164-43fe-99ab-44dffb5cf966^Did you ever have sex with someone who is younger or you're older than them by 5 years?^99DCT"
+           value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
+           <label for="older_query_no">No</label>&nbsp;&nbsp;
+        </fieldset>
+      </div>
+
+      <div class="thinking_about_future_query">
+        <label for="obs.thinking_about_future_query"> Have you started thinking about your future career or job aspirations? <span class="required">*</span></label>
+        <fieldset id="obs.thinking_about_future_query" name="thinking_about_future_query">
+    
+           <input id="thinking_about_future_query_yes" type="radio" name="thinking_about_future_query_ans" data-concept="f4d4508e-c2a3-464d-804c-8f68e6fcb070^Have you started thinking about your future career and job aspirations?^99DCT"
+                value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
+           <label for="thinking_about_future_query_yes">Yes</label>&nbsp;&nbsp;
+    
+           <input id="thinking_about_future_query_no" type="radio" name="thinking_about_future_query_ans" data-concept="f4d4508e-c2a3-464d-804c-8f68e6fcb070^Have you started thinking about your future career and job aspirations?^99DCT"
+                value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
+          <label for="thinking_about_future_query_no">No</label>
+        </fieldset>
+      </div>
+
+        <div class="job">
+          <label for="obs.job">What career/job would you like to do when you finish school? <span class="required">*</span></label>
+          <input class="form-control" id="obs.challenges" name="obs.challenges"
+                 type="text" data-concept="7d2a7965-9e3a-4f7b-822f-f5728f2c8596^What career/job would you like to do when you finish school?^99DCT" required="required">
+      </div>
+
+      <div class="areas_of_study_interest">
+        <label for="obs.areas_of_study_interest_query"> What subjects or areas of study interest you the most? <span class="required">*</span></label>
+        <fieldset id="obs.areas_of_study_interest_query" name="areas_of_study_interest_query">
+    
+            <input id="science_and_math" type="radio" name="areas_of_study_interest_ans" data-concept="fb69f4f8-118f-4362-b054-1b29ece01de7^What subjects or areas of study interest you the most?^99DCT"
+                value="ca2fcfbe-3d92-46fa-8fe3-844aac33376c^Science and Math^99DCT" required="required">
+            <label for="science_and_math">Science and Math</label>&nbsp;&nbsp;
+
+            <input id="arts_and_humanities" type="radio" name="areas_of_study_interest_ans" data-concept="fb69f4f8-118f-4362-b054-1b29ece01de7^What subjects or areas of study interest you the most?^99DCT"
+                value="5d56164d-4b9e-4b50-ba37-b9df6597642a^Arts and Humanities^99DCT" required="required">
+            <label for="arts_and_humanities">Arts and Humanities</label>&nbsp;&nbsp;
+
+            <input id="business_an_entrepreneurship" type="radio" name="areas_of_study_interest_ans" data-concept="fb69f4f8-118f-4362-b054-1b29ece01de7^What subjects or areas of study interest you the most?^99DCT"
+                value="df51523a-559e-4e81-b883-f2615a3a5043^Business and Entrepreneurship^99DCT" required="required">
+            <label for="business_an_entrepreneurship">Business and Entrepreneurship</label>&nbsp;&nbsp;
+
+            <input id="other_areas_of_study_interest" type="radio" name="areas_of_study_interest_ans" data-concept="fb69f4f8-118f-4362-b054-1b29ece01de7^What subjects or areas of study interest you the most?^99DCT"
+                value="656cce7e-977f-11e1-8993-905e29aff6c1^Other non-coded^99DCT" required="required">
+            <label for="other_areas_of_study_interest">Other</label>&nbsp;&nbsp;
+        </fieldset>
+    </div>
+
+    <div class="extracurricular_activities">
+      <label for="obs.extracurricular_activities_query"> Are you currently involved in any extracurricular activities or clubs related to your career interests?<span class="required">*</span></label>
+      <fieldset id="obs.extracurricular_activities_query" name="extracurricular_activities_query">
+  
+         <input id="extracurricular_activities_query_yes" type="radio" name="extracurricular_activities_query_ans" data-concept="4bd44d80-5409-4c7f-a2d2-d623fdfdfc93^Are you currently involved in any extracurricular activities or clubs related to your career interests?^99DCT"
+              value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
+         <label for="extracurricular_activities_query_yes">Yes</label>&nbsp;&nbsp;
+  
+         <input id="extracurricular_activities_query_no" type="radio" name="extracurricular_activities_query_ans" data-concept="4bd44d80-5409-4c7f-a2d2-d623fdfdfc93^Are you currently involved in any extracurricular activities or clubs related to your career interests?^99DCT"
+              value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
+        <label for="extracurricular_activities_query_no">No</label>
+      </fieldset>
+    </div>
+
+    <div class="extracurricular_activities_list">
+      <label for="obs.extracurricular_activities_list">What extracurricular activities or clubs related to your career are you involved in? <span class="required">*</span></label>
+      <input class="form-control" id="obs.extracurricular_activities_list" name="obs.extracurricular_activities_list"
+             type="text" data-concept="a8de56b1-833c-4293-8cc3-1281cd8cbd02^Extracurricular activities^99DCT" required="required">
+    </div>
+
+    <div class="particular_interest">
+      <label for="obs.particular_interest_query"> Are there any specific careers or industries that you are curious about or would like to learn more about? <span class="required">*</span></label>
+      <fieldset id="obs.particular_interest_query" name="particular_interest_query">
+  
+          <input id="healthcare_and_medicine" type="radio" name="particular_interest_ans" data-concept="dab43cd5-1de7-440a-af65-b50f224c025a^Are there any specific careers or industries that you are curious about or would like to learn more about?^99DCT"
+              value="1d0345e8-7565-454c-9bf7-19f4dfcfc61e^Healthcare and medicine^99DCT" required="required">
+          <label for="healthcare_and_medicine">Healthcare and medicine</label>&nbsp;&nbsp;
+
+          <input id="technology_and_IT" type="radio" name="particular_interest_ans" data-concept="dab43cd5-1de7-440a-af65-b50f224c025a^Are there any specific careers or industries that you are curious about or would like to learn more about?^99DCT"
+              value="5f201508-2345-4501-bdd0-f5a8623c7162^Technology and IT^99DCT" required="required">
+          <label for="technology_and_IT">Technology and IT</label>&nbsp;&nbsp;
+
+          <input id="creative_arts_and_design" type="radio" name="particular_interest_ans" data-concept="dab43cd5-1de7-440a-af65-b50f224c025a^Are there any specific careers or industries that you are curious about or would like to learn more about?^99DCT"
+              value="67be71c3-9ec6-4cca-9f2e-9cb0a52a3f4e^Creative arts and design^99DCT" required="required">
+          <label for="creative_arts_and_design">Creative arts and design</label>&nbsp;&nbsp;
+
+          <input id="business_and_entrepreneurship" type="radio" name="particular_interest_ans" data-concept="dab43cd5-1de7-440a-af65-b50f224c025a^Are there any specific careers or industries that you are curious about or would like to learn more about?^99DCT"
+              value="df51523a-559e-4e81-b883-f2615a3a5043^Business and Entrepreneurship^99DCT" required="required">
+          <label for="business_and_entrepreneurship">Business and Entrepreneurship</label>&nbsp;&nbsp;
+
+          <input id="other_particular_interest" type="radio" name="particular_interest_ans" data-concept="dab43cd5-1de7-440a-af65-b50f224c025a^Are there any specific careers or industries that you are curious about or would like to learn more about?^99DCT"
+              value="656cce7e-977f-11e1-8993-905e29aff6c1^Other non-coded^99DCT" required="required">
+          <label for="other_particular_interest">Other</label>
+      </fieldset>
+  </div>
+
+        <!-- <div class="role_models_query">
+        <label for="obs.role_models_query"> Are there any role models or professionals in your desired field that you admire or look up to? <span class="required">*</span></label>
+        <fieldset id="obs.role_models_query" name="role_models_query">
+    
+           <input id="role_models_query_yes" type="radio" name="role_models_query_ans" data-concept="8dcf744f-4f22-484a-8d6d-c14ebbc53f44^Are there any role models or professionals in your desired field that you look up to?^99DCT"
+                value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
+           <label for="role_models_query_yes">Yes</label>&nbsp;&nbsp;
+    
+           <input id="role_models_query_no" type="radio" name="role_models_query_ans" data-concept="8dcf744f-4f22-484a-8d6d-c14ebbc53f44^Are there any role models or professionals in your desired field that you look up to?^99DCT"
+                value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
+          <label for="role_models_query_no">No</label>
+        </fieldset>
+    </div> -->
+
+    <div class="name_of_role_model">
+      <label for="obs.name_of_role_model">What is the name of the role model in your preferred field? <span class="required">*</span></label>
+      <input class="form-control" id="obs.name_of_role_model" name="obs.name_of_role_model"
+             type="text" data-concept="3530488d-4213-4316-adb3-9cf434400a79^Name of role model(s)^99DCT" required="required">
+  </div>
+
+  <div class="reason">
+    <label for="obs.reason">Why do you prefer him/her? <span class="required">*</span></label>
+    <input class="form-control" id="obs.reason" name="obs.reason"
+           type="text" data-concept="128defcd-deab-4b34-a27d-9aac7e9d767a^Why do you prefer him/her?^99DCT" required="required">
+  </div>
+
+  <div class="future_after_teen_club">
+    <label for="obs.future_after_teen_club">How do you envision your future after teen club <span class="required">*</span></label>
+    <input class="form-control" id="obs.future_after_teen_club" name="obs.future_after_teen_club"
+           type="text" data-concept="aa63bd2e-6117-4106-adf7-e7b81327485a^How do you envision your future after teen club^99DCT" required="required">
+  </div>
+
+  <div class="parent_career">
+    <label for="obs.parent_career">What is your parent career today? <span class="required">*</span></label>
+    <input class="form-control" id="obs.parent_career" name="obs.parent_career"
+           type="text" data-concept="afd95534-84e5-4dc7-8170-8da5f325d70a^What is your parent's career today?^99DCT" required="required">
+  </div>
+
+  <div class="source_of_income">
+    <label for="obs.source_of_income">What is the main source of income at your home? <span class="required">*</span></label>
+    <input class="form-control" id="obs.source_of_income" name="obs.source_of_income"
+           type="text" data-concept="6d713ae5-457b-414c-a1d3-83a7d945236a^What is the main source of income at your home?^99DCT" required="required">
+  </div>
+
+  <div class="better_beyond">
+    <label for="obs.better_beyond">Do you expect to be better beyond your current family life? <span class="required">*</span></label>
+    <input class="form-control" id="obs.better_beyond" name="obs.better_beyond"
+           type="text" data-concept="566efb82-87ed-4008-bedc-87f18662993c^Do you expect to be better beyond your current family life?^99DCT" required="required">
+  </div>
+
+  <div class="hopeful">
+    <label for="obs.hopeful_query">  Do you feel hopeful for your future based on teen club support?<span class="required">*</span></label>
+    <fieldset id="obs.hopeful_query" name="hopeful_query">
+
+       <input id="hopeful_query_yes" type="radio" name="hopeful_query_ans" data-concept="03d9656d-07e1-478d-810e-7a21f1cf635c^Do you feel hopeful for your future based on teen club support?^99DCT"
+            value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
+       <label for="hopeful_query_yes">Yes</label>&nbsp;&nbsp;
+
+       <input id="hopeful_query_no" type="radio" name="hopeful_query_ans" data-concept="03d9656d-07e1-478d-810e-7a21f1cf635c^Do you feel hopeful for your future based on teen club support?^99DCT"
+            value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
+       <label for="hopeful_query_no">No</label>&nbsp;&nbsp;
+    </fieldset>
+  </div>
+  
+  <div class="resources">
+    <label for="obs.resources_query"> What kind of support or resources do you feel would be helpful in achieving your aspirations and goals? <span class="required">*</span></label>
+    <fieldset id="obs.resources_query" name="resources_query">
+
+        <input id="mentorship" type="radio" name="resources_query_ans" data-concept="78814f7a-151a-4298-86a4-c265675ab54a^What kind of support or resources do you feel would be helpful in achieving your aspirations and goals?^99DCT"
+            value="1d0345e8-7565-454c-9bf7-19f4dfcfc61e^Mentorship and guidance from professionals or role models^99DCT" required="required">
+        <label for="mentorship">Mentorship and guidance from professionals or role models</label>&nbsp;&nbsp;
+
+        <input id="scholarships" type="radio" name="resources_query_ans" data-concept="78814f7a-151a-4298-86a4-c265675ab54a^What kind of support or resources do you feel would be helpful in achieving your aspirations and goals?^99DCT"
+            value="b1f909bc-7921-4f3d-aa57-d84f82334659^Access to educational scholarships or vocational training programs^99DCT" required="required">
+        <label for="scholarships">Access to educational scholarships or vocational training programs</label>&nbsp;&nbsp;
+
+        <input id="peer_support" type="radio" name="resources_query_ans" data-concept="78814f7a-151a-4298-86a4-c265675ab54a^What kind of support or resources do you feel would be helpful in achieving your aspirations and goals?^99DCT"
+            value="ed2e3078-6b47-49dc-a6a4-ebfaf8648058^Peer support groups or networks^99DCT" required="required">
+        <label for="peer_support">Peer support groups or networks</label>&nbsp;&nbsp;
+
+        <input id="financial_support" type="radio" name="resources_query_ans" data-concept="78814f7a-151a-4298-86a4-c265675ab54a^What kind of support or resources do you feel would be helpful in achieving your aspirations and goals?^99DCT"
+            value="b198d051-b460-4330-a802-d558faf29432^Financial support^99DCT" required="required">
+        <label for="financial_support">Financial support</label>&nbsp;&nbsp;
+
+        <input id="other_resources" type="radio" name="resources_query_ans" data-concept="78814f7a-151a-4298-86a4-c265675ab54a^What kind of support or resources do you feel would be helpful in achieving your aspirations and goals?^99DCT"
+            value="656cce7e-977f-11e1-8993-905e29aff6c1^Other non-coded^99DCT" required="required">
+        <label for="other_resources">Other</label>&nbsp;&nbsp;
+    </fieldset>
+    </div>
+    <div class="certificates">
+      <label for="obs.certificates_query"> Have you obtained any vocational training or certifications in your desired field? <span class="required">*</span></label>
+      <fieldset id="obs.certificates_query" name="certificates_query">
+  
+          <input id="yes_relevant_training" type="radio" name="certificates_query_ans" data-concept="6c05aef4-e1ca-4772-aef5-581266b44135^Have you obtained any vocational training or certifications in your desired field?^99DCT"
+              value="240fe672-00be-4201-838b-3e0a686d05b3^Yes, I have relevant training or certifications^99DCT" required="required">
+          <label for="yes_relevant_training">Yes, I have relevant training or certifications</label>&nbsp;&nbsp;
+
+          <input id="yes_planning" type="radio" name="certificates_query_ans" data-concept="6c05aef4-e1ca-4772-aef5-581266b44135^Have you obtained any vocational training or certifications in your desired field?^99DCT"
+              value="8779854a-9e9e-40fe-b3e4-2594b79d2dd7^No, but I'm planning to pursue training or certifications^99DCT" required="required">
+          <label for="yes_planning">No, but I'm planning to pursue training or certifications</label>&nbsp;&nbsp;
+
+          <input id="not_interested" type="radio" name="certificates_query_ans" data-concept="6c05aef4-e1ca-4772-aef5-581266b44135^Have you obtained any vocational training or certifications in your desired field?^99DCT"
+              value="c024e008-b537-4f8f-83e9-03451e55f826^No, I am not interested in vocational training or certifications^99DCT" required="required">
+          <label for="not_interested">No, I am not interested in vocational training or certifications</label>
+      </fieldset>
+  </div>
+
+    <div class="course">
+    <label for="obs.course">what exactly do you want to do in life? <span class="required">*</span></label>
+    <input class="form-control" id="obs.course" name="obs.course"
+           type="text" data-concept="7eaafacb-5a43-4f7a-abd7-3c340ea68420^What courses or what do you want to do life?^99DCT" required="required">
+    </div>
+
+    <div class="challenges_in_pursuing_goals_query">
+    <label for="obs.challenges_in_pursuing_goals_query"> What are some challenges you face or have faced in pursuing your career goals outsideof school? <span class="required">*</span></label>
+    <fieldset id="obs.challenges_in_pursuing_goals_query" name="challenges_in_pursuing_goals_query">
+
+        <input id="limited_opportunities" type="radio" name="challenges_in_pursuing_goals_query_ans" data-concept="9230e9b6-5d9e-4a9b-995c-c03bedd5eadd^What are some challenges you face or have faced in pursuing your career goals outside of school?^99DCT"
+            value="a5d749ef-c840-4896-be3c-75cb9c13505d^Limited job opportunities^99DCT" required="required">
+        <label for="limited_opportunities">Limited job opportunities</label>&nbsp;&nbsp;
+
+        <input id="lack_of_experience" type="radio" name="challenges_in_pursuing_goals_query_ans" data-concept="9230e9b6-5d9e-4a9b-995c-c03bedd5eadd^What are some challenges you face or have faced in pursuing your career goals outside of school?^99DCT"
+            value="dee8c72b-c1fb-48fb-a3ef-f56fd40ad20d^Lack of experience or qualifications^99DCT" required="required">
+        <label for="lack_of_experience">Lack of experience or qualifications</label>&nbsp;&nbsp;
+
+        <input id="finacial_contraints" type="radio" name="challenges_in_pursuing_goals_query_ans" data-concept="9230e9b6-5d9e-4a9b-995c-c03bedd5eadd^What are some challenges you face or have faced in pursuing your career goals outside of school?^99DCT"
+            value="a517de4c-093b-46eb-b6b4-a98a65b7422c^Finacial contraints^99DCT" required="required">
+        <label for="finacial_contraints">Finacial contraints</label>&nbsp;&nbsp;
+
+        <input id="lack_of_guidance" type="radio" name="challenges_in_pursuing_goals_query_ans" data-concept="9230e9b6-5d9e-4a9b-995c-c03bedd5eadd^What are some challenges you face or have faced in pursuing your career goals outside of school?^99DCT"
+            value="b4068cf3-ee69-4b23-b732-21cdfa321ba0^Lack of guidance or mentorship^99DCT" required="required">
+        <label for="lack_of_guidance">Lack of guidance or mentorship</label>&nbsp;&nbsp;
+
+        <input id="other_challenges_in_pursuing_goals" type="radio" name="challenges_in_pursuing_goals_query_ans" data-concept="9230e9b6-5d9e-4a9b-995c-c03bedd5eadd^What are some challenges you face or have faced in pursuing your career goals outside of school?^99DCT"
+            value="656cce7e-977f-11e1-8993-905e29aff6c1^Other non-coded^99DCT" required="required">
+        <label for="other_challenges_in_pursuing_goals">other</label>&nbsp;&nbsp;
+
+    </fieldset>
+    </div>
+  </div>
+
+        </div>
+        <div class="section">
+          <div class="form-group">
+            <label for="obs.return_visit_date">
+              Proposed date of facility visit:<span class="required">*</span>
+            </label>
+            <input
+              class="form-control datepicker future-or-today-date"
+              id="obs.return_visit_date"
+              name="obs.return_visit_date"
+              type="text"
+              readonly="readonly"
+              data-concept="6569cbd4-977f-11e1-8993-905e29aff6c1^RETURN VISIT DATE^99DCT"
+              required="required"
+            />
+          </div>
+        </div>
+        <div class="section">
+          <div class="form-group">
+            <label for="encounter.provider_id_select"
+              >Screening Provider Name:</label
+            >
+            <input
+              class="form-control valid-provider-only"
+              id="encounter.provider_id_select"
+              type="text"
+              placeholder="Start typing provider name here ..."
+            />
+            <input
+              class="form-control"
+              name="encounter.provider_id_select"
+              type="hidden"
+            />
+          </div>
+          <div class="form-group hidden">
+            <select id="select_providers"></select>
+          </div>
+          <div class="form-group show_provider_id_text">
+            <label for="encounter.provider_id"
+              >Screening provider's system-id:<span class="required"
+                >*</span
+              ></label
+            >
+            <input
+              class="form-control checkDigit"
+              id="encounter.provider_id"
+              name="encounter.provider_id"
+              type="text"
+              required="required"
+              disabled="disabled"
+            />
+          </div>
+
+          <div class="form-group hidden">
+            <label for="encounter.location_id_select"
+              >Screening Site:<span class="required">*</span></label
+            >
+            <select
+              class="form-control"
+              id="encounter.location_id_select"
+              required="required"
+            >
+              <option>...</option>
+              <option data-location="Malaba Dispensary" value="91">
+                Malaba Dispensary
+              </option>
+              <option data-location="Kamolo Dispensary" value="106">
+                Kamolo Dispensary
+              </option>
+              <option data-location="Akichelesit Dispensary" value="124">
+                Akichelesit Dispensary
+              </option>
+              <option data-location="Angurai Health Centre" value="65">
+                Angurai Health Centre
+              </option>
+              <option data-location="Changara Dispensary" value="90">
+                Changara Dispensary
+              </option>
+              <option data-location="Moding Health Centre" value="126">
+                Moding Health Centre
+              </option>
+              <option data-location="Kolanya S.A dispensary" value="301">
+                Kolanya S.A dispensary
+              </option>
+              <option data-location="Aboloi Dispensary" value="125">
+                Aboloi Dispensary
+              </option>
+              <option data-location="Kocholya District Hospital" value="285">
+                Kocholya District Hospital
+              </option>
+              <option data-location="Matayos Health Centre" value="130">
+                Matayos Health Centre
+              </option>
+              <option data-location="Busia District Hospital" value="19">
+                Busia District Hospital
+              </option>
+              <option data-location="Nasewa Health Centre" value="190">
+                Nasewa Health Centre
+              </option>
+              <option data-location="Bumala A" value="55">Bumala A</option>
+              <option data-location="Bumala B" value="83">Bumala B</option>
+              <option data-location="Butula Mission Health Centre" value="332">
+                Butula Mission Health Centre
+              </option>
+              <option
+                data-location="Khunyangu Sub district Hospital"
+                value="220"
+              >
+                Khunyangu Sub district Hospital
+              </option>
+              <option data-location="Sisenye Dispensary" value="293">
+                Sisenye Dispensary
+              </option>
+              <option
+                data-location="Port Victoria District Hospital"
+                value="20"
+              >
+                Port Victoria District Hospital
+              </option>
+              <option data-location="Rukala Dispensary" value="279">
+                Rukala Dispensary
+              </option>
+              <option data-location="Mukhobola Health Centre" value="78">
+                Mukhobola Health Centre
+              </option>
+              <option data-location="Budalangi Dispensary" value="270">
+                Budalangi Dispensary
+              </option>
+              <option data-location="Sirimba Mission Hospital" value="266">
+                Sirimba Mission Hospital
+              </option>
+              <option data-location="Cherangany Health Centre" value="346">
+                Cherangany Health Centre
+              </option>
+              <option data-location="Endebes District Hospital" value="162">
+                Endebes District Hospital
+              </option>
+              <option data-location="Kapsara District Hospital" value="132">
+                Kapsara District Hospital
+              </option>
+              <option data-location="Kiminini Health Centre" value="310">
+                Kiminini Health Centre
+              </option>
+              <option data-location="Kitale District Hospital" value="11">
+                Kitale District Hospital
+              </option>
+              <option data-location="Kwanza Health Centre" value="320">
+                Kwanza Health Centre
+              </option>
+              <option data-location="Matunda Health Centre" value="324">
+                Matunda Health Centre
+              </option>
+              <option data-location="Mt. Elgon Dispensary" value="9">
+                Mt. Elgon Dispensary
+              </option>
+              <option data-location="Saboti District Hospital" value="82">
+                Saboti District Hospital
+              </option>
+              <option data-location="Bidii Health Centre" value="330">
+                Bidii Health Centre
+              </option>
+              <option data-location="St Fredahs Mission Hosp" value="345">
+                St Fredahs Mission Hosp
+              </option>
+              <option data-location="Chepngoror Dispensary" value="232">
+                Chepngoror Dispensary
+              </option>
+              <option data-location="Kipkabus Dispensary" value="223">
+                Kipkabus Dispensary
+              </option>
+              <option data-location="Burnt Forest Sub District Hosp" value="4">
+                Burnt Forest Sub District Hosp
+              </option>
+              <option data-location="Pioneer Health Centre" value="70">
+                Pioneer Health Centre
+              </option>
+              <option data-location="West Clinic Health Centre" value="336">
+                West Clinic Health Centre
+              </option>
+              <option data-location="Soy Dispensary " value="73">
+                Soy Dispensary
+              </option>
+              <option data-location="SOS Dispensary" value="145">
+                SOS Dispensary
+              </option>
+              <option data-location="Mois Bridge Health centre" value="71">
+                Mois Bridge Health centre
+              </option>
+              <option data-location="Langas Dispensary" value="341">
+                Langas Dispensary
+              </option>
+              <option data-location="Kapsoya Health Centre" value="343">
+                Kapsoya Health Centre
+              </option>
+              <option data-location="Ziwa Sub District Hosp" value="28">
+                Ziwa Sub District Hosp
+              </option>
+              <option data-location="Magemo" value="239">Magemo</option>
+              <option data-location="Sinoko" value="75">Sinoko</option>
+              <option data-location="Mitukuyu" value="241">Mitukuyu</option>
+              <option data-location="Marinda" value="242">Marinda</option>
+              <option data-location="Nang'eni" value="243">Nang'eni</option>
+              <option data-location="Chulaimbo HC" value="7">
+                Chulaimbo HC
+              </option>
+              <option data-location="Riat Dispensary" value="103">
+                Riat Dispensary
+              </option>
+              <option data-location="Sunga Dispensary" value="104">
+                Sunga Dispensary
+              </option>
+              <option data-location="Siriba Dispensary" value="105">
+                Siriba Dispensary
+              </option>
+              <option data-location="Komiriai" value="248">Komiriai</option>
+              <option data-location="Amoni" value="252">Amoni</option>
+              <option data-location="Kamuriai" value="254">Kamuriai</option>
+              <option data-location="Osajai" value="255">Osajai</option>
+              <option data-location="Township" value="256">Township</option>
+              <option data-location="Olobai" value="257">Olobai</option>
+              <option data-location="Onyunyur" value="259">Onyunyur</option>
+              <option data-location="Kodedema" value="261">Kodedema</option>
+              <option data-location="Kekalet" value="263">Kekalet</option>
+              <option data-location="kakapel" value="265">kakapel</option>
+              <option data-location="Adanya/chelelemuk" value="267">
+                Adanya/chelelemuk
+              </option>
+              <option data-location="Katotoi/Kakurikit" value="269">
+                Katotoi/Kakurikit
+              </option>
+              <option data-location="Changara/Akobwait" value="275">
+                Changara/Akobwait
+              </option>
+              <option data-location="Adumai/Kolait" value="303">
+                Adumai/Kolait
+              </option>
+              <option data-location="Kolanya" value="302">Kolanya</option>
+              <option data-location="Rwatama" value="300">Rwatama</option>
+              <option data-location="Moding" value="299">Moding</option>
+              <option data-location="Apokor" value="298">Apokor</option>
+              <option data-location="Katelepai/Akolong" value="297">
+                Katelepai/Akolong
+              </option>
+              <option data-location="Amagoro" value="291">Amagoro</option>
+              <option data-location="Okuleu" value="289">Okuleu</option>
+              <option data-location="Kocholya" value="287">Kocholya</option>
+              <option data-location="Kokare" value="286">Kokare</option>
+              <option data-location="Aterait" value="262">Aterait</option>
+              <option data-location="Aedomuru" value="260">Aedomuru</option>
+              <option data-location="Kakemer" value="258">Kakemer</option>
+              <option data-location="Nangoma " value="203">Nangoma</option>
+              <option data-location="Muyafywa" value="202">Muyafywa</option>
+              <option data-location="Murende" value="201">Murende</option>
+              <option data-location="Busende" value="200">Busende</option>
+              <option data-location="Luliba" value="199">Luliba</option>
+              <option data-location="Igero" value="198">Igero</option>
+              <option data-location="Mjini" value="197">Mjini</option>
+              <option data-location="Mayenje" value="196">Mayenje</option>
+              <option data-location="Nasewa" value="194">Nasewa</option>
+              <option data-location="Mabunge" value="193">Mabunge</option>
+              <option data-location="Buyama" value="192">Buyama</option>
+              <option data-location="Lung'a" value="191">Lung'a</option>
+              <option data-location="Bukhakhala" value="244">Bukhakhala</option>
+              <option data-location="Busire" value="231">Busire</option>
+              <option data-location="Bumala A Community Unit" value="230">
+                Bumala A Community Unit
+              </option>
+              <option data-location="Bumala B Community Unit" value="228">
+                Bumala B Community Unit
+              </option>
+              <option data-location="Esikarira" value="333">Esikarira</option>
+              <option data-location="King'andole" value="222">
+                King'andole
+              </option>
+              <option data-location="Sikoma" value="221">Sikoma</option>
+              <option data-location="Mundere" value="296">Mundere</option>
+              <option data-location="Bulemia" value="295">Bulemia</option>
+              <option data-location="Sisenye" value="294">Sisenye</option>
+              <option data-location="Bukoma" value="292">Bukoma</option>
+              <option data-location="Bukani" value="290">Bukani</option>
+              <option data-location="Siginga" value="288">Siginga</option>
+              <option data-location="Mabinju" value="284">Mabinju</option>
+              <option data-location="Rugunga" value="282">Rugunga</option>
+              <option data-location="lugale " value="281">lugale</option>
+              <option data-location="Rukala" value="280">Rukala</option>
+              <option data-location="Magombe Central" value="277">
+                Magombe Central
+              </option>
+              <option data-location="Magombe West" value="276">
+                Magombe West
+              </option>
+              <option data-location="Magombe East" value="274">
+                Magombe East
+              </option>
+              <option data-location="Mudembi" value="272">Mudembi</option>
+              <option data-location="Budalangi" value="271">Budalangi</option>
+              <option data-location="Ruambwa" value="268">Ruambwa</option>
+              <option data-location="Noigam" value="305">Noigam</option>
+              <option data-location="Nzoia" value="306">Nzoia</option>
+              <option data-location="Kiptoi" value="309">Kiptoi</option>
+              <option data-location="Tunen" value="308">Tunen</option>
+              <option data-location="Endebes South" value="168">
+                Endebes South
+              </option>
+              <option data-location="Kuchek" value="170">Kuchek</option>
+              <option data-location="Endebes North" value="165">
+                Endebes North
+              </option>
+              <option data-location="Kiptogot" value="169">Kiptogot</option>
+              <option data-location="Kirita" value="159">Kirita</option>
+              <option data-location="Kabolet  1" value="157">Kabolet 1</option>
+              <option data-location="Kabolet  2" value="158">Kabolet 2</option>
+              <option data-location="Muthangari" value="311">Muthangari</option>
+              <option data-location="Birunda" value="312">Birunda</option>
+              <option data-location="Kananachi" value="313">Kananachi</option>
+              <option data-location="Masaba" value="314">Masaba</option>
+              <option data-location="Baraton" value="315">Baraton</option>
+              <option data-location="Meso/Big Tree" value="316">
+                Meso/Big Tree
+              </option>
+              <option data-location="Kiungani" value="317">Kiungani</option>
+              <option data-location="Showground" value="318">Showground</option>
+              <option data-location="Bahati" value="319">Bahati</option>
+              <option data-location="Lunyu" value="321">Lunyu</option>
+              <option data-location="Kwanza" value="323">Kwanza</option>
+              <option data-location="Gideo" value="322">Gideo</option>
+              <option data-location="Nyasi" value="326">Nyasi</option>
+              <option data-location="Matunda" value="325">Matunda</option>
+              <option data-location="Sabata" value="327">Sabata</option>
+              <option data-location="Tulwopkessis" value="329">
+                Tulwopkessis
+              </option>
+              <option data-location="Kapretwa" value="173">Kapretwa</option>
+              <option data-location="Sukwo" value="174">Sukwo</option>
+              <option data-location="Muroki" value="172">Muroki</option>
+              <option data-location="Koikoi" value="175">Koikoi</option>
+              <option data-location="Bidii" value="331">Bidii</option>
+              <option data-location="Chepng'oror" value="233">
+                Chepng'oror
+              </option>
+              <option data-location="Kipkabus" value="227">Kipkabus</option>
+              <option data-location="Olare" value="219">Olare</option>
+              <option data-location="Pioneer" value="335">Pioneer</option>
+              <option data-location="Kibulgeng" value="337">Kibulgeng</option>
+              <option data-location="Soy" value="338">Soy</option>
+              <option data-location="Kapsoya" value="144">Kapsoya</option>
+              <option data-location="Mlimani" value="340">Mlimani</option>
+              <option data-location="Langas" value="342">Langas</option>
+              <option data-location="Munyaka" value="344">Munyaka</option>
+              <option data-location="Kipsigak" value="156">Kipsigak</option>
+              <option data-location="Lemorong'eny" value="235">
+                Lemorong'eny
+              </option>
+              <option data-location="Ziwa" value="28">Ziwa</option>
+              <option data-location="Kapsang'" value="236">Kapsang'</option>
+              <option data-location="Kong'asis" value="237">Kong'asis</option>
+              <option data-location="Segero" value="238">Segero</option>
+              <option data-location="Sinoko" value="240">Sinoko</option>
+              <option data-location="Webuye District Hosp" value="8">
+                Webuye District Hosp
+              </option>
+              <option data-location="East Karateng" value="151">
+                East Karateng
+              </option>
+              <option data-location="Newa" value="152">Newa</option>
+              <option data-location="Marera" value="150">Marera</option>
+              <option data-location="South Kapuonja" value="153">
+                South Kapuonja
+              </option>
+              <option data-location="North Kapuonja" value="154">
+                North Kapuonja
+              </option>
+              <option data-location="Sunga" value="339">Sunga</option>
+              <option data-location="West Karateng" value="155">
+                West Karateng
+              </option>
+              <option data-location="Kokwet" value="114">Kokwet</option>
+              <option data-location="Kosirai" value="159">Kosirai</option>
+              <option data-location="Mutwot" value="160">Mutwot</option>
+              <option data-location="Mosoriot" value="2">Mosoriot</option>
+              <option data-location="Birbiriet" value="111">Birbiriet</option>
+              <option data-location="Itigo" value="112">Itigo</option>
+              <option data-location="Chepterit" value="133">Chepterit</option>
+              <option data-location="Ngechek" value="115">Ngechek</option>
+              <option data-location="Lelmokwo" value="113">Lelmokwo</option>
+              <option data-location="sigot" value="119">sigot</option>
+              <option data-location="Chepkemel " value="122">Chepkemel</option>
+              <option data-location="Cheplaskei" value="118">Cheplaskei</option>
+              <option data-location="Tuigoin" value="157">Tuigoin</option>
+              <option data-location="Sugoi A" value="120">Sugoi A</option>
+              <option data-location="Sugoi B" value="121">Sugoi B</option>
+              <option data-location="Leseru" value="158">Leseru</option>
+              <option data-location="MurgoHillls" value="136">
+                MurgoHillls
+              </option>
+              <option data-location="Murgusi" value="117">Murgusi</option>
+              <option data-location="Sambut" value="127">Sambut</option>
+              <option data-location="Sosiani" value="129">Sosiani</option>
+              <option data-location="Turbo/Kaptebee" value="155">
+                Turbo/Kaptebee
+              </option>
+              <option data-location="Chepsaita" value="60">Chepsaita</option>
+              <option data-location="Cheramei" value="116">Cheramei</option>
+              <option data-location="Ngenyilel" value="128">Ngenyilel</option>
+              <option data-location="Osorongai" value="137">Osorongai</option>
+              <option data-location="Sokyot" value="154">Sokyot</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="encounter.encounter_datetime">
+              Date of Screening:<span class="required">*</span>
+            </label>
+            <input
+              class="form-control datepicker nonFutureDate past-date"
+              id="encounter.encounter_datetime"
+              name="encounter.encounter_datetime"
+              type="text"
+              readonly="readonly"
+              required="required"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              class="form-control"
+              id="encounter.form_uuid"
+              name="encounter.form_uuid"
+              type="hidden"
+              required="required"
+            />
+          </div>
+        </div>
+      </div>
+    </form>
+  </body>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      var dateFormat = "dd-mm-yy";
+      var currentDate = $.datepicker.formatDate(dateFormat, new Date());
+      var encounterDatetime = $("#encounter\\.encounter_datetime");
+      if ($(encounterDatetime).val() == "") {
+        $(encounterDatetime).val(currentDate);
+      }
+
+      $("#save_draft").click(function () {
+        $(this).prop("disabled", true);
+        document.saveDraft(this);
+        $(this).prop("disabled", false);
+      });
+
+      $("#submit_form").click(function () {
+        $(this).prop("disabled", true);
+        document.submit();
+        $(this).prop("disabled", false);
+      });
+
+      $("#screening_form").validate({
+        rules: {
+          "obs.height": {
+            range: [10, 228],
+          },
+          "obs.weight": {
+            range: [0, 250],
+          },
+          "obs.bmi": {
+            range: [0, 100],
+          },
+          "obs.waist_circumference": {
+            range: [0, 150],
+          },
+          "obs.systolic_blood_pressure": {
+            range: [50, 250],
+          },
+          "obs.diastolic_blood_pressure": {
+            range: [20, 150],
+          },
+          "obs.random_blood_sugar": {
+            range: [0, 150],
+          },
+        },
+        submitHandler: function (form) {
+          $("#result").html(
+            JSON.stringify($("form").serializeEncounterForm(), undefined, 2)
+          );
+        },
+      });
+
+      $.validator.addMethod(
+        "compareBloodPressure",
+        function (value, element) {
+          var systolic_blood_pressure = $(
+            "#obs\\.systolic_blood_pressure"
+          ).val();
+          var diastolic_blood_pressure = $(
+            "#obs\\.diastolic_blood_pressure"
+          ).val();
+          if (systolic_blood_pressure < diastolic_blood_pressure) return false;
+          else return true;
+        },
+        "Systolic blood pressue can not be less than Diastolic blood pressure"
+      );
+      $(".future-or-today-date").change(function () {
+        if ($(this).is(":visible") && $(this).val() != "") {
+          var errors = {};
+          var pattern = /(\d{2})-(\d{2})-(\d{4})/g;
+          var matches = pattern.exec($(this).val());
+          var enteredDate = new Date(matches[3], matches[2] - 1, matches[1]);
+          var today = new Date(
+            new Date().getFullYear(),
+            new Date().getMonth(),
+            new Date().getDate()
+          );
+          if (enteredDate < today) {
+            errors[$(this).attr("name")] =
+              "Please enter present or future date.";
+          }
+          toggleValidationMessages(errors);
+        }
+      });
+
+      var show_message = function (element_id) {
+        $(element_id).show();
+      };
+      var hide_message = function (element_id) {
+        $(element_id).hide();
+      };
+      var evaluate_bmi_and_bmi_logic = function () {
+        var weight = $("#obs\\.weight").val();
+        var height_in_meters = $("#obs\\.height").val() / 100;
+        var bmi = +(weight / (height_in_meters * height_in_meters)).toFixed(2);
+        $("#obs\\.bmi").attr("value", bmi);
+
+        evaluate_bmi_logic();
+      };
+      var evaluate_bmi_logic = function () {
+        if (bmi_is_out_of_range()) {
+          show_message("#bmi_out_of_range_message");
+        } else {
+          hide_message("#bmi_out_of_range_message");
+        }
+        if (bmi_is_above_threshold()) {
+          show_message("#bmi_above_threshold_message");
+          set_require_random_blood_sugar(true);
+        } else {
+          hide_message("#bmi_above_threshold_message");
+          evaluate_require_random_blood_sugar();
+        }
+      };
+      var bmi_is_out_of_range = function () {
+        var bmi = $("#obs\\.bmi").val();
+        if (bmi < 0 || bmi > 100) {
+          return true;
+        }
+      };
+      var bmi_is_above_threshold = function () {
+        var bmi = $("#obs\\.bmi").val();
+        var weight = $("#obs\\.weight").val();
+        var height_in_meters = $("#obs\\.height").val() / 100;
+        if (weight > 0 && height_in_meters > 0 && bmi > 25) {
+          return true;
+        } else {
+          return false;
+        }
+      };
+      var age_is_above_threshold = function () {
+        var age_threshold = 40;
+        var date_of_birth_arr = $("#patient\\.birth_date").val().split("-");
+        var birthDate = new Date(
+          date_of_birth_arr[2],
+          date_of_birth_arr[1] - 1,
+          date_of_birth_arr[0]
+        );
+        var today = new Date();
+        var age = today.getFullYear() - birthDate.getFullYear();
+        var m = today.getMonth() - birthDate.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+          age--;
+        }
+        return age >= age_threshold;
+      };
+      var evaluate_require_random_blood_sugar = function () {
+        if (
+          age_is_above_threshold() ||
+          bmi_is_above_threshold() ||
+          waist_circumference_is_above_threshold()
+        ) {
+          set_require_random_blood_sugar(true);
+        } else {
+          set_require_random_blood_sugar(false);
+        }
+      };
+      var set_require_random_blood_sugar = function (
+        require_random_blood_sugar
+      ) {
+        if (require_random_blood_sugar == true) {
+          $("#obs\\.random_blood_sugar").attr("required", "required");
+          $("#random_blood_sugar_label").show();
+        } else {
+          $("#obs\\.random_blood_sugar").removeAttr("required");
+          $("#random_blood_sugar_label").hide();
+        }
+      };
+      var is_gender = function (gender) {
+        return $("#patient\\.sex").val() == gender;
+      };
+      var is_female = function () {
+        return is_gender("F");
+      };
+      var is_male = function () {
+        return is_gender("M");
+      };
+      var waist_circumference_is_above_female_threshold = function () {
+        return $("#obs\\.waist_circumference").val() > 88;
+      };
+      var waist_circumference_is_above_male_threshold = function () {
+        return $("#obs\\.waist_circumference").val() > 102;
+      };
+      var waist_circumference_is_above_threshold = function () {
+        return (
+          (is_female() && waist_circumference_is_above_female_threshold()) ||
+          (is_male() && waist_circumference_is_above_male_threshold())
+        );
+      };
+      var random_blood_sugar_is_above_threshold = function () {
+        return $("#obs\\.random_blood_sugar").val() > 7.8;
+      };
+      var systolic_blood_pressure_is_above_threshold = function () {
+        return $("#obs\\.systolic_blood_pressure").val() > 140;
+      };
+      var systolic_blood_pressure_is_below_threshold = function () {
+        return $("#obs\\.systolic_blood_pressure").val() < 80;
+      };
+      var diastolic_blood_pressure_is_above_threshold = function () {
+        return $("#obs\\.diastolic_blood_pressure").val() > 90;
+      };
+      var diastolic_blood_pressure_is_below_threshold = function () {
+        return $("#obs\\.diastolic_blood_pressure").val() < 60;
+      };
+      var is_known_diabetic = function () {
+        return $("#known_diabetic_yes").is(":checked");
+      };
+      var is_known_hypertensive = function () {
+        return $("#known_hypertensive_yes").is(":checked");
+      };
+
+      var evaluate_waist_circumference_logic = function () {
+        if (waist_circumference_is_above_threshold()) {
+          show_message("#waist_circumference_above_threshold_message");
+          set_require_random_blood_sugar(true);
+        } else {
+          hide_message("#waist_circumference_above_threshold_message");
+          evaluate_require_random_blood_sugar();
+        }
+      };
+      var evaluate_random_blood_sugar_logic = function () {
+        if (random_blood_sugar_is_above_threshold()) {
+          show_message("#random_blood_sugar_above_threshold_message");
+        } else {
+          hide_message("#random_blood_sugar_above_threshold_message");
+        }
+      };
+      var evaluate_systolic_blood_pressure_logic = function () {
+        if (systolic_blood_pressure_is_below_threshold()) {
+          show_message("#systolic_blood_pressure_below_threshold_message");
+        } else {
+          hide_message("#systolic_blood_pressure_below_threshold_message");
+        }
+        if (systolic_blood_pressure_is_above_threshold()) {
+          show_message("#systolic_blood_pressure_above_threshold_message");
+        } else {
+          hide_message("#systolic_blood_pressure_above_threshold_message");
+        }
+      };
+      var evaluate_diastolic_blood_pressure_logic = function () {
+        if (diastolic_blood_pressure_is_below_threshold()) {
+          show_message("#diastolic_blood_pressure_below_threshold_message");
+        } else {
+          hide_message("#diastolic_blood_pressure_below_threshold_message");
+        }
+        if (diastolic_blood_pressure_is_above_threshold()) {
+          show_message("#diastolic_blood_pressure_above_threshold_message");
+        } else {
+          hide_message("#diastolic_blood_pressure_above_threshold_message");
+        }
+      };
+      var evaluate_known_diabetic_logic = function () {
+        if (is_known_diabetic()) {
+          show_message("#known_diabetic_advisory_message");
+        } else {
+          hide_message("#known_diabetic_advisory_message");
+        }
+      };
+      var evaluate_known_hypertensive_logic = function () {
+        if (is_known_hypertensive()) {
+          show_message("#known_hypertensive_advisory_message");
+        } else {
+          hide_message("#known_hypertensive_advisory_message");
+        }
+      };
+      var evaluate_follow_up_facility_logic = function (element) {
+        var selected_option_id = $(element).find("option:selected").attr("id");
+        if (selected_option_id == "follow_up_facility_option_hha") {
+          set_follow_up_facility_autocomplete(hha_follow_up_facility_names);
+        } else if (selected_option_id == "follow_up_facility_option_cdm") {
+          set_follow_up_facility_autocomplete(cdm_follow_up_facility_names);
+        } else if (
+          selected_option_id == "follow_up_facility_option_non_ampath"
+        ) {
+          disable_follow_up_facility_autocomplete();
+        } else {
+          disable_follow_up_facility_input();
+        }
+      };
+      $("#obs\\.weight").change(function () {
+        evaluate_bmi_and_bmi_logic();
+      });
+      $("#obs\\.height").change(function () {
+        evaluate_bmi_and_bmi_logic();
+      });
+      $("#obs\\.waist_circumference").change(function () {
+        evaluate_waist_circumference_logic();
+      });
+      $("#obs\\.random_blood_sugar").change(function () {
+        evaluate_random_blood_sugar_logic();
+      });
+      $("#obs\\.systolic_blood_pressure").change(function () {
+        evaluate_systolic_blood_pressure_logic();
+      });
+      $("#obs\\.diastolic_blood_pressure").change(function () {
+        evaluate_diastolic_blood_pressure_logic();
+      });
+      $("#obs\\.known_diabetic").change(function () {
+        evaluate_known_diabetic_logic();
+      });
+      $("#obs\\.known_hypertensive").change(function () {
+        evaluate_known_hypertensive_logic();
+      });
+      $("#follow_up_facility_select").change(function () {
+        evaluate_follow_up_facility_logic(this);
+      });
+
+      var set_follow_up_facility_autocomplete = function (
+        follow_up_facility_names
+      ) {
+        $("#obs\\.follow_up_facility_name").autocomplete({ source: null });
+        if (follow_up_facility_names != null) {
+          $("#obs\\.follow_up_facility_name").attr(
+            "placeholder",
+            "Start typing something..."
+          );
+
+          var follow_up_facility_name = $(
+            "#obs\\.follow_up_facility_name"
+          ).val();
+          $("#obs\\.follow_up_facility_name").val("");
+          $("#obs\\.follow_up_facility_name").removeAttr("disabled");
+          $("#obs\\.follow_up_facility_name").autocomplete("enable");
+          $("#obs\\.follow_up_facility_name").autocomplete({
+            source: follow_up_facility_names,
+            create: function (event, ui) {
+              $.each(follow_up_facility_names, function (i, elem) {
+                if (elem.label == follow_up_facility_name) {
+                  $("#obs\\.follow_up_facility_name").val(elem.label);
+                }
+              });
+            },
+            select: function (event, ui) {
+              $("#obs\\.follow_up_facility_name").val(ui.item.label);
+              return false;
+            },
+          });
+        } else {
+          $("#obs\\.follow_up_facility_name").val("");
+          $("#obs\\.follow_up_facility_name").attr(
+            "placeholder",
+            "Enter facility name"
+          );
+          $("#obs\\.follow_up_facility_name").autocomplete("disable");
+          $("#obs\\.follow_up_facility_name").removeAttr("disabled");
+        }
+      };
+      var disable_follow_up_facility_autocomplete = function () {
+        set_follow_up_facility_autocomplete(null);
+      };
+      var disable_follow_up_facility_input = function () {
+        $("#obs\\.follow_up_facility_name").val("");
+        $("#obs\\.follow_up_facility_name").autocomplete("disable");
+        $("#obs\\.follow_up_facility_name").attr("disabled", "disabled");
+      };
+
+      var hha_follow_up_facility_names = [
+        { label: "Malaba Dispensary", val: "91" },
+      ];
+
+      document.setupAutoCompleteData("encounter\\.location_id");
+
+      var provider = [{ label: "Christopher J Mwenengo", val: "2281-4" }];
+
+      document.setupAutoCompleteDataForProvider(
+        "encounter\\.provider_id_select"
+      );
+
+      $("#encounter\\.provider_id_select").change(function () {
+        if ($("#encounter\\.provider_id_select").val() === "") {
+          $("#encounter\\.provider_id").val("");
+          $(".show_provider_id_text").show();
+        }
+      });
+
+      $('.drop_out_class').hide();
+      $('.class_your_in').hide();
+      $('.plans_after_school').hide();
+      $('.certificates').hide()
+      $('.challenges_in_pursuing_goals_query').hide()
+      $('.thinking_about_future_query').hide()
+      $('.job').hide()
+      $('.areas_of_study_interest').hide()
+      $('.extracurricular_activities').hide()
+      $('.particular_interest').hide()
+      $('.resources').hide()
+      $('.in_school_query').change(function () {
+            var id = $('input[name=in_school_ans]:checked').attr('id');
+            if ( (id === 'in_school_yes')) {
+                $('.drop_out_class').hide();
+                $('.class_your_in').show();
+                $('.plans_after_school').show();
+                $('.certificates').hide();
+                $('.course').hide();
+                $('.challenges_in_pursuing_goals_query').hide()
+                $('.thinking_about_future_query').show()
+                $('.job').show()
+                $('.areas_of_study_interest').show()
+                $('.extracurricular_activities').show()
+                $('.particular_interest').show()
+                $('.resources').show()
+            } else {
+                $('.class_your_in').hide();
+                $('.drop_out_class').show();
+                $('.plans_after_school').hide();
+                $('.certificates').show();
+                $('.course').show();
+                $('.challenges_in_pursuing_goals_query').show()
+                $('.thinking_about_future_query').hide()
+                $('.job').hide()
+                $('.areas_of_study_interest').hide()
+                $('.extracurricular_activities').hide()
+                $('.particular_interest').hide()
+                $('.resources').hide()
+            }
+        });
+        $('.where_are_your_parents').hide();
+       $('.primary_guard').change(function () {
+            var id = $('input[name=primary_guardian_ans]:checked').attr('id');
+            if ( (id === 'grand_parent') || (id === 'elder_relative') || (id ==='non_relative') || (id=== 'other')) {
+                $('.where_are_your_parents').show();
+            } else {
+                $('.where_are_your_parents').hide();
+            }
+        });
+       $('.why_single_parent').hide();
+       $('.primary_guard').change(function () {
+            var id = $('input[name=primary_guardian_ans]:checked').attr('id');
+            if ( (id === 'single_bio_parent')) {
+                $('.why_single_parent').show();
+            } else {
+                $('.why_single_parent').hide();
+            }
+        });
+        $('.like_most').hide(); 
+        $('.dont_like').hide();
+        $('.happy_with_teen_club_query').change(function () {
+            var id = $('input[name=happy_with_teen_club_query_ans]:checked').attr('id');
+            console.log(id)
+            if ( (id === 'happy_yes')) {
+              $('.dont_like').hide();
+                $('.like_most').show();
+            }
+            if ( (id === 'happy_no')) {
+                $('.like_most').hide();
+                $('.dont_like').show();
+            }
+        });
+        $('.rate_social_support').hide();
+        $('.rate_life_changes').hide();
+        $('.any_social_support_query').change(function () {
+            var id = $('input[name=any_social_support_query_ans]:checked').attr('id');
+            if ( (id === 'any_social_support_query_yes')) {
+                $('.rate_social_support').show();
+                $('.rate_life_changes').show();
+            }
+            if ( (id === 'any_social_support_query_no')) {
+                $('.rate_social_support').hide();
+                $('.rate_life_changes').hide();
+            }
+        });
+        $('.extracurricular_activities_list').hide();
+        $('.extracurricular_activities').change(function () {
+            var id = $('input[name=extracurricular_activities_query_ans]:checked').attr('id');
+            if ( (id === 'extracurricular_activities_query_yes')) {
+                $('.extracurricular_activities_list').show();
+            }
+            if ( (id === 'extracurricular_activities_query_no')) {
+                $('.extracurricular_activities_list').hide();
+            }
+        });
+
+        $('.course').hide();   
+        $('.certificates').change(function () {
+            var id = $('input[name=certificates_query_ans]:checked').attr('id');
+            if ( (id === 'not_interested')) {
+                $('.course').show();
+            }
+            if ( (id === 'yes_relevant_training') || (id === 'yes_planning')) {
+                $('.course').hide();
+            }
+        });
+      document.setupValidationForProvider(
+        "$('#encounter\\.provider_id_select').val()",
+        "encounter\\.provider_id"
+      );
+
+      document.setupValidationForLocation(
+        "$('#encounter\\.location_id').val()",
+        "encounter\\.location_id"
+      );
+    });
+  </script>
+</html>

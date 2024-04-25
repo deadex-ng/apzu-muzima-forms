@@ -1,0 +1,1217 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/muzima.css" rel="stylesheet">
+    <link href="css/ui-darkness/jquery-ui-1.10.4.custom.min.css" rel="stylesheet">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-ui-1.10.4.custom.min.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/additional-methods.min.js"></script>
+    <script src="js/muzima.js"></script>
+
+    <title>Teen Club Intake Survey</title>
+</head>
+
+<body class="col-md-10 col-md-offset-1">
+<div id="pre_populate_data"></div>
+<h2 class="text-center">Teen Club Intake Survey Form</h2>
+
+<form id="screening_form" name="screening_form">
+
+<div class="section">
+    <h3>Demographics</h3>
+
+    <div class="form-group">
+        <input class="form-control" id="patient.uuid" name="patient.uuid" type="hidden" readonly="readonly">
+    </div>
+    <div class="form-group">
+        <label for="patient.medical_record_number">AMRS ID Number:</label>
+        <input class="form-control" id="patient.medical_record_number" name="patient.medical_record_number" type="text"
+               readonly="readonly" disabled="disabled">
+    </div>
+    <div class="form-group">
+        <label for="patient.family_name">Family Name:</label>
+        <input class="form-control" id="patient.family_name" name="patient.family_name" type="text" readonly="readonly"
+               disabled="disabled">
+    </div>
+    <div class="form-group">
+        <label for="patient.given_name">Given Name:</label>
+        <input class="form-control" id="patient.given_name" name="patient.given_name" type="text" readonly="readonly"
+               disabled="disabled">
+    </div>
+    <div class="form-group">
+        <label for="patient.middle_name">Middle Name:</label>
+        <input class="form-control" id="patient.middle_name" name="patient.middle_name" type="text" readonly="readonly"
+               disabled="disabled">
+    </div>
+    <div class="form-group">
+        <label for="patient.sex">Gender:</label>
+        <select class="form-control" id="patient.sex" name="patient.sex"  readonly="readonly" disabled="disabled">
+            <option value="">...</option>
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="patient.birth_date">Date Of Birth:</label>
+        <input class="form-control" id="patient.birth_date" name="patient.birth_date" type="text" readonly="readonly"
+               disabled="disabled">
+    </div>
+</div>
+
+<div class="section">
+    <div class="form-group">
+        <label for="obs.intervier_date">Interview Date  <span class="required">*</span></label>
+        <input class="form-control" id="obs.Interview_date" name="obs.intervier_date"
+               type="date" data-concept="655ff71c-977f-11e1-8993-905e29aff6c1^Data collection date^99DCT" required="required">
+    </div>
+    <div class="form-group">
+        <label for="obs.village_name">Village Name  <span class="required">*</span></label>
+        <input class="form-control" id="obs.village_name" name="obs.village_name"
+               type="text" data-concept="6560b5ee-977f-11e1-8993-905e29aff6c1^Village^99DCT" required="required">
+    </div>
+    <div class="form-group">
+        <label for="encounter.location_id">Health Facility<span class="required">*</span></label>
+        <input class="form-control valid-location-only" id="encounter.location_id" type="text" placeholder="Start typing something..." required="required">
+        <input class="form-control" name="encounter.location_id" type="hidden">
+    </div>
+    <div class="form-group">
+    <label for="obs.literate"> Are you literate?  <span class="required">*</span></label>
+    <fieldset id="obs.literate" name="obs.literate">
+       <input id="literate_yes" type="radio" name="obs.literate" data-concept="6a8daa8a-d0d7-493b-ab12-521a9bc18fce^Literate^99DCT"
+            value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
+       <label for="literate_yes">Yes</label>&nbsp;&nbsp;
+       <input id="literate_no" type="radio" name="obs.literate" data-concept="6a8daa8a-d0d7-493b-ab12-521a9bc18fce^Literate^99DCT"
+            value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
+       <label for="literate_no">No</label>
+    </fieldset>
+    <div class="in_school_query">
+    <label for="obs.in_school"> Are you in school?  <span class="required">*</span></label>
+    <fieldset id="obs.in_school" name="obs.in_school">
+       <input id="in_school_yes" type="radio" name="in_school_ans" data-concept="f39717e7-b68b-4ec1-8094-a6c0ae930c7f^Are you in school?^99DCT"
+            value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
+       <label for="in_school_yes">Yes</label>&nbsp;&nbsp;
+       <input id="in_school_no" type="radio" name="in_school_ans" data-concept="f39717e7-b68b-4ec1-8094-a6c0ae930c7f^Are you in school?^99DCT"
+            value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
+       <label for="in_school_no">No</label>
+    </fieldset>
+    </div>
+    <div class="drop_out_class">
+        <label for="obs.drop_school_class"> In what class did you drop out of school?</label>
+        <input class="form-control" id="obs.drop_school_class" name="obs.drop_school_class"
+               type="text" data-concept="80f130e3-a53b-4306-a8c9-ee1731575684^Dropped out School Class^99DCT">
+    </div>
+    <div class="class_your_in">
+        <label for="obs.current_class"> What class are you in? </label>
+        <input class="form-control" id="obs.current_class" name="obs.current_class"
+               type="text" data-concept="9715e824-23d7-44ed-a6a8-ea6fbeced93f^Current School class^99DCT">
+    </div>
+    
+    <div class="plans_after_school">
+    <label for="obs.plans_after_school"> What are you planning/anticipate to do after school?  <span class="required">*</span></label>
+    <fieldset id="obs.plans_after_school" name="obs.plans_after_school">
+       <input id="get_a_job" type="radio" name="obs.plans_after_school" data-concept="e1eef37b-98f5-4c86-9560-c090e5b1731f^Plans after school^99DCT"
+            value="b0cccb19-5744-4d7c-a20f-5357d8eedfa8^Get a job^99DCT" required="required">
+       <label for="get_a_job">Get a Job</label>&nbsp;&nbsp;
+       
+       <input id="business" type="radio" name="obs.plans_after_school" data-concept="e1eef37b-98f5-4c86-9560-c090e5b1731f^Plans after school^99DCT"
+            value="3b7d62ef-c044-4cfa-bf44-ba3fcdea70ee^Business^99DCT" required="required">
+       <label for="business">Business</label>&nbsp;&nbsp;
+       
+       <input id="further_education" type="radio" name="obs.plans_after_school" data-concept="e1eef37b-98f5-4c86-9560-c090e5b1731f^Plans after school^99DCT"
+            value="534c8fba-8077-445a-a2dd-ab90d5af8090^Further Education^99DCT" required="required">
+        <label for="further_education">Further Education</label>&nbsp;&nbsp;
+    
+        <input id="farming" type="radio" name="obs.plans_after_school" data-concept="e1eef37b-98f5-4c86-9560-c090e5b1731f^Plans after school^99DCT"
+            value="aac9cf84-ebe7-41c1-b2e9-06514af2c1f8^Farming^99DCT" required="required">
+        <label for="farming">Farming</label>&nbsp;&nbsp;
+
+        <input id="other" type="radio" name="obs.plans_after_school" data-concept="e1eef37b-98f5-4c86-9560-c090e5b1731f^Plans after school^99DCT"
+            value="656cce7e-977f-11e1-8993-905e29aff6c1^Other non-coded^99DCT" required="required">
+        <label for="other">Other</label>
+    </div>
+
+    <div class="primary_guardian">
+    <label for="obs.primary_guardian"> Who is your primary guardian?  <span class="required">*</span></label>
+    <fieldset id="obs.primary_guardian" name="obs.primary_guardian">
+       <input class="primary_guard" id="single_bio_parent" type="radio" name="primary_guardian_ans" data-concept="807bcfed-6fb9-4ca3-bb46-8286a51906a2^Primary Guardian^99DCT"
+            value="ce0af2a6-d6f4-4d13-8af3-ea4ad378a653^Biological Parent(Single)^99DCT" required="required">
+       <label for="single_bio_parent">Biological Parent(Single)</label>&nbsp;&nbsp;
+       
+       <input class="primary_guard" id="both_bio_parent" type="radio" name="primary_guardian_ans" data-concept="807bcfed-6fb9-4ca3-bb46-8286a51906a2^Primary Guardian^99DCT"
+            value="49e133bf-efc9-49f9-91af-1cc26fa88ec6^Biological Parents-(both)^99DCT" required="required">
+       <label for="both_bio_parent">Biological Parents-(both)</label>&nbsp;&nbsp;
+       
+       <input class="primary_guard" id="grand_parent" type="radio" name="primary_guardian_ans" data-concept="807bcfed-6fb9-4ca3-bb46-8286a51906a2^Primary Guardian^99DCT"
+            value="aa109c28-7745-480e-a3c2-d0bc9f1a2719^Grandparents^99DCT" required="required">
+        <label for="grand_parent">Grandparents</label>&nbsp;&nbsp;
+    
+        <input class="primary_guard" id="elder_relative" type="radio" name="primary_guardian_ans" data-concept="807bcfed-6fb9-4ca3-bb46-8286a51906a2^Primary Guardian^99DCT"
+            value="d0c7636d-9d5e-4c1c-9656-e76689398ce5^Elder relative^99DCT" required="required">
+        <label for="elder_relative">Elder relative</label>&nbsp;&nbsp;
+
+        <input class="primary_guard" id="non_relative" type="radio" name="primary_guardian_ans" data-concept="807bcfed-6fb9-4ca3-bb46-8286a51906a2^Primary Guardian^99DCT"
+            value="dadec55d-864d-4f33-bfc2-06fccccd6a2a^Non-Relative (neighbor,friend,community person)^99DCT" required="required">
+        <label for="other">Non-Relative (neighbor,friend,community person)</label>
+
+        <input class="primary_guard" id="other" type="radio" name="primary_guardian_ans" data-concept="807bcfed-6fb9-4ca3-bb46-8286a51906a2^Primary Guardian^99DCT"
+            value="656cce7e-977f-11e1-8993-905e29aff6c1^Other non-coded^99DCT" required="required">
+        <label for="other">Other</label>
+    </fieldset>
+    </div>
+    
+        <div class="where_are_your_parents">
+            <div class="form-group">
+                <label for="obs.parents_location">
+                    Where are your parents? <span class="required">*</span>
+                </label>
+                <input class="form-control" id="obs.parents_location" name="obs.parents_location"
+                    type="text" data-concept="9260^Parents location^99DCT">
+            </div>
+        </div>
+
+        <div class="why_single_parent">
+            <div class="form-group">
+                <label for="obs.single_parent"> If the child says single parent?<span class="required">*</span></label>
+                <input class="why_single_parent" id="divorce" type="radio" name="why_single_parent_ans" data-concept="9284^Reason for staying with single parent^99DCT"
+                    value="9280^Parents divorced^99DCT" required="required">
+                <label for="divorce">Parents divorced</label>&nbsp;&nbsp;
+       
+                <input class="why_single_parent" id="died" type="radio" name="why_single_parent_ans" data-concept="9284^Reason for staying with single parent^99DCT"
+                    value="9281^Parents died^99DCT" required="required">
+                <label for="died">Died</label>&nbsp;&nbsp;
+
+                <input class="why_single_parent" id="other" type="radio" name="why_single_parent_ans" data-concept="9284^Reason for staying with single parent^99DCT"
+                    value="656cce7e-977f-11e1-8993-905e29aff6c1^Other non-coded^99DCT" required="required">
+                <label for="other">Other</label>&nbsp;&nbsp;
+            </div>
+        </div>
+
+        <div class="number_of_people">
+            <div class="form-group">
+                <label for="number_of_household_people">
+                    Including yourself,how many people live in your household right now? <span class="required">*</span>
+                </label>
+                <input class="form-group" id="number_of_household_people" name="number_of_household_people"
+                    type="number" min="1" data-concept="9285^Total number of household members^99DCT">
+            </div>
+        </div>
+
+        <div class="household_items">
+            <label for="obs.extracurricular_activities_query"> Do you or any member of your household own a ...<span class="required">*</span></label>
+            <fieldset id="obs.extracurricular_activities_query" name="extracurricular_activities_query">
+                
+                <label for="radio"> Radio</label>
+               <input id="radio_yes" type="radio" name="radio_ans" data-concept="4b09025d-f92c-444c-a972-828a98a88bf0^Own a radio^99DCT"
+                    value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
+               <label for="radio_yes">Yes</label>&nbsp;&nbsp;
+
+               <input id="radio_no" type="radio" name="radio_ans" data-concept="4b09025d-f92c-444c-a972-828a98a88bf0^Own a radio^99DCT"
+                value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
+               <label for="radio_no">No</label>&nbsp;&nbsp;
+
+               <input id="radio_do_not_know" type="radio" name="radio_ans" data-concept="4b09025d-f92c-444c-a972-828a98a88bf0^Own a radio^99DCT"
+               value="9337^Don't Know^99DCT" required="required">
+              <label for="radio_do_not_know">Don't know</label>
+               <br>
+               <label for="tv"> Television</label>
+               <input id="tv_yes" type="radio" name="tv_ans" data-concept="5c46ba89-e523-463c-ba37-635c90d23443^Own a Tv^99DCT"
+                    value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
+               <label for="tv_yes">Yes</label>&nbsp;&nbsp;
+
+               <input id="tv_no" type="radio" name="tv_ans" data-concept="5c46ba89-e523-463c-ba37-635c90d23443^Own a Tv^99DCT"
+                value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
+               <label for="tv_no">No</label>&nbsp;&nbsp;
+
+               <input id="tv_do_not_know" type="radio" name="tv_ans" data-concept="5c46ba89-e523-463c-ba37-635c90d23443^Own a Tv^99DCT"
+               value="9337^Don't Know^99DCT" required="required">
+              <label for="tv_do_not_know">Don't know</label>
+               <br>
+               <label for="phone"> Mobile Telephone</label>
+               <input id="phone_yes" type="radio" name="phone_ans" data-concept="205ab520-0ac5-4004-90e4-f2ba10f79a2b^Own a mobile telephone^99DCT"
+                    value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
+               <label for="phone_yes">Yes</label>&nbsp;&nbsp;
+
+               <input id="phone_no" type="radio" name="phone_ans" data-concept="205ab520-0ac5-4004-90e4-f2ba10f79a2b^Own a mobile telephone^99DCT"
+                value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
+               <label for="phone_no">No</label>&nbsp;&nbsp;
+
+               <input id="phone_do_not_know" type="radio" name="phone_ans" data-concept="205ab520-0ac5-4004-90e4-f2ba10f79a2b^Own a mobile telephone^99DCT"
+               value="9337^Don't Know^99DCT" required="required">
+              <label for="phone_do_not_know">Don't know</label>
+              <br>
+              <label for="fridge"> Refrigerator</label>
+              <input id="fridge_yes" type="radio" name="fridge_ans" data-concept="d531e6b5-cf09-41de-8f27-f846b42c6c6f^Own a refrigerator^99DCT"
+                   value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
+              <label for="fridge_yes">Yes</label>&nbsp;&nbsp;
+
+              <input id="fridge_no" type="radio" name="fridge_ans" data-concept="d531e6b5-cf09-41de-8f27-f846b42c6c6f^Own a refrigerator^99DCT"
+               value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
+              <label for="fridge_no">No</label>&nbsp;&nbsp;
+
+              <input id="fridge_do_not_know" type="radio" name="fridge_ans" data-concept="d531e6b5-cf09-41de-8f27-f846b42c6c6f^Own a refrigerator^99DCT"
+              value="9337^Don't Know^99DCT" required="required">
+             <label for="fridge_do_not_know">Don't know</label>
+             <br>
+             <label for="bike"> Bicycle</label>
+             <input id="bike_yes" type="radio" name="bike_ans" data-concept="b12adc9a-233b-4ac1-bed6-680dd00c7946^Own a bicycle^99DCT"
+                  value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
+             <label for="bike_yes">Yes</label>&nbsp;&nbsp;
+
+             <input id="bike_no" type="radio" name="bike_ans" data-concept="b12adc9a-233b-4ac1-bed6-680dd00c7946^Own a bicycle^99DCT"
+              value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
+             <label for="bike_no">No</label>&nbsp;&nbsp;
+
+             <input id="bike_do_not_know" type="radio" name="bike_ans" data-concept="b12adc9a-233b-4ac1-bed6-680dd00c7946^Own a bicycle^99DCT"
+             value="9337^Don't Know^99DCT" required="required">
+            <label for="bike_do_not_know">Don't know</label>
+            <br>
+            <label for="motor_bike"> Motorcycle</label>
+            <input id="motor_bike_yes" type="radio" name="motor_bike_ans" data-concept="75c35596-4e81-4764-9e0a-7b06b87ddceb^Own a motorcycle^99DCT"
+                 value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
+            <label for="motor_bike_yes">Yes</label>&nbsp;&nbsp;
+
+            <input id="motor_bike_no" type="radio" name="motor_bike_ans" data-concept="75c35596-4e81-4764-9e0a-7b06b87ddceb^Own a motorcycle^99DCT"
+             value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
+            <label for="motor_bike_no">No</label>&nbsp;&nbsp;
+
+            <input id="motor_bike_do_not_know" type="radio" name="motor_bike_ans" data-concept="75c35596-4e81-4764-9e0a-7b06b87ddceb^Own a motorcycle^99DCT"
+            value="9337^Don't Know^99DCT" required="required">
+           <label for="motor_bike_do_not_know">Don't know</label>
+           <br>
+           <label for="cart"> Anima-drawn cart</label>
+           <input id="cart_yes" type="radio" name="cart_ans" data-concept="a85c5276-3f4a-4e5a-bfd4-dc0595662cb3^Own an animal-drawn Cart^99DCT"
+                value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
+           <label for="cart_yes">Yes</label>&nbsp;&nbsp;
+
+           <input id="cart_no" type="radio" name="cart_ans" data-concept="a85c5276-3f4a-4e5a-bfd4-dc0595662cb3^Own an animal-drawn Cart^99DCT"
+            value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
+           <label for="cart_no">No</label>&nbsp;&nbsp;
+
+           <input id="cart_do_not_know" type="radio" name="cart_ans" data-concept="a85c5276-3f4a-4e5a-bfd4-dc0595662cb3^Own an animal-drawn Cart^99DCT"
+           value="9337^Don't Know^99DCT" required="required">
+          <label for="cart_bike_do_not_know">Don't know</label>
+          <br>
+          <label for="truck"> Car/Truck</label>
+          <input id="truck_yes" type="radio" name="truck_ans" data-concept="05742f26-375a-4e38-b9ee-7c7d0780c538^Own an car/truck^99DCT"
+               value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
+          <label for="truck_yes">Yes</label>&nbsp;&nbsp;
+
+          <input id="truck_no" type="radio" name="truck_ans" data-concept="05742f26-375a-4e38-b9ee-7c7d0780c538^Own an car/truck^99DCT"
+           value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
+          <label for="truck_no">No</label>&nbsp;&nbsp;
+
+          <input id="truck_do_not_know" type="radio" name="truck_ans" data-concept="05742f26-375a-4e38-b9ee-7c7d0780c538^Own an car/truck^99DCT"
+          value="9337^Don't Know^99DCT" required="required">
+         <label for="truck_do_not_know">Don't know</label>
+
+        </fieldset>
+        <br>
+        </div>
+
+    <label for="obs.source_of_energy"> What is the main source of energy for lighting?<span class="required">*</span></label>
+    <fieldset id="obs.source_of_energy" name="obs.source_of_energy">
+       
+        <input class="source_of_energy" id="electricity" type="radio" name="source_of_energy_ans" data-concept="9340^Main energy source for household lighting^99DCT"
+            value="9290^Electricity^99DCT" required="required">
+        <label for="electricity"> Electricity</label>&nbsp;&nbsp;
+       
+        <input class="source_of_energy" id="from_gas" type="radio" name="source_of_energy_ans" data-concept="9340^Main energy source for household lighting^99DCT"
+            value="9338^From gas^99DCT" required="required">
+        <label for="from_gas">From gas</label>&nbsp;&nbsp;
+
+        <input class="source_of_energy" id="solar" type="radio" name="source_of_energy_ans" data-concept="9340^Main energy source for household lighting^99DCT"
+            value="9291^Solar^99DCT" required="required">
+        <label for="solar">Solar</label>&nbsp;&nbsp;
+
+        <input class="source_of_energy" id="paraffin_lamp" type="radio" name="source_of_energy_ans" data-concept="9340^Main energy source for household lighting^99DCT"
+            value="9304^Paraffin Lamp^99DCT" required="required">
+        <label for="paraffin_lamp">Paraffin Lamp</label>&nbsp;&nbsp;
+
+        <input class="source_of_energy" id="torch" type="radio" name="source_of_energy_ans" data-concept="9340^Main energy source for household lighting^99DCT"
+            value="9315^Torch^99DCT" required="required">
+        <label for="torch">Torch</label>&nbsp;&nbsp;
+
+        <input class="source_of_energy" id="other" type="radio" name="source_of_energy_ans" data-concept="9340^Main energy source for household lighting^99DCT"
+            value="656cce7e-977f-11e1-8993-905e29aff6c1^Other non-coded^99DCT" required="required">
+        <label for="other">Other</label>&nbsp;&nbsp;
+    </div>
+</div>
+<div class="section">
+</p><label for="obs.drinking_water_source"> What is the main source of water for drinking?<span class="required">*</span></label>
+<fieldset id="obs.drinking_water_source" name="obs.drinking_water_source">
+   
+    <input class="drinking_water_source" id="piped_water" type="radio" name="drinking_water_source_ans" data-concept="9343^Main source of drinking water for household^99DCT"
+        value="9320^Piped Water^99DCT" required="required">
+    <label for="piped_water">Piped Water</label>&nbsp;&nbsp;
+   
+    <input class="source_of_energy" id="from_gas" type="radio" name="source_of_energy_ans" data-concept="9340^Main energy source for household lighting^99DCT"
+        value="9338^From gas^99DCT" required="required">
+    <label for="from_gas">From gas</label>&nbsp;&nbsp;
+
+    <input class="source_of_energy" id="solar" type="radio" name="source_of_energy_ans" data-concept="9340^Main energy source for household lighting^99DCT"
+        value="9291^Solar^99DCT" required="required">
+    <label for="solar">Solar</label>&nbsp;&nbsp;
+
+    <input class="source_of_energy" id="paraffin_lamp" type="radio" name="source_of_energy_ans" data-concept="9340^Main energy source for household lighting^99DCT"
+        value="9304^Paraffin Lamp^99DCT" required="required">
+    <label for="paraffin_lamp">Paraffin Lamp</label>&nbsp;&nbsp;
+
+    <input class="source_of_energy" id="torch" type="radio" name="source_of_energy_ans" data-concept="9340^Main energy source for household lighting^99DCT"
+        value="9315^Torch^99DCT" required="required">
+    <label for="torch">Torch</label>&nbsp;&nbsp;
+
+    <input class="source_of_energy" id="other" type="radio" name="source_of_energy_ans" data-concept="9340^Main energy source for household lighting^99DCT"
+        value="656cce7e-977f-11e1-8993-905e29aff6c1^Other non-coded^99DCT" required="required">
+    <label for="other">Other</label>&nbsp;&nbsp;
+
+    <div class="toilet_at_home_query">
+    </p><label for="obs.toilet_at_home_query"> Do you have a toilet at home?  <span class="required">*</span></label>
+    <fieldset id="obs.toilet_at_home_query" name="obs.toilet_at_home_query">
+       <input id="toilet_at_home_query_yes" type="radio" name="toilet_at_home_query_ans" data-concept="9329^Do you have a toilet at home?^99DCT"
+            value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
+       <label for="toilet_at_home_query_yes">Yes</label>&nbsp;&nbsp;
+       <input id="toilet_at_home_query_no" type="radio" name="toilet_at_home_query_ans" data-concept="9329^Do you have a toilet at home?^99DCT"
+            value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
+       <label for="toilet_at_home_query_no">No</label>
+    </fieldset>
+    </div>
+
+    <div class="kind_of_toilet_query">
+    </p><label for="obs.kind_of_toilet_query"> What kind of toilet facility do members of your household usually use?  <span class="required">*</span></label>
+    <fieldset id="obs.kind_of_toilet_query" name="obs.kind_of_toilet_query">
+        <input id="flush_toilet" type="radio" name="kind_of_toilet_ans" data-concept="9334^Kind of toilet facility used by household members^99DCT"
+            value="9330^Flush Toilet^99DCT" required="required">
+        <label for="flush_toilet">Flush Toilet</label>&nbsp;&nbsp;
+
+        <input id="pit_latrine" type="radio" name="kind_of_toilet_ans" data-concept="9334^Kind of toilet facility used by household members^99DCT"
+            value="9331^Pit Latrine^99DCT" required="required">
+        <label for="flush_toilet">Pit Latrine</label>
+        
+    </fieldset>
+    </div>
+
+    <div class="type_cooking_fuel_query">
+    </p><label for="obs.type_cooking_fuel_query"> What type of fuel does your householdmainly use for cooking?  <span class="required">*</span></label>
+    <fieldset id="obs.type_cooking_fuel_query" name="obs.type_cooking_fuel_query">
+        <input id="cook_with_electricity" type="radio" name="type_cooking_fuel_query_ans" data-concept="9346^Fuel for household cooking^99DCT"
+            value="9290^Electricity^99DCT" required="required">
+        <label for="cook_with_electricity">Electricity</label>&nbsp;&nbsp;
+
+        <input id="cook_with_firewood" type="radio" name="type_cooking_fuel_query_ans" data-concept="9346^Fuel for household cooking^99DCT"
+        value="9335^Firewood^99DCT" required="required">
+        <label for="cook_with_firewood">Firewood</label>&nbsp;&nbsp;
+
+        <input id="cook_with_charcoal" type="radio" name="type_cooking_fuel_query_ans" data-concept="9346^Fuel for household cooking^99DCT"
+        value="9344^charcoal for cooking^99DCT" required="required">
+        <label for="cook_with_charcoal">Charcoal</label>&nbsp;&nbsp;
+
+        <input id="cook_with_bootled_gas" type="radio" name="type_cooking_fuel_query_ans" data-concept="9346^Fuel for household cooking^99DCT"
+        value="9336^Bottled Gas^99DCT" required="required">
+        <label for="cook_with_bootled_gas">Bottled Gas</label>&nbsp;&nbsp;
+
+        <input id="cook_with_paraffin" type="radio" name="type_cooking_fuel_query_ans" data-concept="9346^Fuel for household cooking^99DCT"
+        value="9345^Paraffin/Kerosone^99DCT" required="required">
+        <label for="cook_with_paraffin">Paraffin/Kerosone</label>&nbsp;&nbsp;
+
+        <input id="cook_with_other" type="radio" name="type_cooking_fuel_query_ans" data-concept="9346^Fuel for household cooking^99DCT"
+        value="656cce7e-977f-11e1-8993-905e29aff6c1^Other non-coded^99DCT" required="required">
+        <label for="cook_with_other">Other</label>
+
+    </fieldset>
+    </div>
+
+    <div class="flooring_type_query">
+    </p><label for="obs.flooring_type_query"> What type of flooring does your house have?<span class="required">*</span></label>
+    <fieldset id="obs.flooring_type_query" name="obs.flooring_type_query">
+        <input id="sand_floor" type="radio" name="flooring_type_query_ans" data-concept="9353^Type of house floor^99DCT"
+            value="9290^Earth/Sand^99DCT" required="required">
+        <label for="sand_floor">Earth/Sand</label>&nbsp;&nbsp;
+
+        <input id="cement_floor" type="radio" name="flooring_type_query_ans" data-concept="9353^Type of house floor^99DCT"
+        value="9351^Building cement^99DCT" required="required">
+        <label for="cement_floor">cement</label>&nbsp;&nbsp;
+
+
+        <input id="tile_floor" type="radio" name="flooring_type_query_ans" data-concept="9353^Type of house floor^99DCT"
+        value="9350^Tiles^99DCT" required="required">
+        <label for="tile_floor">tiles</label>
+        
+        <input id="other_floor" type="radio" name="flooring_type_query_ans" data-concept="9353^Type of house floor^99DCT"
+        value="656cce7e-977f-11e1-8993-905e29aff6c1^Other non-coded^99DCT" required="required">
+        <label for="other_floor">Other</label>
+
+    </fieldset>
+    </div>
+
+    <div class="wall_type_query">
+    </p><label for="obs.wall_type_query"> What type of walls is you house made of? <span class="required">*</span></label>
+    <fieldset id="obs.wall_type_query" name="obs.wall_type_query">
+        <input id="cement_wall" type="radio" name="wall_type_query_ans" data-concept="9355^Type of house walls^99DCT"
+            value="9351^Building cement^99DCT" required="required">
+        <label for="cement_wall">cement</label>&nbsp;&nbsp;
+
+        <input id="mud_wall" type="radio" name="wall_type_query_ans" data-concept="9355^Type of house walls^99DCT"
+        value="9354^Mud for building^99DCT" required="required">
+        <label for="mud_wall">mud</label>&nbsp;&nbsp;
+
+        <input id="other_wall" type="radio" name="wall_type_query_ans" data-concept="9355^Type of house walls^99DCT"
+        value="656cce7e-977f-11e1-8993-905e29aff6c1^Other non-coded^99DCT" required="required">
+        <label for="other_wall">other</label>
+    </fieldset>
+    </div>
+
+    <div class="roof_type_query">
+    </p><label for="obs.roof_type_query"> What type of roof is your house made of? <span class="required">*</span></label>
+    <fieldset id="obs.roof_type_query" name="obs.roof_type_query">
+        <input id="tile_roof" type="radio" name="roof_type_query_ans" data-concept="9357^Type of house roof^99DCT"
+            value="9350^Tiles^99DCT" required="required">
+        <label for="tile_roof">Tiles</label>&nbsp;&nbsp;
+
+        <input id="grass_roof" type="radio" name="roof_type_query_ans" data-concept="9357^Type of house roof^99DCT"
+        value="9356^Grass^99DCT" required="required">
+        <label for="grass_roof">Grass</label>&nbsp;&nbsp;
+
+        <input id="other_roof" type="radio" name="roof_type_query_ans" data-concept="9357^Type of house roof^99DCT"
+        value="656cce7e-977f-11e1-8993-905e29aff6c1^Other non-coded^99DCT" required="required">
+        <label for="other_roof">Other</label>&nbsp;&nbsp;
+    </fieldset>
+    </div>
+    
+</div>
+</div>
+
+<div class="section">
+    <div class="already_enrolled_query">
+    </p><label for="obs.already_enrolled_query"> Are you already enrolled in teen club? <span class="required">*</span></label>
+    <fieldset id="obs.already_enrolled_query" name="already_enrolled_query">
+       <input id="already_enrolled_query_yes" type="radio" name="already_enrolled_query_ans" data-concept="9358^Enrolled in teen club^99DCT"
+            value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
+       <label for="already_enrolled_query_yes">Yes</label>&nbsp;&nbsp;
+       <input id="already_enrolled_query_no" type="radio" name="already_enrolled_query_ans" data-concept="9358^Enrolled in teen club^99DCT"
+            value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
+      <label for="already_enrolled_query_no">No</label>
+    </fieldset>
+    </div>    
+
+    <div class="teen_club_purpose_query">
+    </p><label for="obs.teen_club_purpose_query"> What do you understand as the purpose of the teen clubs? <span class="required">*</span></label>
+    <fieldset id="obs.teen_club_purpose_query" name="teen_club_purpose_query">
+       
+        <input id="empower_adole_to_build_pos_relationships" type="radio" name="teen_club_purpose_query_ans" data-concept="9362^Purpose of teen clubs^99DCT"
+            value="9359^To empower adolescent to build positive relationships^99DCT" required="required">
+        <label for="empower_adole_to_build_pos_relationships">To empower adolescent to build positive relationships</label>&nbsp;&nbsp;
+
+        <input id="improve_self_esteem" type="radio" name="teen_club_purpose_query_ans" data-concept="9362^Purpose of teen clubs^99DCT"
+        value="9360^Improve their self esteem^99DCT" required="required">
+        <label for="empower_adole_to_build_pos_relationships">Improve their self esteem</label>&nbsp;&nbsp;
+
+        <input id="acquire_life_skills" type="radio" name="teen_club_purpose_query_ans" data-concept="9362^Purpose of teen clubs^99DCT"
+        value="9361^Acquire life skills through peer mentorship, adult role-modeling and structured activities^99DCT" required="required">
+        <label for="acquire_life_skills">Acquire life skills through peer mentorship, adult role-modeling and structured activities</label>&nbsp;&nbsp;
+
+        <input id="other_purpose" type="radio" name="teen_club_purpose_query_ans" data-concept="9362^Purpose of teen clubs^99DCT"
+        value="656cce7e-977f-11e1-8993-905e29aff6c1^Other non-coded^99DCT" required="required">
+        <label for="other_purpose">Other</label>
+    </fieldset>
+    </div>    
+
+    <div class="teen_club_activities_query">
+    </p><label for="obs.teen_club_activities_query"> What sort of activities do you do at the teen clubs? <span class="required">*</span></label>
+    <fieldset id="obs.teen_club_activities_query" name="teen_club_activities_query">
+       
+        <input id="teen_club_activities_games" type="radio" name="teen_club_purpose_query_ans" data-concept="9377^Teen club activities^99DCT"
+            value="9367^Games^99DCT" required="required">
+        <label for="teen_club_activities_games">Games</label>&nbsp;&nbsp;
+
+        <input id="teen_club_activities_drama" type="radio" name="teen_club_purpose_query_ans" data-concept="9377^Teen club activities^99DCT"
+            value="9371^Drama^99DCT" required="required">
+        <label for="teen_club_activities_drama">Drama</label>&nbsp;&nbsp;
+
+        <input id="teen_club_activities_sports" type="radio" name="teen_club_purpose_query_ans" data-concept="9377^Teen club activities^99DCT"
+            value="9370^Sports^99DCT" required="required">
+        <label for="teen_club_activities_sports">Sports</label>&nbsp;&nbsp;
+
+        <input id="teen_club_activities_art_sessions" type="radio" name="teen_club_purpose_query_ans" data-concept="9377^Teen club activities^99DCT"
+            value="9372^Art sessions^99DCT" required="required">
+        <label for="teen_club_activities_art_sessions">Art sessions</label>&nbsp;&nbsp;
+
+        <input id="teen_club_activities_other" type="radio" name="teen_club_purpose_query_ans" data-concept="9377^Teen club activities^99DCT"
+            value="656cce7e-977f-11e1-8993-905e29aff6c1^Other non-coded^99DCT" required="required">
+        <label for="teen_club_activities_other">Other</label>&nbsp;&nbsp;
+    </fieldset>
+    </div>
+
+    <div class="teen_club_topics_query">
+    </p><label for="obs.teen_club_topics_query"> What topics do you cover when you meet as teen clubs? <span class="required">*</span></label>
+    <fieldset id="obs.teen_club_topics_query" name="teen_club_topics_query">
+       
+        <input id="hiv_disclore_adherence" type="radio" name="teen_club_topics_query_ans" data-concept="9378^Topic covered in teen club^99DCT"
+            value="9373^HIV education, disclosure, adherence^99DCT" required="required">
+        <label for="hiv_disclore_adherence">HIV education, disclosure, adherence</label>&nbsp;&nbsp;
+
+        <input id="goal_setting" type="radio" name="teen_club_topics_query_ans" data-concept="9378^Topic covered in teen club^99DCT"
+            value="9374^Goal-setting^99DCT" required="required">
+        <label for="goal_setting">Goal-setting</label>&nbsp;&nbsp;
+
+        <input id="sexual_and_repro_health" type="radio" name="teen_club_topics_query_ans" data-concept="9378^Topic covered in teen club^99DCT"
+            value="9375^Sexual and reproductive health^99DCT" required="required">
+        <label for="sexual_and_repro_health">Sexual and reproductive health</label>&nbsp;&nbsp;
+
+        <input id="stigma_and_discrimination" type="radio" name="teen_club_topics_query_ans" data-concept="9378^Topic covered in teen club^99DCT"
+            value="9376^Coping with stigma and discrimination^99DCT" required="required">
+        <label for="stigma_and_discrimination">Coping with stigma and discrimination</label>&nbsp;&nbsp;
+
+        <input id="other_topics" type="radio" name="teen_club_topics_query_ans" data-concept="9378^Topic covered in teen club^99DCT"
+            value="656cce7e-977f-11e1-8993-905e29aff6c1^Other non-coded^99DCT" required="required">
+        <label for="other_topics">Other</label>&nbsp;&nbsp;
+
+    </fieldset>
+    </div>
+
+    <div class="any_social_support_query">
+    </p><label for="obs.any_social_support_query"> Did you get any social support from teens' club? <span class="required">*</span></label>
+    <fieldset id="obs.any_social_support_query" name="any_social_support_query">
+
+       <input id="any_social_support_query_yes" type="radio" name="any_social_support_query_ans" data-concept="9379^Social support from teen club^99DCT"
+            value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
+       <label for="any_social_support_query_yes">Yes</label>&nbsp;&nbsp;
+
+       <input id="any_social_support_query_no" type="radio" name="any_social_support_query_ans" data-concept="9379^Social support from teen club^99DCT"
+            value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
+      <label for="any_social_support_query_no">No</label>
+    </fieldset>
+    </div>    
+
+    <div class="kind_of_social_support_query">
+    </p><label for="obs.kind_of_social_support_query"> What kind of support? <span class="required">*</span></label>
+    <fieldset id="obs.kind_of_social_support_query" name="kind_of_social_support_query">
+
+       <input id="school_support_kind" type="radio" name="kind_of_social_support_query_ans" data-concept="88220f57-2d23-4949-83cc-a9ddf9081a60^What support would you like to get from teens club?^99DCT"
+        value="9380^School support^99DCT" required="required">
+       <label for="school_support_kind">School support</label>&nbsp;&nbsp;
+
+       <input id="accommodation" type="radio" name="kind_of_social_support_query_ans" data-concept="88220f57-2d23-4949-83cc-a9ddf9081a60^What support would you like to get from teens club?^99DCT"
+        value="ab31cf84-823a-491f-8713-ed209e15eac0^Accommodation( housing repair and basic household items)^99DCT" required="required">
+       <label for="accommodation">Accommodation(housing repair and basic household items)</label>&nbsp;&nbsp;
+
+       <input id="vocational_training" type="radio" name="kind_of_social_support_query_ans" data-concept="88220f57-2d23-4949-83cc-a9ddf9081a60^What support would you like to get from teens club?^99DCT"
+        value="af310bb8-9593-4430-bd63-db91a557db99^vocational Training^99DCT" required="required">
+       <label for="vocational_training">Vocational training</label>&nbsp;&nbsp;
+
+       <input id="agri_nutri_fishing" type="radio" name="kind_of_social_support_query_ans" data-concept="88220f57-2d23-4949-83cc-a9ddf9081a60^What support would you like to get from teens club?^99DCT"
+        value="88e769d2-fea2-4500-abe5-d3b174607deb^Agriculture/nutrition support(Fishing)^99DCT" required="required">
+       <label for="agri_nutri_fishing">Agriculture/nutrition support(Fishing)</label>&nbsp;&nbsp;
+
+       <input id="agri_nutri_crop_farming" type="radio" name="kind_of_social_support_query_ans" data-concept="88220f57-2d23-4949-83cc-a9ddf9081a60^What support would you like to get from teens club?^99DCT"
+        value="ec2f3f77-6a07-468b-ab68-da61a67ead2e^Agriculture/nutrition support(Crop Farming)^99DCT" required="required">
+       <label for="agri_nutri_crop_farming">Agriculture/nutrition support(Crop Farming)</label>&nbsp;&nbsp;
+
+       <input id="agri_nutri_animal_farming" type="radio" name="kind_of_social_support_query_ans" data-concept="88220f57-2d23-4949-83cc-a9ddf9081a60^What support would you like to get from teens club?^99DCT"
+       value="a49c8069-789e-4cf9-bc68-f16cc7342696^Agriculture/nutrition support(Animal Farming)^99DCT" required="required">
+       <label for="agri_nutri_animal_farming">Agriculture/nutrition support(Animal Farming)</label>&nbsp;&nbsp;
+
+      <input id="linkage_to_jobs" type="radio" name="kind_of_social_support_query_ans" data-concept="88220f57-2d23-4949-83cc-a9ddf9081a60^What support would you like to get from teens club?^99DCT"
+      value="23b50f00-e02e-43ea-89d2-ccf82ffd9a5f^Linkage to jobs^99DCT" required="required">
+      <label for="agri_nutri_animal_farming">Linkage to jobs</label>&nbsp;&nbsp;
+
+      <input id="other_kind_of_social_support" type="radio" name="kind_of_social_support_query_ans" data-concept="88220f57-2d23-4949-83cc-a9ddf9081a60^What support would you like to get from teens club?^99DCT"
+      value="656cce7e-977f-11e1-8993-905e29aff6c1^Other non-coded^99DCT" required="required">
+      <label for="other_kind_of_social_support">Other</label>&nbsp;&nbsp;
+
+    </fieldset>
+    </div>
+
+    <div class="happy_with_teen_club_query">
+    </p><label for="obs.happy_with_teen_club_query"> Are you happy with teen club? <span class="required">*</span></label>
+    <fieldset id="obs.happy_with_teen_club_query" name="happy_with_teen_club_query">
+
+       <input id="happy_yes" type="radio" name="happy_with_teen_club_query_ans" data-concept="9381^Are you happy with teen club?^99DCT"
+            value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
+       <label for="school_support">Yes</label>&nbsp;&nbsp;
+       
+       <input id="happy_no" type="radio" name="happy_with_teen_club_query_ans" data-concept="9381^Are you happy with teen club?^99DCT"
+            value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
+      <label for="happy_no">No</label>
+    </fieldset>
+    <div class="like_most"></p>
+        <label for="obs.like_most">What is it you like most at teen club? <span class="required">*</span></label>
+        <input class="form-control" id="obs.like_most" name="obs.like_most"
+               type="text" data-concept="9382^What you like most at teen club?^99DCT" required="required">
+    </div>
+    <div class="dont_like">
+        <label for="obs.dont_like">What is it you don't like at teen club? <span class="required">*</span></label>
+        <input class="form-control" id="obs.dont_like" name="obs.dont_like"
+               type="text" data-concept="9383^What you don't like at teen club?^99DCT" required="required">
+    </div>
+
+    <div class="rate_social_support">
+    <label for="obs.rate_support_query"> How do you rate the support on a scale of 1 to 3? <span class="required">*</span></label>
+    <fieldset id="obs.rate_support_query" name="rate_support_query">
+
+        <input id="very_satisfied" type="radio" name="rate_support_query_ans" data-concept="9387^How do you rate the support on a scale of 1 to 3?^99DCT"
+            value="9384^Very satisfied^99DCT" required="required">
+        <label for="very_satisfied">Very satisfied</label>&nbsp;&nbsp;
+
+        <input id="not_satisfied" type="radio" name="rate_support_query_ans" data-concept="9387^How do you rate the support on a scale of 1 to 3?^99DCT"
+            value="9385^Not satisfied^99DCT" required="required">
+        <label for="not_satisfied">Not satisfied</label>&nbsp;&nbsp;
+
+        <input id="little_satisfied" type="radio" name="rate_support_query_ans" data-concept="9387^How do you rate the support on a scale of 1 to 3?^99DCT"
+            value="9386^Little satisfied^99DCT" required="required">
+        <label for="not_satisfied">Little satisfied</label>
+    </fieldset>
+    </div>
+
+    <div class="rate_life_changes">
+        <label for="obs.rate_life_changes_query"> Can you rate the changes that happened to your life from the social support on a scale of 1 to 3? <span class="required">*</span></label>
+        <fieldset id="obs.rate_life_changes_query" name="rate_life_changes_query">
+    
+            <input id="very_satisfied" type="radio" name="rate_life_changes_query_ans" data-concept="9388^Can you rate the changes that happened to your life from the social support a scale of 1 to 3?^99DCT"
+                value="9384^Very satisfied^99DCT" required="required">
+            <label for="very_satisfied">Very satisfied</label>&nbsp;&nbsp;
+    
+            <input id="not_satisfied" type="radio" name="rate_life_changes_query_ans" data-concept="9388^Can you rate the changes that happened to your life from the social support a scale of 1 to 3?^99DCT"
+                value="9385^Not satisfied^99DCT" required="required">
+            <label for="not_satisfied">Not satisfied</label>&nbsp;&nbsp;
+    
+            <input id="little_satisfied" type="radio" name="rate_life_changes_query_ans" data-concept="9388^Can you rate the changes that happened to your life from the social support a scale of 1 to 3?^99DCT"
+                value="9386^Little satisfied^99DCT" required="required">
+            <label for="not_satisfied">Little satisfied</label>
+        </fieldset>
+    </div>
+
+    <div class="challenges">
+        <label for="obs.challenges">What challenges do you face in your daily life? <span class="required">*</span></label>
+        <input class="form-control" id="obs.challenges" name="obs.challenges"
+               type="text" data-concept="9389^Challenges you face in daily life^99DCT" required="required">
+    </div>
+
+    <div class="rate_hiv_knowledge">
+        <label for="obs.rate_hiv_knowledge_query"> How would you rate your level of knowledge about HIV? <span class="required">*</span></label>
+        <fieldset id="obs.rate_hiv_knowledge_query" name="rate_hiv_knowledge_query">
+    
+            <input id="very_low" type="radio" name="rate_life_changes_query_ans" data-concept="5705c64d-41f8-4332-be83-c5ebb2df9693^Rate your HIV knowledge^99DCT"
+                value="9390^Very low^99DCT" required="required">
+            <label for="very_low">Very low</label>&nbsp;&nbsp;
+    
+            <input id="low" type="radio" name="rate_life_changes_query_ans" data-concept="5705c64d-41f8-4332-be83-c5ebb2df9693^Rate your HIV knowledge^99DCT"
+                value="9391^low^99DCT" required="required">
+            <label for="low">low</label>&nbsp;&nbsp;
+
+            <input id="high" type="radio" name="rate_life_changes_query_ans" data-concept="5705c64d-41f8-4332-be83-c5ebb2df9693^Rate your HIV knowledge^99DCT"
+                value="9392^High^99DCT" required="required">
+            <label for="high">High</label>&nbsp;&nbsp;
+
+            <input id="no_response" type="radio" name="rate_life_changes_query_ans" data-concept="5705c64d-41f8-4332-be83-c5ebb2df9693^Rate your HIV knowledge^99DCT"
+                value="81bc5d0f-6a58-4504-9f24-ea6345cb2647^No Response^99DCT" required="required">
+            <label for="no_response">No Response</label>
+        </fieldset>
+    </div>
+
+    <div class="hiv_transmission">
+        <label for="obs.hiv_transmission_query"> How is HIV transmitted? <span class="required">*</span></label>
+        <fieldset id="obs.hiv_transmission_query" name="hiv_transmission_query">
+    
+            <input id="mosquito_bite" type="radio" name="hiv_transmission_ans" data-concept="2aefa143-9f49-44c6-8848-56f2596ff1c5^How is HIV transmitted?^99DCT"
+                value="86daa7ce-0c8a-429a-9679-ad02d8fb0b73^Mosquito bite^99DCT" required="required">
+            <label for="mosquito_bite">Mosquito bite</label>&nbsp;&nbsp;
+
+            <input id="kissing" type="radio" name="hiv_transmission_ans" data-concept="2aefa143-9f49-44c6-8848-56f2596ff1c5^How is HIV transmitted?^99DCT"
+                value="764ecc35-f17d-4193-bf18-d9d701b6d564^Kissing^99DCT" required="required">
+            <label for="kissing">Kissing</label>&nbsp;&nbsp;
+
+            <input id="sexual_intercourse" type="radio" name="hiv_transmission_ans" data-concept="2aefa143-9f49-44c6-8848-56f2596ff1c5^How is HIV transmitted?^99DCT"
+                value="eadc4425-2228-4741-950e-d1f3be048e65^Sexual Intercourse^99DCT" required="required">
+            <label for="sexual_intercourse">Sexual Intercourse</label>&nbsp;&nbsp;
+
+            <input id="through_blood_transfusion" type="radio" name="hiv_transmission_ans" data-concept="2aefa143-9f49-44c6-8848-56f2596ff1c5^How is HIV transmitted?^99DCT"
+                value="938d8bcb-d128-4ac7-8179-a5ccfd10604f^Through blood transfusion^99DCT" required="required">
+            <label for="through_blood_transfusion">Through blood transfusion</label>&nbsp;&nbsp;
+
+            <input id="mother_to_child_transmission" type="radio" name="hiv_transmission_ans" data-concept="2aefa143-9f49-44c6-8848-56f2596ff1c5^How is HIV transmitted?^99DCT"
+                value="2c01d171-701e-4848-acde-d5a2258d7b0e^Mother-to-child transmission^99DCT" required="required">
+            <label for="mother_to_child_transmission">Mother-to-child transmission</label>&nbsp;&nbsp;
+        </fieldset>
+    </div>
+    </div>    
+
+</div>
+
+<div class="section">
+    <div class="thinking_about_future_query">
+    <label for="obs.thinking_about_future_query"> Have you started thinking about your future career or job aspirations? <span class="required">*</span></label>
+    <fieldset id="obs.thinking_about_future_query" name="thinking_about_future_query">
+
+       <input id="thinking_about_future_query_yes" type="radio" name="thinking_about_future_query_ans" data-concept="f4d4508e-c2a3-464d-804c-8f68e6fcb070^Have you started thinking about your future career and job aspirations?^99DCT"
+            value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
+       <label for="thinking_about_future_query_yes">Yes</label>&nbsp;&nbsp;
+
+       <input id="thinking_about_future_query_no" type="radio" name="thinking_about_future_query_ans" data-concept="f4d4508e-c2a3-464d-804c-8f68e6fcb070^Have you started thinking about your future career and job aspirations?^99DCT"
+            value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
+      <label for="thinking_about_future_query_no">No</label>
+    </fieldset>
+    </div>    
+
+    <div class="job">
+        <label for="obs.job">What career/job would you like to do when you finish school? <span class="required">*</span></label>
+        <input class="form-control" id="obs.challenges" name="obs.challenges"
+               type="text" data-concept="7d2a7965-9e3a-4f7b-822f-f5728f2c8596^What career/job would you like to do when you finish school?^99DCT" required="required">
+    </div>
+
+    <div class="areas_of_study_interest">
+        <label for="obs.areas_of_study_interest_query"> What subjects or areas of study interest you the most? <span class="required">*</span></label>
+        <fieldset id="obs.areas_of_study_interest_query" name="areas_of_study_interest_query">
+    
+            <input id="science_and_math" type="radio" name="areas_of_study_interest_ans" data-concept="fb69f4f8-118f-4362-b054-1b29ece01de7^What subjects or areas of study interest you the most?^99DCT"
+                value="ca2fcfbe-3d92-46fa-8fe3-844aac33376c^Science and Math^99DCT" required="required">
+            <label for="science_and_math">Science and Math</label>&nbsp;&nbsp;
+
+            <input id="arts_and_humanities" type="radio" name="areas_of_study_interest_ans" data-concept="fb69f4f8-118f-4362-b054-1b29ece01de7^What subjects or areas of study interest you the most?^99DCT"
+                value="5d56164d-4b9e-4b50-ba37-b9df6597642a^Arts and Humanities^99DCT" required="required">
+            <label for="arts_and_humanities">Arts and Humanities</label>&nbsp;&nbsp;
+
+            <input id="business_an_entrepreneurship" type="radio" name="areas_of_study_interest_ans" data-concept="fb69f4f8-118f-4362-b054-1b29ece01de7^What subjects or areas of study interest you the most?^99DCT"
+                value="df51523a-559e-4e81-b883-f2615a3a5043^Business and Entrepreneurship^99DCT" required="required">
+            <label for="business_an_entrepreneurship">Business and Entrepreneurship</label>&nbsp;&nbsp;
+
+            <input id="other_areas_of_study_interest" type="radio" name="areas_of_study_interest_ans" data-concept="fb69f4f8-118f-4362-b054-1b29ece01de7^What subjects or areas of study interest you the most?^99DCT"
+                value="656cce7e-977f-11e1-8993-905e29aff6c1^Other non-coded^99DCT" required="required">
+            <label for="other_areas_of_study_interest">Other</label>&nbsp;&nbsp;
+        </fieldset>
+    </div>
+
+    <div class="extracurricular_activities">
+        <label for="obs.extracurricular_activities_query"> Are you currently involved in any extracurricular activities or clubs related to your career interests?<span class="required">*</span></label>
+        <fieldset id="obs.extracurricular_activities_query" name="extracurricular_activities_query">
+    
+           <input id="extracurricular_activities_query_yes" type="radio" name="extracurricular_activities_query_ans" data-concept="4bd44d80-5409-4c7f-a2d2-d623fdfdfc93^Are you currently involved in any extracurricular activities or clubs related to your career interests?^99DCT"
+                value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
+           <label for="extracurricular_activities_query_yes">Yes</label>&nbsp;&nbsp;
+    
+           <input id="extracurricular_activities_query_no" type="radio" name="extracurricular_activities_query_ans" data-concept="4bd44d80-5409-4c7f-a2d2-d623fdfdfc93^Are you currently involved in any extracurricular activities or clubs related to your career interests?^99DCT"
+                value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
+          <label for="extracurricular_activities_query_no">No</label>
+        </fieldset>
+    </div>
+
+    <div class="extracurricular_activities_list">
+        <label for="obs.extracurricular_activities_list">What extracurricular activities or clubs related to your career are you involved in? <span class="required">*</span></label>
+        <input class="form-control" id="obs.extracurricular_activities_list" name="obs.extracurricular_activities_list"
+               type="text" data-concept="a8de56b1-833c-4293-8cc3-1281cd8cbd02^Extracurricular activities^99DCT" required="required">
+    </div>
+
+    <div class="particular_interest">
+        <label for="obs.particular_interest_query"> Are there any specific careers or industries that you are curious about or would like to learn more about? <span class="required">*</span></label>
+        <fieldset id="obs.particular_interest_query" name="particular_interest_query">
+    
+            <input id="healthcare_and_medicine" type="radio" name="particular_interest_ans" data-concept="dab43cd5-1de7-440a-af65-b50f224c025a^Are there any specific careers or industries that you are curious about or would like to learn more about?^99DCT"
+                value="1d0345e8-7565-454c-9bf7-19f4dfcfc61e^Healthcare and medicine^99DCT" required="required">
+            <label for="healthcare_and_medicine">Healthcare and medicine</label>&nbsp;&nbsp;
+
+            <input id="technology_and_IT" type="radio" name="particular_interest_ans" data-concept="dab43cd5-1de7-440a-af65-b50f224c025a^Are there any specific careers or industries that you are curious about or would like to learn more about?^99DCT"
+                value="5f201508-2345-4501-bdd0-f5a8623c7162^Technology and IT^99DCT" required="required">
+            <label for="technology_and_IT">Technology and IT</label>&nbsp;&nbsp;
+
+            <input id="creative_arts_and_design" type="radio" name="particular_interest_ans" data-concept="dab43cd5-1de7-440a-af65-b50f224c025a^Are there any specific careers or industries that you are curious about or would like to learn more about?^99DCT"
+                value="67be71c3-9ec6-4cca-9f2e-9cb0a52a3f4e^Creative arts and design^99DCT" required="required">
+            <label for="creative_arts_and_design">Creative arts and design</label>&nbsp;&nbsp;
+
+            <input id="business_and_entrepreneurship" type="radio" name="particular_interest_ans" data-concept="dab43cd5-1de7-440a-af65-b50f224c025a^Are there any specific careers or industries that you are curious about or would like to learn more about?^99DCT"
+                value="df51523a-559e-4e81-b883-f2615a3a5043^Business and Entrepreneurship^99DCT" required="required">
+            <label for="business_and_entrepreneurship">Business and Entrepreneurship</label>&nbsp;&nbsp;
+
+            <input id="other_particular_interest" type="radio" name="particular_interest_ans" data-concept="dab43cd5-1de7-440a-af65-b50f224c025a^Are there any specific careers or industries that you are curious about or would like to learn more about?^99DCT"
+                value="656cce7e-977f-11e1-8993-905e29aff6c1^Other non-coded^99DCT" required="required">
+            <label for="other_particular_interest">Other</label>
+        </fieldset>
+    </div>
+
+    <div class="role_models_query">
+        <label for="obs.role_models_query"> Are there any role models or professionals in your desired field that you admire or look up to? <span class="required">*</span></label>
+        <fieldset id="obs.role_models_query" name="role_models_query">
+    
+           <input id="role_models_query_yes" type="radio" name="role_models_query_ans" data-concept="8dcf744f-4f22-484a-8d6d-c14ebbc53f44^Are there any role models or professionals in your desired field that you look up to?^99DCT"
+                value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
+           <label for="role_models_query_yes">Yes</label>&nbsp;&nbsp;
+    
+           <input id="role_models_query_no" type="radio" name="role_models_query_ans" data-concept="8dcf744f-4f22-484a-8d6d-c14ebbc53f44^Are there any role models or professionals in your desired field that you look up to?^99DCT"
+                value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
+          <label for="role_models_query_no">No</label>
+        </fieldset>
+    </div>
+
+    <div class="name_of_role_model">
+        <label for="obs.name_of_role_model">What is the name of the role model in your preferred field? <span class="required">*</span></label>
+        <input class="form-control" id="obs.name_of_role_model" name="obs.name_of_role_model"
+               type="text" data-concept="3530488d-4213-4316-adb3-9cf434400a79^Name of role model(s)^99DCT" required="required">
+    </div>
+
+    <div class="resources">
+        <label for="obs.resources_query"> What kind of support or resources do you feel would be helpful in achieving your aspirations and goals? <span class="required">*</span></label>
+        <fieldset id="obs.resources_query" name="resources_query">
+    
+            <input id="mentorship" type="radio" name="resources_query_ans" data-concept="78814f7a-151a-4298-86a4-c265675ab54a^What kind of support or resources do you feel would be helpful in achieving your aspirations and goals?^99DCT"
+                value="1d0345e8-7565-454c-9bf7-19f4dfcfc61e^Mentorship and guidance from professionals or role models^99DCT" required="required">
+            <label for="mentorship">Mentorship and guidance from professionals or role models</label>&nbsp;&nbsp;
+
+            <input id="scholarships" type="radio" name="resources_query_ans" data-concept="78814f7a-151a-4298-86a4-c265675ab54a^What kind of support or resources do you feel would be helpful in achieving your aspirations and goals?^99DCT"
+                value="b1f909bc-7921-4f3d-aa57-d84f82334659^Access to educational scholarships or vocational training programs^99DCT" required="required">
+            <label for="scholarships">Access to educational scholarships or vocational training programs</label>&nbsp;&nbsp;
+
+            <input id="peer_support" type="radio" name="resources_query_ans" data-concept="78814f7a-151a-4298-86a4-c265675ab54a^What kind of support or resources do you feel would be helpful in achieving your aspirations and goals?^99DCT"
+                value="ed2e3078-6b47-49dc-a6a4-ebfaf8648058^Peer support groups or networks^99DCT" required="required">
+            <label for="peer_support">Peer support groups or networks</label>&nbsp;&nbsp;
+
+            <input id="financial_support" type="radio" name="resources_query_ans" data-concept="78814f7a-151a-4298-86a4-c265675ab54a^What kind of support or resources do you feel would be helpful in achieving your aspirations and goals?^99DCT"
+                value="b198d051-b460-4330-a802-d558faf29432^Financial support^99DCT" required="required">
+            <label for="financial_support">Financial support</label>&nbsp;&nbsp;
+
+            <input id="other_resources" type="radio" name="resources_query_ans" data-concept="78814f7a-151a-4298-86a4-c265675ab54a^What kind of support or resources do you feel would be helpful in achieving your aspirations and goals?^99DCT"
+                value="656cce7e-977f-11e1-8993-905e29aff6c1^Other non-coded^99DCT" required="required">
+            <label for="other_resources">Other</label>&nbsp;&nbsp;
+        </fieldset>
+    </div>
+</div>
+
+<div class="section">
+    <div class="certificates">
+        <label for="obs.certificates_query"> Have you obtained any vocational training or certifications in your desired field? <span class="required">*</span></label>
+        <fieldset id="obs.certificates_query" name="certificates_query">
+    
+            <input id="yes_relevant_training" type="radio" name="certificates_query_ans" data-concept="6c05aef4-e1ca-4772-aef5-581266b44135^Have you obtained any vocational training or certifications in your desired field?^99DCT"
+                value="240fe672-00be-4201-838b-3e0a686d05b3^Yes, I have relevant training or certifications^99DCT" required="required">
+            <label for="yes_relevant_training">Yes, I have relevant training or certifications</label>&nbsp;&nbsp;
+
+            <input id="yes_planning" type="radio" name="certificates_query_ans" data-concept="6c05aef4-e1ca-4772-aef5-581266b44135^Have you obtained any vocational training or certifications in your desired field?^99DCT"
+                value="8779854a-9e9e-40fe-b3e4-2594b79d2dd7^No, but I'm planning to pursue training or certifications^99DCT" required="required">
+            <label for="yes_planning">No, but I'm planning to pursue training or certifications</label>&nbsp;&nbsp;
+
+            <input id="not_interested" type="radio" name="certificates_query_ans" data-concept="6c05aef4-e1ca-4772-aef5-581266b44135^Have you obtained any vocational training or certifications in your desired field?^99DCT"
+                value="c024e008-b537-4f8f-83e9-03451e55f826^No, I am not interested in vocational training or certifications^99DCT" required="required">
+            <label for="not_interested">No, I am not interested in vocational training or certifications</label>
+        </fieldset>
+    </div>
+
+    <div class="course">
+        <label for="obs.course">what exactly do you want to do in life? <span class="required">*</span></label>
+        <input class="form-control" id="obs.course" name="obs.course"
+               type="text" data-concept="7eaafacb-5a43-4f7a-abd7-3c340ea68420^What courses or what do you want to do life?^99DCT" required="required">
+    </div>
+
+    <label for="obs.challenges_in_pursuing_goals_query"> What are some challenges you face or have faced in pursuing your career goals outsideof school? <span class="required">*</span></label>
+    <fieldset id="obs.challenges_in_pursuing_goals_query" name="challenges_in_pursuing_goals_query">
+
+        <input id="limited_opportunities" type="radio" name="challenges_in_pursuing_goals_query_ans" data-concept="9230e9b6-5d9e-4a9b-995c-c03bedd5eadd^What are some challenges you face or have faced in pursuing your career goals outside of school?^99DCT"
+            value="a5d749ef-c840-4896-be3c-75cb9c13505d^Limited job opportunities^99DCT" required="required">
+        <label for="limited_opportunities">Limited job opportunities</label>&nbsp;&nbsp;
+
+        <input id="lack_of_experience" type="radio" name="challenges_in_pursuing_goals_query_ans" data-concept="9230e9b6-5d9e-4a9b-995c-c03bedd5eadd^What are some challenges you face or have faced in pursuing your career goals outside of school?^99DCT"
+            value="dee8c72b-c1fb-48fb-a3ef-f56fd40ad20d^Lack of experience or qualifications^99DCT" required="required">
+        <label for="lack_of_experience">Lack of experience or qualifications</label>&nbsp;&nbsp;
+
+        <input id="finacial_contraints" type="radio" name="challenges_in_pursuing_goals_query_ans" data-concept="9230e9b6-5d9e-4a9b-995c-c03bedd5eadd^What are some challenges you face or have faced in pursuing your career goals outside of school?^99DCT"
+            value="a517de4c-093b-46eb-b6b4-a98a65b7422c^Finacial contraints^99DCT" required="required">
+        <label for="finacial_contraints">Finacial contraints</label>&nbsp;&nbsp;
+
+        <input id="lack_of_guidance" type="radio" name="challenges_in_pursuing_goals_query_ans" data-concept="9230e9b6-5d9e-4a9b-995c-c03bedd5eadd^What are some challenges you face or have faced in pursuing your career goals outside of school?^99DCT"
+            value="b4068cf3-ee69-4b23-b732-21cdfa321ba0^Lack of guidance or mentorship^99DCT" required="required">
+        <label for="lack_of_guidance">Lack of guidance or mentorship</label>&nbsp;&nbsp;
+
+        <input id="other_challenges_in_pursuing_goals" type="radio" name="challenges_in_pursuing_goals_query_ans" data-concept="9230e9b6-5d9e-4a9b-995c-c03bedd5eadd^What are some challenges you face or have faced in pursuing your career goals outside of school?^99DCT"
+            value="656cce7e-977f-11e1-8993-905e29aff6c1^Other non-coded^99DCT" required="required">
+        <label for="other_challenges_in_pursuing_goals">other</label>&nbsp;&nbsp;
+
+    </fieldset>
+</div>
+</div>
+
+<div class="section">
+    
+    <div class="form-group">
+        <label for="obs.appointment_date">
+            Proposed date of facility visit:<span class="required">*</span>
+        </label>
+        <input class="form-control datepicker future-or-today-date" id="obs.appointment_date"
+               name="obs.appointment_date" type="text" readonly="readonly" data-concept="5096^Appointment date^99DCT" required="required">
+    </div>
+    
+</div>
+<div class="section">
+    <div class="form-group">
+        <label for="encounter.provider_id_select">Screening Provider Name:</label>
+        <input class="form-control valid-provider-only" id="encounter.provider_id_select" type="text"
+               placeholder="Start typing provider name here ...">
+        <input class="form-control" name="encounter.provider_id_select" type="hidden">
+    </div>
+    <div class="form-group hidden">
+        <select id="select_providers">
+        </select>
+    </div>
+    <div class="form-group show_provider_id_text">
+        <label for="encounter.provider_id">Screening provider's system-id:<span class="required">*</span></label>
+        <input class="form-control checkDigit" id="encounter.provider_id" name="encounter.provider_id" type="text"
+               required="required" disabled="disabled" >
+    </div>
+
+    <div class="form-group hidden">
+    <label for="encounter.location_id_select">Screening Site:<span class="required">*</span></label>
+    <select class="form-control"  id="encounter.location_id_select" required="required">
+    <option>...</option>
+    <option data-location="Sokyot" value="154">Sokyot</option>
+    </select>
+    </div>
+
+    <div class="form-group">
+        <label for="encounter.encounter_datetime">
+            Date of Screening:<span class="required">*</span>
+        </label>
+        <input class="form-control datepicker nonFutureDate past-date" id="encounter.encounter_datetime"
+               name="encounter.encounter_datetime" type="text" readonly="readonly"
+               required="required">
+    </div>
+    <div class="form-group">
+        <input class="form-control" id="encounter.form_uuid" name="encounter.form_uuid" type="hidden"
+               required="required">
+    </div>
+</div>
+</div>
+</form>
+</body>
+<script type="text/javascript">
+
+$(document).ready(function () {
+
+    var dateFormat = "dd-mm-yy";
+    var currentDate = $.datepicker.formatDate(dateFormat, new Date());
+    var encounterDatetime = $('#encounter\\.encounter_datetime');
+    if ($(encounterDatetime).val() == "") {
+        $(encounterDatetime).val(currentDate);
+    }
+
+    $('#save_draft').click(function () {
+        $(this).prop('disabled', true);
+        document.saveDraft(this);
+        $(this).prop('disabled', false);
+    });
+
+    $('#submit_form').click(function () {
+        $(this).prop('disabled', true);
+        document.submit();
+        $(this).prop('disabled', false);
+    });
+
+
+    $('#screening_form').validate({
+
+        rules: {
+            "obs.height":{
+                range : [10, 228]
+            },
+            "obs.weight":{
+                range : [0, 250]
+            },
+            "obs.bmi":{
+                range : [0, 100]
+            },
+            "obs.waist_circumference":{
+                range : [0, 150]
+            },
+            "obs.systolic_blood_pressure":{
+                range : [50, 250]
+            },
+            "obs.diastolic_blood_pressure":{
+                range : [20, 150]
+            },
+            "obs.random_blood_sugar":{
+                range : [0, 150]
+            }
+        },
+        submitHandler: function (form) {
+            $('#result').html(JSON.stringify($('form').serializeEncounterForm(), undefined, 2));
+        }
+    });
+
+    $.validator.addMethod("compareBloodPressure", function (value, element) {
+            var systolic_blood_pressure = $('#obs\\.systolic_blood_pressure').val();
+            var diastolic_blood_pressure = $('#obs\\.diastolic_blood_pressure').val();
+            if(systolic_blood_pressure < diastolic_blood_pressure)
+                return false;
+            else
+                return true;
+
+            },"Systolic blood pressue can not be less than Diastolic blood pressure"
+        );
+    $('.future-or-today-date').change(function () {
+        if ($(this).is(':visible') && $(this).val() != '') {
+            var errors = {};
+            var pattern = /(\d{2})-(\d{2})-(\d{4})/g;
+            var matches = pattern.exec($(this).val());
+            var enteredDate = new Date(matches[3], matches[2] - 1, matches[1]);
+            var today = new Date(new Date().getFullYear(),new Date().getMonth(),new Date().getDate());
+            if (enteredDate < today) {
+                errors[$(this).attr('name')] = "Please enter present or future date.";
+            }
+            toggleValidationMessages(errors);
+        }
+    });
+    
+    var show_message=function(element_id){
+        $(element_id).show();
+    }
+    var hide_message=function(element_id){
+        $(element_id).hide();
+    } 
+    $('.where_are_your_parents').hide();
+    $('.primary_guard').change(function () {
+            var id = $('input[name=primary_guardian_ans]:checked').attr('id');
+            if ( (id === 'grand_parent') || (id === 'elder_relative') || (id ==='non_relative') || (id=== 'other')) {
+                $('.where_are_your_parents').show();
+            } else {
+                $('.where_are_your_parents').hide();
+            }
+        });
+    $('.why_single_parent').hide();
+    $('.primary_guard').change(function () {
+            var id = $('input[name=primary_guardian_ans]:checked').attr('id');
+            if ( (id === 'single_bio_parent')) {
+                $('.why_single_parent').show();
+            } else {
+                $('.why_single_parent').hide();
+            }
+        });
+    $('.drop_out_class').hide();
+    $('.class_your_in').hide();
+    $('.in_school_query').change(function () {
+            var id = $('input[name=in_school_ans]:checked').attr('id');
+            if ( (id === 'in_school_yes')) {
+                $('.class_your_in').show();
+            } else {
+                $('.drop_out_class').show();
+            }
+        });
+    $('.like_most').hide(); 
+    $('.dont_like').hide();
+    $('.happy_with_teen_club_query').change(function () {
+            var id = $('input[name=happy_with_teen_club_query_ans]:checked').attr('id');
+            console.log(id)
+            if ( (id === 'happy_yes')) {
+                $('.like_most').show();
+            }
+            if ( (id === 'happy_no')) {
+                $('.like_most').hide();
+                $('.dont_like').show();
+            }
+        });
+    $('.rate_social_support').hide();
+    $('.any_social_support_query').change(function () {
+            var id = $('input[name=any_social_support_query_ans]:checked').attr('id');
+            if ( (id === 'any_social_support_query_yes')) {
+                $('.rate_social_support').show();
+                $('.rate_life_changes').show();
+            }
+            if ( (id === 'any_social_support_query_no')) {
+                $('.rate_social_support').hide();
+                $('.rate_life_changes').hide();
+            }
+    });
+    $('.extracurricular_activities_list').hide();
+    $('.extracurricular_activities').change(function () {
+            var id = $('input[name=extracurricular_activities_query_ans]:checked').attr('id');
+            if ( (id === 'extracurricular_activities_query_yes')) {
+                $('.extracurricular_activities_list').show();
+            }
+            if ( (id === 'extracurricular_activities_query_no')) {
+                $('.extracurricular_activities_list').hide();
+            }
+    });
+    $('.name_of_role_model').hide();
+    $('.role_models_query').change(function () {
+            var id = $('input[name=role_models_query_ans]:checked').attr('id');
+            if ( (id === 'role_models_query_yes')) {
+                $('.name_of_role_model').show();
+            }
+            if ( (id === 'role_models_query_no')) {
+                $('.name_of_role_model').hide();
+            }
+    });    
+    $('.course').hide();   
+    $('.certificates').change(function () {
+            var id = $('input[name=certificates_query_ans]:checked').attr('id');
+            if ( (id === 'not_interested')) {
+                $('.course').show();
+            }
+            if ( (id === 'yes_relevant_training') || (id === 'yes_planning')) {
+                $('.course').hide();
+            }
+    });
+
+    var set_follow_up_facility_autocomplete=function(follow_up_facility_names){
+        $('#obs\\.follow_up_facility_name').autocomplete( {source: null} );
+        if(follow_up_facility_names!=null){
+            $('#obs\\.follow_up_facility_name').attr('placeholder','Start typing something...');
+
+            var follow_up_facility_name = $('#obs\\.follow_up_facility_name').val();
+            $('#obs\\.follow_up_facility_name').val('');
+            $('#obs\\.follow_up_facility_name').removeAttr('disabled');
+            $('#obs\\.follow_up_facility_name').autocomplete("enable");
+            $('#obs\\.follow_up_facility_name').autocomplete({
+                source: follow_up_facility_names,
+                create: function (event, ui) {
+                    $.each(follow_up_facility_names, function (i, elem) {
+                        if (elem.label == follow_up_facility_name) {
+                            $('#obs\\.follow_up_facility_name').val(elem.label);
+                        }
+                    });
+                },
+                select: function (event, ui) {
+                    $('#obs\\.follow_up_facility_name').val(ui.item.label);
+                    return false;
+                }
+            });
+        }else{
+            $('#obs\\.follow_up_facility_name').val('');
+            $('#obs\\.follow_up_facility_name').attr('placeholder','Enter facility name');
+            $('#obs\\.follow_up_facility_name').autocomplete("disable");
+            $('#obs\\.follow_up_facility_name').removeAttr('disabled');
+        }
+   }
+   var disable_follow_up_facility_autocomplete=function(){
+        set_follow_up_facility_autocomplete(null);
+   }
+   var disable_follow_up_facility_input=function(){
+        $('#obs\\.follow_up_facility_name').val('');
+        $('#obs\\.follow_up_facility_name').autocomplete("disable");
+        $('#obs\\.follow_up_facility_name').attr('disabled','disabled');
+   }
+
+    var hha_follow_up_facility_names=[
+    {"label": "Malaba Dispensary", "val": "91"}
+    ];
+
+
+    document.setupAutoCompleteData('encounter\\.location_id');
+
+    var provider = [
+    {"label": "Christopher J Mwenengo", "val": "2281-4"}
+    ];
+
+    document.setupAutoCompleteDataForProvider('encounter\\.provider_id_select');
+
+    $('#encounter\\.provider_id_select').change(function () {
+        if ($('#encounter\\.provider_id_select').val() === '') {
+            $('#encounter\\.provider_id').val('');
+            $('.show_provider_id_text').show();
+        }
+    });
+    
+    document.setupValidationForProvider("$('#encounter\\.provider_id_select').val()","encounter\\.provider_id");
+
+    document.setupValidationForLocation("$('#encounter\\.location_id').val()","encounter\\.location_id");
+
+});
+</script>
+
+</html>

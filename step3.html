@@ -1,0 +1,674 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/muzima.css" rel="stylesheet">
+    <link href="css/ui-darkness/jquery-ui-1.10.4.custom.min.css" rel="stylesheet">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-ui-1.10.4.custom.min.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/additional-methods.min.js"></script>
+    <script src="js/muzima.js"></script>
+
+    <title>Screening Encounter Form V 0.02</title>
+</head>
+
+<body class="col-md-10 col-md-offset-1">
+<div id="pre_populate_data"></div>
+<h2 class="text-center">Screening Encounter Form V 0.02</h2>
+
+<form id="screening_form" name="screening_form">
+
+<div class="section">
+    <h3>Demographics</h3>
+
+    <div class="form-group">
+        <input class="form-control" id="patient.uuid" name="patient.uuid" type="hidden" readonly="readonly">
+    </div>
+    <div class="form-group">
+        <label for="patient.medical_record_number">EMR ID:</label>
+        <input class="form-control" id="patient.medical_record_number" name="patient.medical_record_number" type="text"
+               readonly="readonly" disabled="disabled">
+    </div>
+    <div class="form-group">
+        <label for="patient.family_name">Family Name:</label>
+        <input class="form-control" id="patient.family_name" name="patient.family_name" type="text" readonly="readonly"
+               disabled="disabled">
+    </div>
+    <div class="form-group">
+        <label for="patient.given_name">Given Name:</label>
+        <input class="form-control" id="patient.given_name" name="patient.given_name" type="text" readonly="readonly"
+               disabled="disabled">
+    </div>
+    <div class="form-group">
+        <label for="patient.middle_name">Middle Name:</label>
+        <input class="form-control" id="patient.middle_name" name="patient.middle_name" type="text" readonly="readonly"
+               disabled="disabled">
+    </div>
+    <div class="form-group">
+        <label for="patient.sex">Gender:</label>
+        <select class="form-control" id="patient.sex" name="patient.sex"  readonly="readonly" disabled="disabled">
+            <option value="">...</option>
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="patient.birth_date">Date Of Birth:</label>
+        <input class="form-control" id="patient.birth_date" name="patient.birth_date" type="text" readonly="readonly"
+               disabled="disabled">
+    </div>
+</div>
+
+<div class="section">
+    <div class="form-group">
+        </p><label for="obs.weight">Weight (KG)  <span class="required">*</span></label>
+        <input class="form-control" id="obs.weight" name="obs.weight"
+               type="number" placeholder="Kilograms" data-concept="6569c44a-977f-11e1-8993-905e29aff6c1^Weight (kg)^99DCT" required="required">
+    </div>
+</div>
+<div class="section">
+    <div class="form-group">
+        <label for="obs.return_visit_date">
+            Proposed date of facility visit:<span class="required">*</span>
+        </label>
+        <input class="form-control datepicker future-or-today-date" id="obs.return_visit_date"
+               name="obs.return_visit_date" type="text" readonly="readonly" data-concept="6569cbd4-977f-11e1-8993-905e29aff6c1^Appointment date^99DCT" required="required">
+    </div>
+</div>
+<div class="section">
+    <div class="form-group">
+        <label for="encounter.provider_id_select">Screening Provider Name:</label>
+        <input class="form-control valid-provider-only" id="encounter.provider_id_select" type="text"
+               placeholder="Start typing provider name here ...">
+        <input class="form-control" name="encounter.provider_id_select" type="hidden">
+    </div>
+    <div class="form-group hidden">
+        <select id="select_providers">
+        </select>
+    </div>
+    <div class="form-group show_provider_id_text">
+        <label for="encounter.provider_id">Screening provider's system-id:<span class="required">*</span></label>
+        <input class="form-control checkDigit" id="encounter.provider_id" name="encounter.provider_id" type="text"
+               required="required" disabled="disabled" >
+    </div>
+    <div class="form-group">
+        <label for="encounter.location_id">Screening Location:<span class="required">*</span></label>
+        <input class="form-control valid-location-only" id="encounter.location_id" type="text" placeholder="Start typing something..." required="required">
+        <input class="form-control" name="encounter.location_id" type="hidden">
+    </div>
+
+
+    <div class="form-group hidden">
+    <label for="encounter.location_id_select">Screening Site:<span class="required">*</span></label>
+    <select class="form-control"  id="encounter.location_id_select" required="required">
+    <option>...</option>
+    <option data-location="Malaba Dispensary" value="91">Malaba Dispensary</option>
+    <option data-location="Kamolo Dispensary" value="106">Kamolo Dispensary</option>
+    <option data-location="Akichelesit Dispensary" value="124">Akichelesit Dispensary</option>
+    <option data-location="Angurai Health Centre" value="65">Angurai Health Centre</option>
+    <option data-location="Changara Dispensary" value="90">Changara Dispensary</option>
+    <option data-location="Moding Health Centre" value="126">Moding Health Centre</option>
+    <option data-location="Kolanya S.A dispensary" value="301">Kolanya S.A dispensary</option>
+    <option data-location="Aboloi Dispensary" value="125">Aboloi Dispensary</option>
+    <option data-location="Kocholya District Hospital" value="285">Kocholya District Hospital</option>
+    <option data-location="Matayos Health Centre" value="130">Matayos Health Centre</option>
+    <option data-location="Busia District Hospital" value="19">Busia District Hospital</option>
+    <option data-location="Nasewa Health Centre" value="190">Nasewa Health Centre</option>
+    <option data-location="Bumala A" value="55">Bumala A</option>
+    <option data-location="Bumala B" value="83">Bumala B</option>
+    <option data-location="Butula Mission Health Centre" value="332">Butula Mission Health Centre</option>
+    <option data-location="Khunyangu Sub district Hospital" value="220">Khunyangu Sub district Hospital</option>
+    <option data-location="Sisenye Dispensary" value="293">Sisenye Dispensary</option>
+    <option data-location="Port Victoria District Hospital" value="20">Port Victoria District Hospital</option>
+    <option data-location="Rukala Dispensary" value="279">Rukala Dispensary</option>
+    <option data-location="Mukhobola Health Centre" value="78">Mukhobola Health Centre</option>
+    <option data-location="Budalangi Dispensary" value="270">Budalangi Dispensary</option>
+    <option data-location="Sirimba Mission Hospital" value="266">Sirimba Mission Hospital</option>
+    <option data-location="Cherangany Health Centre" value="346">Cherangany Health Centre</option>
+    <option data-location="Endebes District Hospital" value="162">Endebes District Hospital</option>
+    <option data-location="Kapsara District Hospital" value="132">Kapsara District Hospital</option>
+    <option data-location="Kiminini Health Centre" value="310">Kiminini Health Centre</option>
+    <option data-location="Kitale District Hospital" value="11">Kitale District Hospital</option>
+    <option data-location="Kwanza Health Centre" value="320">Kwanza Health Centre</option>
+    <option data-location="Matunda Health Centre" value="324">Matunda Health Centre</option>
+    <option data-location="Mt. Elgon Dispensary" value="9">Mt. Elgon Dispensary</option>
+    <option data-location="Saboti District Hospital" value="82">Saboti District Hospital</option>
+    <option data-location="Bidii Health Centre" value="330">Bidii Health Centre</option>
+    <option data-location="St Fredahs Mission Hosp" value="345">St Fredahs Mission Hosp</option>
+    <option data-location="Chepngoror Dispensary" value="232">Chepngoror Dispensary</option>
+    <option data-location="Kipkabus Dispensary" value="223">Kipkabus Dispensary</option>
+    <option data-location="Burnt Forest Sub District Hosp" value="4">Burnt Forest Sub District Hosp</option>
+    <option data-location="Pioneer Health Centre" value="70">Pioneer Health Centre</option>
+    <option data-location="West Clinic Health Centre" value="336">West Clinic Health Centre</option>
+    <option data-location="Soy Dispensary " value="73">Soy Dispensary </option>
+    <option data-location="SOS Dispensary" value="145">SOS Dispensary</option>
+    <option data-location="Mois Bridge Health centre" value="71">Mois Bridge Health centre</option>
+    <option data-location="Langas Dispensary" value="341">Langas Dispensary</option>
+    <option data-location="Kapsoya Health Centre" value="343">Kapsoya Health Centre</option>
+    <option data-location="Ziwa Sub District Hosp" value="28">Ziwa Sub District Hosp</option>
+    <option data-location="Magemo" value="239">Magemo</option>
+    <option data-location="Sinoko" value="75">Sinoko</option>
+    <option data-location="Mitukuyu" value="241">Mitukuyu</option>
+    <option data-location="Marinda" value="242">Marinda</option>
+    <option data-location="Nang'eni" value="243">Nang'eni</option>
+    <option data-location="Chulaimbo HC" value="7">Chulaimbo HC</option>
+    <option data-location="Riat Dispensary" value="103">Riat Dispensary</option>
+    <option data-location="Sunga Dispensary" value="104">Sunga Dispensary</option>
+    <option data-location="Siriba Dispensary" value="105">Siriba Dispensary</option>
+    <option data-location="Komiriai" value="248">Komiriai</option>
+    <option data-location="Amoni" value="252">Amoni</option>
+    <option data-location="Kamuriai" value="254">Kamuriai</option>
+    <option data-location="Osajai" value="255">Osajai</option>
+    <option data-location="Township" value="256">Township</option>
+    <option data-location="Olobai" value="257">Olobai</option>
+    <option data-location="Onyunyur" value="259">Onyunyur</option>
+    <option data-location="Kodedema" value="261">Kodedema</option>
+    <option data-location="Kekalet" value="263">Kekalet</option>
+    <option data-location="kakapel" value="265">kakapel</option>
+    <option data-location="Adanya/chelelemuk" value="267">Adanya/chelelemuk</option>
+    <option data-location="Katotoi/Kakurikit" value="269">Katotoi/Kakurikit</option>
+    <option data-location="Changara/Akobwait" value="275">Changara/Akobwait</option>
+    <option data-location="Adumai/Kolait" value="303">Adumai/Kolait</option>
+    <option data-location="Kolanya" value="302">Kolanya</option>
+    <option data-location="Rwatama" value="300">Rwatama</option>
+    <option data-location="Moding" value="299">Moding</option>
+    <option data-location="Apokor" value="298">Apokor</option>
+    <option data-location="Katelepai/Akolong" value="297">Katelepai/Akolong</option>
+    <option data-location="Amagoro" value="291">Amagoro</option>
+    <option data-location="Okuleu" value="289">Okuleu</option>
+    <option data-location="Kocholya" value="287">Kocholya</option>
+    <option data-location="Kokare" value="286">Kokare</option>
+    <option data-location="Aterait" value="262">Aterait</option>
+    <option data-location="Aedomuru" value="260">Aedomuru</option>
+    <option data-location="Kakemer" value="258">Kakemer</option>
+    <option data-location="Nangoma " value="203">Nangoma </option>
+    <option data-location="Muyafywa" value="202">Muyafywa</option>
+    <option data-location="Murende" value="201">Murende</option>
+    <option data-location="Busende" value="200">Busende</option>
+    <option data-location="Luliba" value="199">Luliba</option>
+    <option data-location="Igero" value="198">Igero</option>
+    <option data-location="Mjini" value="197">Mjini</option>
+    <option data-location="Mayenje" value="196">Mayenje</option>
+    <option data-location="Nasewa" value="194">Nasewa</option>
+    <option data-location="Mabunge" value="193">Mabunge</option>
+    <option data-location="Buyama" value="192">Buyama</option>
+    <option data-location="Lung'a" value="191">Lung'a</option>
+    <option data-location="Bukhakhala" value="244">Bukhakhala</option>
+    <option data-location="Busire" value="231">Busire</option>
+    <option data-location="Bumala A Community Unit" value="230">Bumala A Community Unit</option>
+    <option data-location="Bumala B Community Unit" value="228">Bumala B Community Unit</option>
+    <option data-location="Esikarira" value="333">Esikarira</option>
+    <option data-location="King'andole" value="222">King'andole</option>
+    <option data-location="Sikoma" value="221">Sikoma</option>
+    <option data-location="Mundere" value="296">Mundere</option>
+    <option data-location="Bulemia" value="295">Bulemia</option>
+    <option data-location="Sisenye" value="294">Sisenye</option>
+    <option data-location="Bukoma" value="292">Bukoma</option>
+    <option data-location="Bukani" value="290">Bukani</option>
+    <option data-location="Siginga" value="288">Siginga</option>
+    <option data-location="Mabinju" value="284">Mabinju</option>
+    <option data-location="Rugunga" value="282">Rugunga</option>
+    <option data-location="lugale " value="281">lugale </option>
+    <option data-location="Rukala" value="280">Rukala</option>
+    <option data-location="Magombe Central" value="277">Magombe Central</option>
+    <option data-location="Magombe West" value="276">Magombe West</option>
+    <option data-location="Magombe East" value="274">Magombe East</option>
+    <option data-location="Mudembi" value="272">Mudembi</option>
+    <option data-location="Budalangi" value="271">Budalangi</option>
+    <option data-location="Ruambwa" value="268">Ruambwa</option>
+    <option data-location="Noigam" value="305">Noigam</option>
+    <option data-location="Nzoia" value="306">Nzoia</option>
+    <option data-location="Kiptoi" value="309">Kiptoi</option>
+    <option data-location="Tunen" value="308">Tunen</option>
+    <option data-location="Endebes South" value="168">Endebes South</option>
+    <option data-location="Kuchek" value="170">Kuchek</option>
+    <option data-location="Endebes North" value="165">Endebes North</option>
+    <option data-location="Kiptogot" value="169">Kiptogot</option>
+    <option data-location="Kirita" value="159">Kirita</option>
+    <option data-location="Kabolet  1" value="157">Kabolet  1</option>
+    <option data-location="Kabolet  2" value="158">Kabolet  2</option>
+    <option data-location="Muthangari" value="311">Muthangari</option>
+    <option data-location="Birunda" value="312">Birunda</option>
+    <option data-location="Kananachi" value="313">Kananachi</option>
+    <option data-location="Masaba" value="314">Masaba</option>
+    <option data-location="Baraton" value="315">Baraton</option>
+    <option data-location="Meso/Big Tree" value="316">Meso/Big Tree</option>
+    <option data-location="Kiungani" value="317">Kiungani</option>
+    <option data-location="Showground" value="318">Showground</option>
+    <option data-location="Bahati" value="319">Bahati</option>
+    <option data-location="Lunyu" value="321">Lunyu</option>
+    <option data-location="Kwanza" value="323">Kwanza</option>
+    <option data-location="Gideo" value="322">Gideo</option>
+    <option data-location="Nyasi" value="326">Nyasi</option>
+    <option data-location="Matunda" value="325">Matunda</option>
+    <option data-location="Sabata" value="327">Sabata</option>
+    <option data-location="Tulwopkessis" value="329">Tulwopkessis</option>
+    <option data-location="Kapretwa" value="173">Kapretwa</option>
+    <option data-location="Sukwo" value="174">Sukwo</option>
+    <option data-location="Muroki" value="172">Muroki</option>
+    <option data-location="Koikoi" value="175">Koikoi</option>
+    <option data-location="Bidii" value="331">Bidii</option>
+    <option data-location="Chepng'oror" value="233">Chepng'oror</option>
+    <option data-location="Kipkabus" value="227">Kipkabus</option>
+    <option data-location="Olare" value="219">Olare</option>
+    <option data-location="Pioneer" value="335">Pioneer</option>
+    <option data-location="Kibulgeng" value="337">Kibulgeng</option>
+    <option data-location="Soy" value="338">Soy</option>
+    <option data-location="Kapsoya" value="144">Kapsoya</option>
+    <option data-location="Mlimani" value="340">Mlimani</option>
+    <option data-location="Langas" value="342">Langas</option>
+    <option data-location="Munyaka" value="344">Munyaka</option>
+    <option data-location="Kipsigak" value="156">Kipsigak</option>
+    <option data-location="Lemorong'eny" value="235">Lemorong'eny</option>
+    <option data-location="Ziwa" value="28">Ziwa</option>
+    <option data-location="Kapsang'" value="236">Kapsang'</option>
+    <option data-location="Kong'asis" value="237">Kong'asis</option>
+    <option data-location="Segero" value="238">Segero</option>
+    <option data-location="Sinoko" value="240">Sinoko</option>
+    <option data-location="Webuye District Hosp" value="8">Webuye District Hosp</option>
+    <option data-location="East Karateng" value="151">East Karateng</option>
+    <option data-location="Newa" value="152">Newa</option>
+    <option data-location="Marera" value="150">Marera</option>
+    <option data-location="South Kapuonja" value="153">South Kapuonja</option>
+    <option data-location="North Kapuonja" value="154">North Kapuonja</option>
+    <option data-location="Sunga" value="339">Sunga</option>
+    <option data-location="West Karateng" value="155">West Karateng</option>
+    <option data-location="Kokwet" value="114">Kokwet</option>
+    <option data-location="Kosirai" value="159">Kosirai</option>
+    <option data-location="Mutwot" value="160">Mutwot</option>
+    <option data-location="Mosoriot" value="2">Mosoriot</option>
+    <option data-location="Birbiriet" value="111">Birbiriet</option>
+    <option data-location="Itigo" value="112">Itigo</option>
+    <option data-location="Chepterit" value="133">Chepterit</option>
+    <option data-location="Ngechek" value="115">Ngechek</option>
+    <option data-location="Lelmokwo" value="113">Lelmokwo</option>
+    <option data-location="sigot" value="119">sigot</option>
+    <option data-location="Chepkemel " value="122">Chepkemel </option>
+    <option data-location="Cheplaskei" value="118">Cheplaskei</option>
+    <option data-location="Tuigoin" value="157">Tuigoin</option>
+    <option data-location="Sugoi A" value="120">Sugoi A</option>
+    <option data-location="Sugoi B" value="121">Sugoi B</option>
+    <option data-location="Leseru" value="158">Leseru</option>
+    <option data-location="MurgoHillls" value="136">MurgoHillls</option>
+    <option data-location="Murgusi" value="117">Murgusi</option>
+    <option data-location="Sambut" value="127">Sambut</option>
+    <option data-location="Sosiani" value="129">Sosiani</option>
+    <option data-location="Turbo/Kaptebee" value="155">Turbo/Kaptebee</option>
+    <option data-location="Chepsaita" value="60">Chepsaita</option>
+    <option data-location="Cheramei" value="116">Cheramei</option>
+    <option data-location="Ngenyilel" value="128">Ngenyilel</option>
+    <option data-location="Osorongai" value="137">Osorongai</option>
+    <option data-location="Sokyot" value="154">Sokyot</option>
+    </select>
+    </div>
+
+    <div class="form-group">
+        <label for="encounter.encounter_datetime">
+            Date of Screening:<span class="required">*</span>
+        </label>
+        <input class="form-control datepicker nonFutureDate past-date" id="encounter.encounter_datetime"
+               name="encounter.encounter_datetime" type="text" readonly="readonly"
+               required="required">
+    </div>
+    <div class="form-group">
+        <input class="form-control" id="encounter.form_uuid" name="encounter.form_uuid" type="hidden"
+               required="required">
+    </div>
+</div>
+</div>
+</form>
+</body>
+<script type="text/javascript">
+
+$(document).ready(function () {
+
+    var dateFormat = "dd-mm-yy";
+    var currentDate = $.datepicker.formatDate(dateFormat, new Date());
+    var encounterDatetime = $('#encounter\\.encounter_datetime');
+    if ($(encounterDatetime).val() == "") {
+        $(encounterDatetime).val(currentDate);
+    }
+
+    $('#save_draft').click(function () {
+        $(this).prop('disabled', true);
+        document.saveDraft(this);
+        $(this).prop('disabled', false);
+    });
+
+    $('#submit_form').click(function () {
+        $(this).prop('disabled', true);
+        document.submit();
+        $(this).prop('disabled', false);
+    });
+
+
+    $('#screening_form').validate({
+
+        rules: {
+            "obs.height":{
+                range : [10, 228]
+            },
+            "obs.weight":{
+                range : [0, 250]
+            },
+            "obs.bmi":{
+                range : [0, 100]
+            },
+            "obs.waist_circumference":{
+                range : [0, 150]
+            },
+            "obs.systolic_blood_pressure":{
+                range : [50, 250]
+            },
+            "obs.diastolic_blood_pressure":{
+                range : [20, 150]
+            },
+            "obs.random_blood_sugar":{
+                range : [0, 150]
+            }
+        },
+        submitHandler: function (form) {
+            $('#result').html(JSON.stringify($('form').serializeEncounterForm(), undefined, 2));
+        }
+    });
+
+    $.validator.addMethod("compareBloodPressure", function (value, element) {
+            var systolic_blood_pressure = $('#obs\\.systolic_blood_pressure').val();
+            var diastolic_blood_pressure = $('#obs\\.diastolic_blood_pressure').val();
+            if(systolic_blood_pressure < diastolic_blood_pressure)
+                return false;
+            else
+                return true;
+
+            },"Systolic blood pressue can not be less than Diastolic blood pressure"
+        );
+    $('.future-or-today-date').change(function () {
+        if ($(this).is(':visible') && $(this).val() != '') {
+            var errors = {};
+            var pattern = /(\d{2})-(\d{2})-(\d{4})/g;
+            var matches = pattern.exec($(this).val());
+            var enteredDate = new Date(matches[3], matches[2] - 1, matches[1]);
+            var today = new Date(new Date().getFullYear(),new Date().getMonth(),new Date().getDate());
+            if (enteredDate < today) {
+                errors[$(this).attr('name')] = "Please enter present or future date.";
+            }
+            toggleValidationMessages(errors);
+        }
+    });
+
+    var show_message=function(element_id){
+        $(element_id).show();
+    }
+    var hide_message=function(element_id){
+        $(element_id).hide();
+    }
+    var evaluate_bmi_and_bmi_logic=function(){
+        var weight = $('#obs\\.weight').val();
+        var height_in_meters = $('#obs\\.height').val()/100;
+        var bmi=+((weight/(height_in_meters*height_in_meters)).toFixed(2));
+        $('#obs\\.bmi').attr('value',bmi);
+
+        evaluate_bmi_logic();
+
+    };
+    var evaluate_bmi_logic=function(){
+        if(bmi_is_out_of_range()){
+            show_message('#bmi_out_of_range_message');
+        }else{
+            hide_message('#bmi_out_of_range_message');
+        }
+        if(bmi_is_above_threshold()){
+            show_message('#bmi_above_threshold_message');
+            set_require_random_blood_sugar(true);
+        }else{
+            hide_message('#bmi_above_threshold_message');
+            evaluate_require_random_blood_sugar();
+        }
+    };
+    var bmi_is_out_of_range=function(){
+        var bmi = $('#obs\\.bmi').val();
+        if(bmi<0 || bmi>100){
+            return true;
+        }
+    }
+    var bmi_is_above_threshold=function(){
+        var bmi = $('#obs\\.bmi').val();
+        var weight = $('#obs\\.weight').val();
+        var height_in_meters = $('#obs\\.height').val()/100;
+        if(weight>0 && height_in_meters>0 && bmi>25){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    var age_is_above_threshold=function(){
+        var age_threshold=40;
+        var date_of_birth_arr=$('#patient\\.birth_date').val().split("-");
+        var birthDate = new Date(date_of_birth_arr[2], date_of_birth_arr[1] - 1, date_of_birth_arr[0]);
+        var today = new Date();
+        var age = today.getFullYear() - birthDate.getFullYear();
+        var m = today.getMonth() - birthDate.getMonth();
+          if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+          }
+        return age >= age_threshold;
+    }
+    var evaluate_require_random_blood_sugar=function(){
+        if(age_is_above_threshold() || bmi_is_above_threshold()||waist_circumference_is_above_threshold()){
+            set_require_random_blood_sugar(true);
+        }else{
+            set_require_random_blood_sugar(false);
+        }
+    }
+    var set_require_random_blood_sugar=function(require_random_blood_sugar){
+        if(require_random_blood_sugar==true){
+            $('#obs\\.random_blood_sugar').attr('required','required');
+            $('#random_blood_sugar_label').show();
+        } else {
+            $('#obs\\.random_blood_sugar').removeAttr('required');
+            $('#random_blood_sugar_label').hide();
+        }
+    }
+    var is_gender=function(gender){
+        return $('#patient\\.sex').val() == gender;
+    }
+    var is_female=function(){
+        return is_gender('F');
+    }
+    var is_male=function(){
+        return is_gender('M');
+    }
+    var waist_circumference_is_above_female_threshold=function(){
+        return $('#obs\\.waist_circumference').val() >88;
+    }
+    var waist_circumference_is_above_male_threshold=function(){
+        return $('#obs\\.waist_circumference').val() >102;
+    }
+    var waist_circumference_is_above_threshold=function(){
+        return is_female() && waist_circumference_is_above_female_threshold() || is_male() && waist_circumference_is_above_male_threshold();
+    }
+    var random_blood_sugar_is_above_threshold=function(){
+        return $('#obs\\.random_blood_sugar').val() >7.8;
+    }
+    var systolic_blood_pressure_is_above_threshold=function(){
+        return $('#obs\\.systolic_blood_pressure').val() >140;
+    }
+    var systolic_blood_pressure_is_below_threshold=function(){
+        return $('#obs\\.systolic_blood_pressure').val() < 80;
+    }
+    var diastolic_blood_pressure_is_above_threshold=function(){
+        return $('#obs\\.diastolic_blood_pressure').val() >90;
+    }
+    var diastolic_blood_pressure_is_below_threshold=function(){
+        return $('#obs\\.diastolic_blood_pressure').val() < 60;
+    }
+    var is_known_diabetic=function(){
+        return $('#known_diabetic_yes').is(':checked');
+    }
+    var is_known_hypertensive=function(){
+        return $('#known_hypertensive_yes').is(':checked');
+    }
+
+    var evaluate_waist_circumference_logic=function(){
+        if(waist_circumference_is_above_threshold()){
+            show_message('#waist_circumference_above_threshold_message');
+            set_require_random_blood_sugar(true);
+        }else{
+            hide_message('#waist_circumference_above_threshold_message');
+            evaluate_require_random_blood_sugar();
+        }
+    }
+    var evaluate_random_blood_sugar_logic=function(){
+        if(random_blood_sugar_is_above_threshold()){
+            show_message('#random_blood_sugar_above_threshold_message');
+        }else{
+            hide_message('#random_blood_sugar_above_threshold_message');
+        }
+    }
+    var evaluate_systolic_blood_pressure_logic=function(){
+        if(systolic_blood_pressure_is_below_threshold()){
+            show_message('#systolic_blood_pressure_below_threshold_message');
+        }else{
+            hide_message('#systolic_blood_pressure_below_threshold_message');
+        }
+        if(systolic_blood_pressure_is_above_threshold()){
+            show_message('#systolic_blood_pressure_above_threshold_message');
+        }else{
+            hide_message('#systolic_blood_pressure_above_threshold_message');
+        }
+    }
+    var evaluate_diastolic_blood_pressure_logic=function(){
+        if(diastolic_blood_pressure_is_below_threshold()){
+            show_message('#diastolic_blood_pressure_below_threshold_message');
+        }else{
+            hide_message('#diastolic_blood_pressure_below_threshold_message');
+        }
+        if(diastolic_blood_pressure_is_above_threshold()){
+            show_message('#diastolic_blood_pressure_above_threshold_message');
+        }else{
+            hide_message('#diastolic_blood_pressure_above_threshold_message');
+        }
+    }
+    var evaluate_known_diabetic_logic=function(){
+        if(is_known_diabetic()){
+            show_message('#known_diabetic_advisory_message');
+        }else{
+            hide_message('#known_diabetic_advisory_message');
+        }
+    }
+    var evaluate_known_hypertensive_logic=function(){
+        if(is_known_hypertensive()){
+            show_message('#known_hypertensive_advisory_message');
+        }else{
+            hide_message('#known_hypertensive_advisory_message');
+        }
+    }
+    var evaluate_follow_up_facility_logic=function(element){
+        var selected_option_id=$(element).find('option:selected').attr('id');
+	    if(selected_option_id=='follow_up_facility_option_hha'){
+            set_follow_up_facility_autocomplete(hha_follow_up_facility_names);
+        }else if(selected_option_id=='follow_up_facility_option_cdm'){
+            set_follow_up_facility_autocomplete(cdm_follow_up_facility_names);
+        }else if(selected_option_id=='follow_up_facility_option_non_ampath'){
+            disable_follow_up_facility_autocomplete();
+        }else{
+            disable_follow_up_facility_input();
+        }
+    }
+    $('#obs\\.weight').change(function(){
+        evaluate_bmi_and_bmi_logic();
+    });
+    $('#obs\\.height').change(function(){
+        evaluate_bmi_and_bmi_logic();
+    });
+    $('#obs\\.waist_circumference').change(function(){
+        evaluate_waist_circumference_logic();
+    });
+    $('#obs\\.random_blood_sugar').change(function(){
+        evaluate_random_blood_sugar_logic();
+    });
+    $('#obs\\.systolic_blood_pressure').change(function(){
+        evaluate_systolic_blood_pressure_logic();
+    });
+    $('#obs\\.diastolic_blood_pressure').change(function(){
+        evaluate_diastolic_blood_pressure_logic();
+    });
+    $('#obs\\.known_diabetic').change(function(){
+        evaluate_known_diabetic_logic();
+    });
+    $('#obs\\.known_hypertensive').change(function(){
+        evaluate_known_hypertensive_logic();
+    });
+    $('#follow_up_facility_select').change(function(){
+	evaluate_follow_up_facility_logic(this);
+    });
+
+    var set_follow_up_facility_autocomplete=function(follow_up_facility_names){
+        $('#obs\\.follow_up_facility_name').autocomplete( {source: null} );
+        if(follow_up_facility_names!=null){
+            $('#obs\\.follow_up_facility_name').attr('placeholder','Start typing something...');
+
+            var follow_up_facility_name = $('#obs\\.follow_up_facility_name').val();
+            $('#obs\\.follow_up_facility_name').val('');
+            $('#obs\\.follow_up_facility_name').removeAttr('disabled');
+            $('#obs\\.follow_up_facility_name').autocomplete("enable");
+            $('#obs\\.follow_up_facility_name').autocomplete({
+                source: follow_up_facility_names,
+                create: function (event, ui) {
+                    $.each(follow_up_facility_names, function (i, elem) {
+                        if (elem.label == follow_up_facility_name) {
+                            $('#obs\\.follow_up_facility_name').val(elem.label);
+                        }
+                    });
+                },
+                select: function (event, ui) {
+                    $('#obs\\.follow_up_facility_name').val(ui.item.label);
+                    return false;
+                }
+            });
+        }else{
+            $('#obs\\.follow_up_facility_name').val('');
+            $('#obs\\.follow_up_facility_name').attr('placeholder','Enter facility name');
+            $('#obs\\.follow_up_facility_name').autocomplete("disable");
+            $('#obs\\.follow_up_facility_name').removeAttr('disabled');
+        }
+   }
+   var disable_follow_up_facility_autocomplete=function(){
+        set_follow_up_facility_autocomplete(null);
+   }
+   var disable_follow_up_facility_input=function(){
+        $('#obs\\.follow_up_facility_name').val('');
+        $('#obs\\.follow_up_facility_name').autocomplete("disable");
+        $('#obs\\.follow_up_facility_name').attr('disabled','disabled');
+   }
+
+    var hha_follow_up_facility_names=[
+    {"label": "Malaba Dispensary", "val": "91"}
+    ];
+
+
+    document.setupAutoCompleteData('encounter\\.location_id');
+
+    var provider = [
+    {"label": "Christopher J Mwenengo", "val": "2281-4"}
+    ];
+
+    document.setupAutoCompleteDataForProvider('encounter\\.provider_id_select');
+
+    $('#encounter\\.provider_id_select').change(function () {
+        if ($('#encounter\\.provider_id_select').val() === '') {
+            $('#encounter\\.provider_id').val('');
+            $('.show_provider_id_text').show();
+        }
+    });
+
+    document.setupValidationForProvider("$('#encounter\\.provider_id_select').val()","encounter\\.provider_id");
+
+    document.setupValidationForLocation("$('#encounter\\.location_id').val()","encounter\\.location_id");
+
+});
+</script>
+
+</html>

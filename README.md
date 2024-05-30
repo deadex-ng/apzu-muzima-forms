@@ -10,6 +10,7 @@ This repository contains all APZU mUzima forms.
 4. [Set up mUzima Form on OpenMRS](#set-up-muzima-form-on-openmrs)
 5. [Program Setup on OpenMRS](#program-setup-on-openmrs)
 6. [Accesing mUzima on the phone](#accesing-muzima-on-the-phone)
+7. [Queue Data and Scheduler](#queue-data-and-scheduler)
 
 ## Installation
 
@@ -82,13 +83,16 @@ Click on `Upload` and you'll taken to this:
 There are a number of things that we need to know before we upload the form.
 
 1. Form Definition
-   The form definition is the encounter for the particular form.
+
+The form definition is the encounter for the particular form.
 
 2. Name and Version
-   If you select the form definition, the name and version are automatically field.
+
+If you select the form definition, the name and version are automatically filled.
 
 3. Discriminator
-   Our form is a follow-up encounter, we need to select `json-encounter` as the discriminator.
+
+Our form is a follow-up encounter, we need to select `json-encounter` as the discriminator.
 
 4. Click `Click here to select file` to select your form and click on `Upload`.
 
@@ -137,3 +141,14 @@ Install the app and open it:
 Enter the URL of your OpenMRS server, your username and password.
 
 After a successful login, you'll see a list of Progam Setups. Select the Program Setup that you created and it'll download all the components of that program set up.
+
+## Queue Data and Scheduler
+
+For every form that is uploaded from the mobile application, the form entry comes to Queue data section in mUzima.
+![](./images/queue%20data.png)
+
+The data remains here until you upload it into the core OpenMRS database. We have a scheduler that we need to enable to automatically load the data into the core database depending on the schedule that we'll set.
+
+Let's go to `Administration` -> `Scheduler` -> `Manage Scheduler`.
+
+We should be able to see `Process mUzima Queue Data` task. Configure the task according to your needs and it should be able to load data according to the schedule that you have set.

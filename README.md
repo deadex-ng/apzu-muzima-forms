@@ -52,23 +52,6 @@ This is how the weight section looks like:
 </div>
 ```
 
-```html
-<input
-  class="form-control"
-  id="patient.tagName"
-  name="patient.tagName"
-  type="hidden"
-  value="INT"
-/>
-<input
-  class="form-control"
-  id="patient.tagUuid"
-  name="patient.tagUuid"
-  type="hidden"
-  value="242bf066-7222-4ac5-a115-b5a48ee17f95"
-/>
-```
-
 We need to update the `data-concept` tag with our information from OpenMRS. Let's get the `UUID` and the `Fully Specified Name` for the Weight concept.
 In my case the UUID is `6569c44a-977f-11e1-8993-905e29aff6c1` and the Fully Specified Name is `Weight (kg)`.
 

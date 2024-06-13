@@ -34,7 +34,7 @@
           />
         </div>
         <div class="form-group">
-          <label for="patient.medical_record_number">AMRS ID Number:</label>
+          <label for="patient.medical_record_number">EMR ID Number:</label>
           <input
             class="form-control"
             id="patient.medical_record_number"
@@ -166,7 +166,7 @@
       <div class="section">
         <div class="form-group">
           <label for="obs.literate">
-            Are you literate? <span class="required">*</span></label
+            Umakwanitsa kulemba ndi kuwerenga? <span class="required">*</span></label
           >
           <fieldset id="obs.literate" name="obs.literate">
             <input
@@ -177,7 +177,7 @@
               value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT"
               required="required"
             />
-            <label for="literate_yes">Yes</label>&nbsp;&nbsp;
+            <label for="literate_yes">Eya</label>&nbsp;&nbsp;
             <input
               id="literate_no"
               type="radio"
@@ -186,89 +186,138 @@
               value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT"
               required="required"
             />
-            <label for="literate_no">No</label>
+            <label for="literate_no">Ayi</label>
           </fieldset>
         </div>
         <div class="in_school_query">
-            <label for="obs.in_school"> Are you in school?  <span class="required">*</span></label>
+            <label for="obs.in_school"> Umapita ku sukulu?  <span class="required">*</span></label>
             
             <fieldset id="obs.in_school" name="obs.in_school">
                <input id="in_school_yes" type="radio" name="in_school_ans" data-concept="f39717e7-b68b-4ec1-8094-a6c0ae930c7f^Are you in school?^99DCT"
                     value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
-               <label for="in_school_yes">Yes</label>&nbsp;&nbsp;
+               <label for="in_school_yes">Eya</label>&nbsp;&nbsp;
                <input id="in_school_no" type="radio" name="in_school_ans" data-concept="f39717e7-b68b-4ec1-8094-a6c0ae930c7f^Are you in school?^99DCT"
                     value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
-               <label for="in_school_no">No</label>
+               <label for="in_school_no">Ayi</label> &nbsp;&nbsp;
             </fieldset>
         </div>
         <div class="drop_out_class">
-            <label for="obs.drop_school_class"> In what class did you drop out of school?</label>
+          <label for="obs.in_school"> Analekeza kalasi yanji?<span class="required">*</span></label>
+          
+          <fieldset id="obs.in_school" name="obs.in_school">
+             <input id="primary_school" type="radio" name="drop_out_school_level_ans" required="required">
+             <label for="primary_school">Primary</label>&nbsp;&nbsp;
+             <input id="secondary_school" type="radio" name="drop_out_school_level_ans"required="required">
+             <label for="secondary_school">Secondary</label>
+          </fieldset>
+          <!-- <label for="obs.drop_school_class"> Analekeza kalasi yanji?</label>
             <input class="form-control" id="obs.drop_school_class" name="obs.drop_school_class"
-                   type="text" data-concept="80f130e3-a53b-4306-a8c9-ee1731575684^Dropped out School Class^99DCT">
+                   type="text" data-concept="80f130e3-a53b-4306-a8c9-ee1731575684^Dropped out School Class^99DCT"> -->
         </div>
         <div class="class_your_in">
-            <label for="obs.current_class"> What class are you in? </label>
+          <label for="obs.in_school"> Uli mu kalasi yanji kusukuliko?  <span class="required">*</span></label>
+          
+          <fieldset id="obs.in_school" name="obs.in_school">
+             <input id="primary_school" type="radio" name="in_school_level_ans" required="required">
+             <label for="primary_school">Primary</label>&nbsp;&nbsp;
+             <input id="secondary_school" type="radio" name="in_school_level_ans"required="required">
+             <label for="secondary_school">Secondary</label>
+          </fieldset>
+            <!-- <label for="obs.current_class"> Uli mu kalasi yanji kusukuliko? </label>
             <input class="form-control" id="obs.current_class" name="obs.current_class"
-                   type="text" data-concept="9715e824-23d7-44ed-a6a8-ea6fbeced93f^Current School class^99DCT">
+                   type="text" data-concept="9715e824-23d7-44ed-a6a8-ea6fbeced93f^Current School class^99DCT"> -->
+        </div>
+        <!-- <div class="school_level_query">
+          <label for="obs.in_school"> Uli mu kalasi yanji kusukuliko?  <span class="required">*</span></label>
+          
+          <fieldset id="obs.in_school" name="obs.in_school">
+             <input id="primary_school" type="radio" name="school_level_ans" required="required">
+             <label for="primary_school">Primary</label>&nbsp;&nbsp;
+             <input id="secondary_school" type="radio" name="school_level_ans"required="required">
+             <label for="secondary_school">Secondary</label>
+          </fieldset>
+        </div> -->
+        <div class="primary_class_query">
+          <label for="primary-class">Choose class:</label>
+            <select name="primary-class" id="primary-class"
+              data-concept="9715e824-23d7-44ed-a6a8-ea6fbeced93f^Current School class^99DCT"><option value="">...</option>
+              <option value="Std 1">Std 1</option>
+              <option value="Std 2">Std 2</option>
+              <option value="Std 3">Std 3</option>
+              <option value="Std 4">Std 4</option>
+              <option value="Std 5">Std 5</option>
+              <option value="Std 6">Std 6</option>
+              <option value="Std 7">Std 7</option>
+              <option value="Std 8">Std 8</option>
+            </select>
+        </div>
+        <div class="secondary_class_query">
+          <label for="secondary-class">Choose class:</label>
+            <select name="secondary-class" id="secondary-class"><option value="">...</option>
+              <option value="Form 1">Form 1</option>
+              <option value="Form 2">Form 2</option>
+              <option value="Form 3">Form 3</option>
+              <option value="Form 4">Form 4</option>
+            </select>
         </div>
 
         <div class="plans_after_school">
-            <label for="obs.plans_after_school"> What are you planning/anticipate to do after school?  <span class="required">*</span></label>
+            <label for="obs.plans_after_school"> Malingaliro ako ndi otani/ ukuyembekeza kudzachita chani ukamaliza maphunziro ako?<span class="required">*</span></label>
 
             <fieldset id="obs.plans_after_school" name="obs.plans_after_school">
                <input id="get_a_job" type="radio" name="obs.plans_after_school" data-concept="e1eef37b-98f5-4c86-9560-c090e5b1731f^Plans after school^99DCT"
                     value="b0cccb19-5744-4d7c-a20f-5357d8eedfa8^Get a job^99DCT" required="required">
-               <label for="get_a_job">Get a Job</label>&nbsp;&nbsp;
+               <label for="get_a_job">Kupeza ntchito</label>&nbsp;&nbsp;
                
                <input id="business" type="radio" name="obs.plans_after_school" data-concept="e1eef37b-98f5-4c86-9560-c090e5b1731f^Plans after school^99DCT"
                     value="3b7d62ef-c044-4cfa-bf44-ba3fcdea70ee^Business^99DCT" required="required">
-               <label for="business">Business</label>&nbsp;&nbsp;
+               <label for="business">Kugulitsa malonda</label>&nbsp;&nbsp;
                
                <input id="further_education" type="radio" name="obs.plans_after_school" data-concept="e1eef37b-98f5-4c86-9560-c090e5b1731f^Plans after school^99DCT"
                     value="534c8fba-8077-445a-a2dd-ab90d5af8090^Further Education^99DCT" required="required">
-                <label for="further_education">Further Education</label>&nbsp;&nbsp;
+                <label for="further_education">Kupitilizabe maphunziro</label>&nbsp;&nbsp;
             
                 <input id="farming" type="radio" name="obs.plans_after_school" data-concept="e1eef37b-98f5-4c86-9560-c090e5b1731f^Plans after school^99DCT"
                     value="aac9cf84-ebe7-41c1-b2e9-06514af2c1f8^Farming^99DCT" required="required">
-                <label for="farming">Farming</label>&nbsp;&nbsp;
+                <label for="farming">Ulimi</label>&nbsp;&nbsp;
         
                 <input id="other" type="radio" name="obs.plans_after_school" data-concept="e1eef37b-98f5-4c86-9560-c090e5b1731f^Plans after school^99DCT"
                     value="656cce7e-977f-11e1-8993-905e29aff6c1^Other non-coded^99DCT" required="required">
-                <label for="other">Other</label>
+                <label for="other">Zina</label>
         </div>
 
         <div class="primary_guardian">
-                <label for="obs.primary_guardian"> Who is your primary guardian?  <span class="required">*</span></label>
+                <label for="obs.primary_guardian"> Ndi ndani amene amakuyang’anirani kwanu?<span class="required">*</span></label>
                 <fieldset id="obs.primary_guardian" name="obs.primary_guardian">
                    <input class="primary_guard" id="single_bio_parent" type="radio" name="primary_guardian_ans" data-concept="807bcfed-6fb9-4ca3-bb46-8286a51906a2^Primary Guardian^99DCT"
                         value="ce0af2a6-d6f4-4d13-8af3-ea4ad378a653^Biological Parent(Single)^99DCT" required="required">
-                   <label for="single_bio_parent">Biological Parent(Single)</label>&nbsp;&nbsp;
+                   <label for="single_bio_parent">Kholo londibereka(limodzi)</label>&nbsp;&nbsp;
                    
                    <input class="primary_guard" id="both_bio_parent" type="radio" name="primary_guardian_ans" data-concept="807bcfed-6fb9-4ca3-bb46-8286a51906a2^Primary Guardian^99DCT"
                         value="49e133bf-efc9-49f9-91af-1cc26fa88ec6^Biological Parents-(both)^99DCT" required="required">
-                   <label for="both_bio_parent">Biological Parents-(both)</label>&nbsp;&nbsp;
+                   <label for="both_bio_parent">makolo ondibereka (onse)</label>&nbsp;&nbsp;
                    
                    <input class="primary_guard" id="grand_parent" type="radio" name="primary_guardian_ans" data-concept="807bcfed-6fb9-4ca3-bb46-8286a51906a2^Primary Guardian^99DCT"
                         value="aa109c28-7745-480e-a3c2-d0bc9f1a2719^Grandparents^99DCT" required="required">
-                    <label for="grand_parent">Grandparents</label>&nbsp;&nbsp;
+                    <label for="grand_parent">Agogo</label>&nbsp;&nbsp;
                 
                     <input class="primary_guard" id="elder_relative" type="radio" name="primary_guardian_ans" data-concept="807bcfed-6fb9-4ca3-bb46-8286a51906a2^Primary Guardian^99DCT"
                         value="d0c7636d-9d5e-4c1c-9656-e76689398ce5^Elder relative^99DCT" required="required">
-                    <label for="elder_relative">Elder relative</label>&nbsp;&nbsp;
+                    <label for="elder_relative">M’bale okulirapo msinkhu (achemwali, azakhali, amalume, ena.)</label>&nbsp;&nbsp;
             
                     <input class="primary_guard" id="non_relative" type="radio" name="primary_guardian_ans" data-concept="807bcfed-6fb9-4ca3-bb46-8286a51906a2^Primary Guardian^99DCT"
                         value="dadec55d-864d-4f33-bfc2-06fccccd6a2a^Non-Relative (neighbor,friend,community person)^99DCT" required="required">
-                    <label for="other">Non-Relative (neighbor,friend,community person)</label>
+                    <label for="other">Ongodziwana nawo (oyandikana nawo nyumba, abwenzi, oyang’anira dera)</label>
             
                     <input class="primary_guard" id="other" type="radio" name="primary_guardian_ans" data-concept="807bcfed-6fb9-4ca3-bb46-8286a51906a2^Primary Guardian^99DCT"
                         value="656cce7e-977f-11e1-8993-905e29aff6c1^Other non-coded^99DCT" required="required">
-                    <label for="other">Other</label>
+                    <label for="other">Ena</label>
                 </fieldset>
         </div>
         <div class="where_are_your_parents">
             <div class="form-group">
                 <label for="obs.parents_location">
-                    Where are your parents? <span class="required">*</span>
+                  (Kwa amene sanatchule makolo). Makolo ako ali kuti? <span class="required">*</span>
                 </label>
                 <input class="form-control" id="obs.parents_location" name="obs.parents_location"
                     type="text" data-concept="b7d8d419-2451-44ec-9b6b-9b855f9cc443^Parents location^99DCT">
@@ -276,7 +325,7 @@
         </div>
         <div class="why_single_parent">
             <div class="form-group">
-                <label for="obs.single_parent"> If the child says single parent?<span class="required">*</span></label>
+                <label for="obs.single_parent"> (Kwa amene atchula kholo limodzi) Mayi/Bambo anapita kuti? <span class="required">*</span></label>
                 <input class="why_single_parent" id="divorce" type="radio" name="why_single_parent_ans" data-concept="0b6a3722-c4d3-44ba-afd4-6185eba83849^Reason for staying with single parent^99DCT"
                     value="bf061dbe-7ead-43a9-a8db-a6869b2daea1^Parents divorced^99DCT" required="required">
                 <label for="divorce">Parents divorced</label>&nbsp;&nbsp;
@@ -293,264 +342,264 @@
         <div class="number_of_people">
             <div class="form-group">
                 <label for="number_of_household_people">
-                    Including yourself,how many people live in your household right now? <span class="required">*</span>
+                  Kwanu mumakhala anthu angati? <span class="required">*</span>
                 </label>
                 <input class="form-group" id="number_of_household_people" name="number_of_household_people"
-                    type="number" min="1" data-concept="441ed2b2-623a-42a0-aa7b-d16327cfc697^Total number of household members^99DCT">
+                    type="number" min="1" max="20" data-concept="441ed2b2-623a-42a0-aa7b-d16327cfc697^Total number of household members^99DCT">
             </div>
         </div>
     </div>
     <div class="section">
         <div class="household_items">
-            <label for="obs.extracurricular_activities_query"> Do you or any member of your household own a ...<span class="required">*</span></label>
+            <label for="obs.extracurricular_activities_query"> Kodi kwanu kuli ...<span class="required">*</span></label>
             <fieldset id="obs.extracurricular_activities_query" name="extracurricular_activities_query">
                 
-                <label for="radio"> Radio</label>
+                <label for="radio"> Wailesi</label>
                <input id="radio_yes" type="radio" name="radio_ans" data-concept="4b09025d-f92c-444c-a972-828a98a88bf0^Own a radio^99DCT"
                     value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
-               <label for="radio_yes">Yes</label>&nbsp;&nbsp;
+               <label for="radio_yes">Eya</label>&nbsp;&nbsp;
 
                <input id="radio_no" type="radio" name="radio_ans" data-concept="4b09025d-f92c-444c-a972-828a98a88bf0^Own a radio^99DCT"
                 value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
-               <label for="radio_no">No</label>&nbsp;&nbsp;
+               <label for="radio_no">Ayi</label>&nbsp;&nbsp;
 
-               <input id="radio_do_not_know" type="radio" name="radio_ans" data-concept="4b09025d-f92c-444c-a972-828a98a88bf0^Own a radio^99DCT"
+               <!-- <input id="radio_do_not_know" type="radio" name="radio_ans" data-concept="4b09025d-f92c-444c-a972-828a98a88bf0^Own a radio^99DCT"
                value="1fa4b4a6-b849-4442-94d0-f46f4460ce38^Don't Know^99DCT" required="required">
-              <label for="radio_do_not_know">Don't know</label>
+              <label for="radio_do_not_know">Don't know</label> -->
                <br>
-               <label for="tv"> Television</label>
+               <label for="tv"> Kenema/TV</label>
                <input id="tv_yes" type="radio" name="tv_ans" data-concept="5c46ba89-e523-463c-ba37-635c90d23443^Own a Tv^99DCT"
                     value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
-               <label for="tv_yes">Yes</label>&nbsp;&nbsp;
+               <label for="tv_yes">Eya</label>&nbsp;&nbsp;
 
                <input id="tv_no" type="radio" name="tv_ans" data-concept="5c46ba89-e523-463c-ba37-635c90d23443^Own a Tv^99DCT"
                 value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
-               <label for="tv_no">No</label>&nbsp;&nbsp;
+               <label for="tv_no">Ayi</label>&nbsp;&nbsp;
 
-               <input id="tv_do_not_know" type="radio" name="tv_ans" data-concept="5c46ba89-e523-463c-ba37-635c90d23443^Own a Tv^99DCT"
-               value="1fa4b4a6-b849-4442-94d0-f46f4460ce38^Don't Know^99DCT" required="required">
-              <label for="tv_do_not_know">Don't know</label>
+               <!-- <input id="tv_do_not_know" type="radio" name="tv_ans" data-concept="5c46ba89-e523-463c-ba37-635c90d23443^Own a Tv^99DCT"
+               value="1fa4b4a6-b2849-4442-94d0-f46f4460ce38^Don't Know^99DCT" required="required">
+              <label for="tv_do_not_know">Don't know</label> -->
                <br>
-               <label for="phone"> Mobile Telephone</label>
+               <label for="phone"> Lamya/Foni</label>
                <input id="phone_yes" type="radio" name="phone_ans" data-concept="205ab520-0ac5-4004-90e4-f2ba10f79a2b^Own a mobile telephone^99DCT"
                     value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
-               <label for="phone_yes">Yes</label>&nbsp;&nbsp;
+               <label for="phone_yes">Eya</label>&nbsp;&nbsp;
 
                <input id="phone_no" type="radio" name="phone_ans" data-concept="205ab520-0ac5-4004-90e4-f2ba10f79a2b^Own a mobile telephone^99DCT"
                 value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
-               <label for="phone_no">No</label>&nbsp;&nbsp;
+               <label for="phone_no">Ayi</label>&nbsp;&nbsp;
 
-               <input id="phone_do_not_know" type="radio" name="phone_ans" data-concept="205ab520-0ac5-4004-90e4-f2ba10f79a2b^Own a mobile telephone^99DCT"
+               <!-- <input id="phone_do_not_know" type="radio" name="phone_ans" data-concept="205ab520-0ac5-4004-90e4-f2ba10f79a2b^Own a mobile telephone^99DCT"
                value="1fa4b4a6-b849-4442-94d0-f46f4460ce38^Don't Know^99DCT" required="required">
-              <label for="phone_do_not_know">Don't know</label>
+              <label for="phone_do_not_know">Don't know</label> -->
               <br>
-              <label for="fridge"> Refrigerator</label>
+              <label for="fridge"> Firigi</label>
               <input id="fridge_yes" type="radio" name="fridge_ans" data-concept="d531e6b5-cf09-41de-8f27-f846b42c6c6f^Own a refrigerator^99DCT"
                    value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
-              <label for="fridge_yes">Yes</label>&nbsp;&nbsp;
+              <label for="fridge_yes">Eya</label>&nbsp;&nbsp;
 
               <input id="fridge_no" type="radio" name="fridge_ans" data-concept="d531e6b5-cf09-41de-8f27-f846b42c6c6f^Own a refrigerator^99DCT"
                value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
-              <label for="fridge_no">No</label>&nbsp;&nbsp;
+              <label for="fridge_no">Ayi</label>&nbsp;&nbsp;
 
-              <input id="fridge_do_not_know" type="radio" name="fridge_ans" data-concept="d531e6b5-cf09-41de-8f27-f846b42c6c6f^Own a refrigerator^99DCT"
+              <!-- <input id="fridge_do_not_know" type="radio" name="fridge_ans" data-concept="d531e6b5-cf09-41de-8f27-f846b42c6c6f^Own a refrigerator^99DCT"
               value="1fa4b4a6-b849-4442-94d0-f46f4460ce38^Don't Know^99DCT" required="required">
-             <label for="fridge_do_not_know">Don't know</label>
+             <label for="fridge_do_not_know">Don't know</label> -->
              <br>
-             <label for="bike"> Bicycle</label>
+             <label for="bike"> Njinga yakapalasa</label>
              <input id="bike_yes" type="radio" name="bike_ans" data-concept="b12adc9a-233b-4ac1-bed6-680dd00c7946^Own a bicycle^99DCT"
                   value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
-             <label for="bike_yes">Yes</label>&nbsp;&nbsp;
+             <label for="bike_yes">Eya</label>&nbsp;&nbsp;
 
              <input id="bike_no" type="radio" name="bike_ans" data-concept="b12adc9a-233b-4ac1-bed6-680dd00c7946^Own a bicycle^99DCT"
               value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
-             <label for="bike_no">No</label>&nbsp;&nbsp;
+             <label for="bike_no">Ayi</label>&nbsp;&nbsp;
 
-             <input id="bike_do_not_know" type="radio" name="bike_ans" data-concept="b12adc9a-233b-4ac1-bed6-680dd00c7946^Own a bicycle^99DCT"
+             <!-- <input id="bike_do_not_know" type="radio" name="bike_ans" data-concept="b12adc9a-233b-4ac1-bed6-680dd00c7946^Own a bicycle^99DCT"
              value="1fa4b4a6-b849-4442-94d0-f46f4460ce38^Don't Know^99DCT" required="required">
-            <label for="bike_do_not_know">Don't know</label>
+            <label for="bike_do_not_know">Don't know</label> -->
             <br>
-            <label for="motor_bike"> Motorcycle</label>
+            <label for="motor_bike"> Njinga yamoto</label>
             <input id="motor_bike_yes" type="radio" name="motor_bike_ans" data-concept="75c35596-4e81-4764-9e0a-7b06b87ddceb^Own a motorcycle^99DCT"
                  value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
-            <label for="motor_bike_yes">Yes</label>&nbsp;&nbsp;
+            <label for="motor_bike_yes">Eya</label>&nbsp;&nbsp;
 
             <input id="motor_bike_no" type="radio" name="motor_bike_ans" data-concept="75c35596-4e81-4764-9e0a-7b06b87ddceb^Own a motorcycle^99DCT"
              value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
-            <label for="motor_bike_no">No</label>&nbsp;&nbsp;
+            <label for="motor_bike_no">Ayi</label>&nbsp;&nbsp;
 
-            <input id="motor_bike_do_not_know" type="radio" name="motor_bike_ans" data-concept="75c35596-4e81-4764-9e0a-7b06b87ddceb^Own a motorcycle^99DCT"
+            <!-- <input id="motor_bike_do_not_know" type="radio" name="motor_bike_ans" data-concept="75c35596-4e81-4764-9e0a-7b06b87ddceb^Own a motorcycle^99DCT"
             value="1fa4b4a6-b849-4442-94d0-f46f4460ce38^Don't Know^99DCT" required="required">
-           <label for="motor_bike_do_not_know">Don't know</label>
+           <label for="motor_bike_do_not_know">Don't know</label> -->
            <br>
-           <label for="cart"> Anima-drawn cart</label>
+           <label for="cart"> Ngolo</label>
            <input id="cart_yes" type="radio" name="cart_ans" data-concept="a85c5276-3f4a-4e5a-bfd4-dc0595662cb3^Own an animal-drawn Cart^99DCT"
                 value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
-           <label for="cart_yes">Yes</label>&nbsp;&nbsp;
+           <label for="cart_yes">Eya</label>&nbsp;&nbsp;
 
            <input id="cart_no" type="radio" name="cart_ans" data-concept="a85c5276-3f4a-4e5a-bfd4-dc0595662cb3^Own an animal-drawn Cart^99DCT"
             value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
-           <label for="cart_no">No</label>&nbsp;&nbsp;
+           <label for="cart_no">Ayi</label>&nbsp;&nbsp;
 
-           <input id="cart_do_not_know" type="radio" name="cart_ans" data-concept="a85c5276-3f4a-4e5a-bfd4-dc0595662cb3^Own an animal-drawn Cart^99DCT"
+           <!-- <input id="cart_do_not_know" type="radio" name="cart_ans" data-concept="a85c5276-3f4a-4e5a-bfd4-dc0595662cb3^Own an animal-drawn Cart^99DCT"
            value="1fa4b4a6-b849-4442-94d0-f46f4460ce38^Don't Know^99DCT" required="required">
-          <label for="cart_bike_do_not_know">Don't know</label>
+          <label for="cart_bike_do_not_know">Don't know</label> -->
           <br>
-          <label for="truck"> Car/Truck</label>
+          <label for="truck"> Galimoto</label>
           <input id="truck_yes" type="radio" name="truck_ans" data-concept="05742f26-375a-4e38-b9ee-7c7d0780c538^Own an car/truck^99DCT"
                value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
-          <label for="truck_yes">Yes</label>&nbsp;&nbsp;
+          <label for="truck_yes">Eya</label>&nbsp;&nbsp;
 
           <input id="truck_no" type="radio" name="truck_ans" data-concept="05742f26-375a-4e38-b9ee-7c7d0780c538^Own an car/truck^99DCT"
            value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
-          <label for="truck_no">No</label>&nbsp;&nbsp;
+          <label for="truck_no">Ayi</label>&nbsp;&nbsp;
 
-          <input id="truck_do_not_know" type="radio" name="truck_ans" data-concept="05742f26-375a-4e38-b9ee-7c7d0780c538^Own an car/truck^99DCT"
+          <!-- <input id="truck_do_not_know" type="radio" name="truck_ans" data-concept="05742f26-375a-4e38-b9ee-7c7d0780c538^Own an car/truck^99DCT"
           value="1fa4b4a6-b849-4442-94d0-f46f4460ce38^Don't Know^99DCT" required="required">
-         <label for="truck_do_not_know">Don't know</label>
+         <label for="truck_do_not_know">Don't know</label> -->
 
         </fieldset>
         <br>
         </div>
         <div class="source_of_light">
-            <label for="obs.source_of_energy"> What is the main source of energy for lighting?<span class="required">*</span></label>
+            <label for="obs.source_of_energy"> Kodi mumawunikira chani mnyumba mwakwanu usiku?<span class="required">*</span></label>
             <fieldset id="obs.source_of_energy" name="obs.source_of_energy">
 
                 <input class="source_of_energy" id="electricity" type="radio" name="source_of_energy_ans" data-concept="79f2c8bd-68ee-4dde-9af4-3f594052df1b^Main energy source for household lighting^99DCT"
                     value="4f3d9103-a1d2-40cb-953b-9aeeb9950147^Electricity^99DCT" required="required">
-                <label for="electricity"> Electricity</label>&nbsp;&nbsp;
+                <label for="electricity"> Magetsi</label>&nbsp;&nbsp;
                
                 <input class="source_of_energy" id="from_gas" type="radio" name="source_of_energy_ans" data-concept="79f2c8bd-68ee-4dde-9af4-3f594052df1b^Main energy source for household lighting^99DCT"
                     value="03fb4666-62b6-4ae3-a086-f6c0e6d9b9c3^From gas^99DCT" required="required">
-                <label for="from_gas">From gas</label>&nbsp;&nbsp;
+                <label for="from_gas">Gasi</label>&nbsp;&nbsp;
         
                 <input class="source_of_energy" id="solar" type="radio" name="source_of_energy_ans" data-concept="79f2c8bd-68ee-4dde-9af4-3f594052df1b^Main energy source for household lighting^99DCT"
                     value="8f8f610c-5db5-4631-85d8-4e4c413e65c5^Solar^99DCT" required="required">
-                <label for="solar">Solar</label>&nbsp;&nbsp;
+                <label for="solar">Muuni woyendera dzuwa (sola)</label>&nbsp;&nbsp;
         
                 <input class="source_of_energy" id="paraffin_lamp" type="radio" name="source_of_energy_ans" data-concept="79f2c8bd-68ee-4dde-9af4-3f594052df1b^Main energy source for household lighting^99DCT"
                     value="1ecdd3d4-3dbc-4e50-a17a-d64f84ed9886^Paraffin Lamp^99DCT" required="required">
-                <label for="paraffin_lamp">Paraffin Lamp</label>&nbsp;&nbsp;
+                <label for="paraffin_lamp">Nyali ya mafuta</label>&nbsp;&nbsp;
         
                 <input class="source_of_energy" id="torch" type="radio" name="source_of_energy_ans" data-concept="79f2c8bd-68ee-4dde-9af4-3f594052df1b^Main energy source for household lighting^99DCT"
                     value="499d2f21-86e8-4e81-93fa-f44b3c3e09b6^Torch^99DCT" required="required">
-                <label for="torch">Torch</label>&nbsp;&nbsp;
+                <label for="torch">Tochi</label>&nbsp;&nbsp;
         
                 <input class="source_of_energy" id="other" type="radio" name="source_of_energy_ans" data-concept="79f2c8bd-68ee-4dde-9af4-3f594052df1b^Main energy source for household lighting^99DCT"
                     value="656cce7e-977f-11e1-8993-905e29aff6c1^Other non-coded^99DCT" required="required">
-                <label for="other">Other</label>&nbsp;&nbsp;        
+                <label for="other">Zina</label>&nbsp;&nbsp;        
         </div>
         
-        </p><label for="obs.drinking_water_source"> What is the main source of water for drinking?<span class="required">*</span></label>
+        </p><label for="obs.drinking_water_source"> Kodi madzi mumatunga kuti?<span class="required">*</span></label>
         <fieldset id="obs.drinking_water_source" name="obs.drinking_water_source">
            
             <input class="drinking_water_source" id="piped_water" type="radio" name="drinking_water_source_ans" data-concept="9243dd06-bb9a-4b7d-8bbc-e82d16c30e65^Main source of drinking water for household^99DCT"
                 value="41b2529c-e8d9-4f28-92cd-4b7847c23f5e^Piped Water^99DCT" required="required">
-            <label for="piped_water">Piped Water</label>&nbsp;&nbsp;
+            <label for="piped_water">Pampopi</label>&nbsp;&nbsp;
            
             <input class="drinking_water_source" id="dug_well" type="radio" name="drinking_water_source_ans" data-concept="9243dd06-bb9a-4b7d-8bbc-e82d16c30e65^Main source of drinking water for household^99DCT"
                 value="d9ba6164-60ca-4540-a080-01b4c24f64d2^Dug Well^99DCT" required="required">
-            <label for="dug_well">Dug Well</label>&nbsp;&nbsp;
+            <label for="dug_well">Chitsime Chokumba</label>&nbsp;&nbsp;
         
             <input class="drinking_water_source" id="water_from_spring" type="radio" name="drinking_water_source_ans" data-concept="9243dd06-bb9a-4b7d-8bbc-e82d16c30e65^Main source of drinking water for household^99DCT"
             value="2d901246-1c15-495c-8102-02b3a7fbfbc3^Water from spring^99DCT" required="required">
-            <label for="water_from_spring">Water from spring</label>&nbsp;&nbsp;
+            <label for="water_from_spring">Madzi ochokera ku kasupe/ msinje</label>&nbsp;&nbsp;
 
             <input class="drinking_water_source" id="bottled_water" type="radio" name="drinking_water_source_ans" data-concept="9243dd06-bb9a-4b7d-8bbc-e82d16c30e65^Main source of drinking water for household^99DCT"
             value="0db5816d-8349-400d-a617-013f1e9658f7^Bottled Water^99DCT" required="required">
-            <label for="bottled_water">Bottled Water</label>&nbsp;&nbsp;
+            <label for="bottled_water">Ogula mmabotolo</label>&nbsp;&nbsp;
 
             <input class="drinking_water_source" id="bottled_water" type="radio" name="drinking_water_source_ans" data-concept="9243dd06-bb9a-4b7d-8bbc-e82d16c30e65^Main source of drinking water for household^99DCT"
             value="c07c34ad-08e7-469c-a3d5-3c93f46ff5f8^Water from Borehole^99DCT" required="required">
-            <label for="bottled_water">Borehole</label>&nbsp;&nbsp;
+            <label for="bottled_water">Mjigo</label>&nbsp;&nbsp;
 
             <input class="drinking_water_source" id="other_water_source" type="radio" name="drinking_water_source_ans" data-concept="9243dd06-bb9a-4b7d-8bbc-e82d16c30e65^Main source of drinking water for household^99DCT"
                 value="656cce7e-977f-11e1-8993-905e29aff6c1^Other non-coded^99DCT" required="required">
-            <label for="other_water_source">Other</label>&nbsp;&nbsp;
+            <label for="other_water_source">Ena</label>&nbsp;&nbsp;
     
     </div>
     <div class="section">
       <div class="toilet_at_home_query">
-      </p><label for="obs.toilet_at_home_query"> Do you have a toilet at home?  <span class="required">*</span></label>
+      </p><label for="obs.toilet_at_home_query">Kwanu kuli chimbuzi? <span class="required">*</span></label>
       <fieldset id="obs.toilet_at_home_query" name="obs.toilet_at_home_query">
          <input id="toilet_at_home_query_yes" type="radio" name="toilet_at_home_query_ans" data-concept="9bcdf631-c727-48e7-98fd-795fcd544d32^Do you have a toilet at home?^99DCT"
               value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
-         <label for="toilet_at_home_query_yes">Yes</label>&nbsp;&nbsp;
+         <label for="toilet_at_home_query_yes">Eya</label>&nbsp;&nbsp;
          <input id="toilet_at_home_query_no" type="radio" name="toilet_at_home_query_ans" data-concept="9bcdf631-c727-48e7-98fd-795fcd544d32^Do you have a toilet at home?^99DCT"
               value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
-         <label for="toilet_at_home_query_no">No</label>
+         <label for="toilet_at_home_query_no">Ayi</label>
       </fieldset>
       </div>
       <div class="kind_of_toilet_query">
-      </p><label for="obs.kind_of_toilet_query"> What kind of toilet facility do members of your household usually use?  <span class="required">*</span></label>
+      </p><label for="obs.kind_of_toilet_query"> Ngati eya, chotani?<span class="required">*</span></label>
       <fieldset id="obs.kind_of_toilet_query" name="obs.kind_of_toilet_query">
           <input id="flush_toilet" type="radio" name="kind_of_toilet_ans" data-concept="353df499-ffb9-4ca5-a63a-0ec6fb029e94^Kind of toilet facility used by household members^99DCT"
               value="219fa3bd-df79-456c-a188-3b57cbe9440e^Flush Toilet^99DCT" required="required">
-          <label for="flush_toilet">Flush Toilet</label>&nbsp;&nbsp;
+          <label for="flush_toilet">Chimbuzi chogejemula ndi madzi</label>&nbsp;&nbsp;
   
           <input id="pit_latrine" type="radio" name="kind_of_toilet_ans" data-concept="353df499-ffb9-4ca5-a63a-0ec6fb029e94^Kind of toilet facility used by household members^99DCT"
               value="76a54a76-5a16-4767-9655-d3e1f0f6f13f^Pit Latrine^99DCT" required="required">
-          <label for="flush_toilet">Pit Latrine</label>
-          
+          <label for="flush_toilet">Chimbuzi chokumba</label>
+      
       </fieldset>
       </div>
       <div class="type_cooking_fuel_query">
-      </p><label for="obs.type_cooking_fuel_query"> What type of fuel does your householdmainly use for cooking?  <span class="required">*</span></label>
+      </p><label for="obs.type_cooking_fuel_query"> Kodi nthawi zambiri mukafuna kuphika kwanu mumagwiritsa ntchito moto wake uti?<span class="required">*</span></label>
       <fieldset id="obs.type_cooking_fuel_query" name="obs.type_cooking_fuel_query">
           <input id="cook_with_electricity" type="radio" name="type_cooking_fuel_query_ans" data-concept="5755fdfc-586b-4816-9223-f45a1422e20a^Fuel for household cooking^99DCT"
               value="4f3d9103-a1d2-40cb-953b-9aeeb9950147^Electricity^99DCT" required="required">
-          <label for="cook_with_electricity">Electricity</label>&nbsp;&nbsp;
+          <label for="cook_with_electricity">Magetsi</label>&nbsp;&nbsp;
   
           <input id="cook_with_firewood" type="radio" name="type_cooking_fuel_query_ans" data-concept="5755fdfc-586b-4816-9223-f45a1422e20a^Fuel for household cooking^99DCT"
           value="ae3b79fe-4d32-46a0-a756-f6bfc4c19c73^Firewood^99DCT" required="required">
-          <label for="cook_with_firewood">Firewood</label>&nbsp;&nbsp;
+          <label for="cook_with_firewood">Nkhuni</label>&nbsp;&nbsp;
   
           <input id="cook_with_charcoal" type="radio" name="type_cooking_fuel_query_ans" data-concept="5755fdfc-586b-4816-9223-f45a1422e20a^Fuel for household cooking^99DCT"
           value="13635bd8-b5f2-470a-9ff1-80fd465f6f53^charcoal for cooking^99DCT" required="required">
-          <label for="cook_with_charcoal">Charcoal</label>&nbsp;&nbsp;
+          <label for="cook_with_charcoal">Makala</label>&nbsp;&nbsp;
   
           <input id="cook_with_bootled_gas" type="radio" name="type_cooking_fuel_query_ans" data-concept="5755fdfc-586b-4816-9223-f45a1422e20a^Fuel for household cooking^99DCT"
           value="235ff344-df36-4ae9-bbf6-a8d7828ec5ff^Bottled Gas^99DCT" required="required">
-          <label for="cook_with_bootled_gas">Bottled Gas</label>&nbsp;&nbsp;
+          <label for="cook_with_bootled_gas">Gasi wamubotolo</label>&nbsp;&nbsp;
   
           <input id="cook_with_paraffin" type="radio" name="type_cooking_fuel_query_ans" data-concept="5755fdfc-586b-4816-9223-f45a1422e20a^Fuel for household cooking^99DCT"
           value="673079b3-1af7-4213-a6ed-02c20905cbf2^Paraffin/Kerosone^99DCT" required="required">
-          <label for="cook_with_paraffin">Paraffin/Kerosone</label>&nbsp;&nbsp;
+          <label for="cook_with_paraffin">Mafuta a Parafini</label>&nbsp;&nbsp;
   
           <input id="cook_with_other" type="radio" name="type_cooking_fuel_query_ans" data-concept="5755fdfc-586b-4816-9223-f45a1422e20a^Fuel for household cooking^99DCT"
           value="656cce7e-977f-11e1-8993-905e29aff6c1^Other non-coded^99DCT" required="required">
-          <label for="cook_with_other">Other</label>
+          <label for="cook_with_other">Ngati pali china</label>
   
       </fieldset>
       </div>
       <div class="flooring_type_query">
-      </p><label for="obs.flooring_type_query"> What type of flooring does your house have?<span class="required">*</span></label>
+      </p><label for="obs.flooring_type_query">Kodi nyumba yanu pansi pake ndi potani?<span class="required">*</span></label>
       <fieldset id="obs.flooring_type_query" name="obs.flooring_type_query">
           <input id="sand_floor" type="radio" name="flooring_type_query_ans" data-concept="07f1ce88-dd02-47ff-8f0c-b39fc8616345^Type of house floor^99DCT"
               value="47baac9f-9d34-4d5f-961a-cdfaac2c590c^Earth/Sand^99DCT" required="required">
-          <label for="sand_floor">Earth/Sand</label>&nbsp;&nbsp;
+          <label for="sand_floor">Pa dothi</label>&nbsp;&nbsp;
   
           <input id="cement_floor" type="radio" name="flooring_type_query_ans" data-concept="07f1ce88-dd02-47ff-8f0c-b39fc8616345^Type of house floor^99DCT"
           value="254e6d65-e086-40c8-94fe-887200292c60^Building cement^99DCT" required="required">
-          <label for="cement_floor">cement</label>&nbsp;&nbsp;
+          <label for="cement_floor">Simenti</label>&nbsp;&nbsp;
   
   
           <input id="tile_floor" type="radio" name="flooring_type_query_ans" data-concept="07f1ce88-dd02-47ff-8f0c-b39fc8616345^Type of house floor^99DCT"
           value="2ea253ad-2a61-4d2d-8896-42fda71fd170^Tiles^99DCT" required="required">
-          <label for="tile_floor">tiles</label>
+          <label for="tile_floor">Matayilosi</label>
           
           <input id="other_floor" type="radio" name="flooring_type_query_ans" data-concept="07f1ce88-dd02-47ff-8f0c-b39fc8616345^Type of house floor^99DCT"
           value="656cce7e-977f-11e1-8993-905e29aff6c1^Other non-coded^99DCT" required="required">
-          <label for="other_floor">Other</label>
+          <label for="other_floor">Zina</label>
   
       </fieldset>
       </div>
       <div class="wall_type_query">
-      </p><label for="obs.wall_type_query"> What type of walls is you house made of? <span class="required">*</span></label>
+      </p><label for="obs.wall_type_query"> Nanga khoma? <span class="required">*</span></label>
       <fieldset id="obs.wall_type_query" name="obs.wall_type_query">
           <input id="cement_wall" type="radio" name="wall_type_query_ans" data-concept="9c7bd3d9-096f-4f33-9781-2b3a23fee8ed^Type of house walls^99DCT"
               value="254e6d65-e086-40c8-94fe-887200292c60^Building cement^99DCT" required="required">
-          <label for="cement_wall">cement</label>&nbsp;&nbsp;
+          <label for="cement_wall">Simenti</label>&nbsp;&nbsp;
   
           <input id="mud_wall" type="radio" name="wall_type_query_ans" data-concept="9c7bd3d9-096f-4f33-9781-2b3a23fee8ed^Type of house walls^99DCT"
           value="64f04067-ba95-42d1-84c0-d1b9fee1d03c^Mud for building^99DCT" required="required">
@@ -562,19 +611,19 @@
       </fieldset>
       </div>
       <div class="roof_type_query">
-      </p><label for="obs.roof_type_query"> What type of roof is your house made of? <span class="required">*</span></label>
+      </p><label for="obs.roof_type_query">Nanga denga ndilopangidwa ndi chiyani? <span class="required">*</span></label>
       <fieldset id="obs.roof_type_query" name="obs.roof_type_query">
           <input id="tile_roof" type="radio" name="roof_type_query_ans" data-concept="7ee0bf27-9473-48d0-b9e5-cdfe67d34ab2^Type of house roof^99DCT"
               value="2ea253ad-2a61-4d2d-8896-42fda71fd170^Tiles^99DCT" required="required">
-          <label for="tile_roof">Tiles</label>&nbsp;&nbsp;
+          <label for="tile_roof">Matayilosi /phale</label>&nbsp;&nbsp;
   
           <input id="grass_roof" type="radio" name="roof_type_query_ans" data-concept="7ee0bf27-9473-48d0-b9e5-cdfe67d34ab2^Type of house roof^99DCT"
           value="5eec9066-13b0-4f9f-a236-0fbaa8d7a836^Grass^99DCT" required="required">
-          <label for="grass_roof">Grass</label>&nbsp;&nbsp;
+          <label for="grass_roof">Udzu</label>&nbsp;&nbsp;
   
           <input id="other_roof" type="radio" name="roof_type_query_ans" data-concept="7ee0bf27-9473-48d0-b9e5-cdfe67d34ab2^Type of house roof^99DCT"
           value="656cce7e-977f-11e1-8993-905e29aff6c1^Other non-coded^99DCT" required="required">
-          <label for="other_roof">Other</label>&nbsp;&nbsp;
+          <label for="other_roof">Zina</label>&nbsp;&nbsp;
       </fieldset>
       </div> 
     </div>
@@ -591,25 +640,26 @@
       </fieldset>
       </div>
       
-      <div class="teen_club_purpose_query">
-      </p><label for="obs.teen_club_purpose_query"> What do you understand as the purpose of the teen clubs? <span class="required">*</span></label>
+      <div class="teen_club_purpose_query">  
+      </p><label for="obs.teen_club_purpose_query"> Kodi cholinga cha teen club ndi chani? <span class="required">*</span></label>
+
       <fieldset id="obs.teen_club_purpose_query" name="teen_club_purpose_query">
          
-          <input id="empower_adole_to_build_pos_relationships" type="radio" name="teen_club_purpose_query_ans" data-concept="3d6d5b03-14be-4baa-84e2-0c661a71f263^Purpose of teen clubs^99DCT"
-              value="4f68cc43-7f2c-4ce8-8eb5-1ce1bfb796b0^To empower adolescent to build positive relationships^99DCT" required="required">
-          <label for="empower_adole_to_build_pos_relationships">To empower adolescent to build positive relationships</label>&nbsp;&nbsp;
+          <input id="empower_adole_to_build_pos_relationships" type="checkbox" name="teen_club_purpose_query_ans" data-concept="5ab64ea0-61d0-40a2-a713-8bc580fc0993^Answer for Teens Club Purpose^99DCT"
+              value="To empower adolescent to build positive relationships" required="required">
+          <label for="empower_adole_to_build_pos_relationships">Tiziziwana</label>&nbsp;&nbsp;
   
-          <input id="improve_self_esteem" type="radio" name="teen_club_purpose_query_ans" data-concept="3d6d5b03-14be-4baa-84e2-0c661a71f263^Purpose of teen clubs^99DCT"
-          value="be34f352-5c86-4ffa-b6bb-c3a4e2dc00fc^Improve their self esteem^99DCT" required="required">
-          <label for="empower_adole_to_build_pos_relationships">Improve their self esteem</label>&nbsp;&nbsp;
+          <input id="improve_self_esteem" type="checkbox" name="teen_club_purpose_query_ans" data-concept="5ab64ea0-61d0-40a2-a713-8bc580fc0993^Answer for Teens Club Purpose^99DCT"
+          value="Improve their self esteem" required="required">
+          <label for="empower_adole_to_build_pos_relationships">Tikhale osaziyang'anira pansi</label>&nbsp;&nbsp;
   
-          <input id="acquire_life_skills" type="radio" name="teen_club_purpose_query_ans" data-concept="3d6d5b03-14be-4baa-84e2-0c661a71f263^Purpose of teen clubs^99DCT"
-          value="9a35b9c4-7e60-4ac7-aa81-9626bd0906f0^Acquire life skills through peer mentorship, adult role-modeling and structured activities^99DCT" required="required">
-          <label for="acquire_life_skills">Acquire life skills through peer mentorship, adult role-modeling and structured activities</label>&nbsp;&nbsp;
+          <input id="acquire_life_skills" type="checkbox" name="teen_club_purpose_query_ans" data-concept="5ab64ea0-61d0-40a2-a713-8bc580fc0993^Answer for Teens Club Purpose^99DCT"
+          value="Acquire life skills through peer mentorship, adult role-modeling and structured activities" required="required">
+          <label for="acquire_life_skills">Kuzapeza maluso osiyanasiyana</label>&nbsp;&nbsp;
   
-          <input id="other_purpose" type="radio" name="teen_club_purpose_query_ans" data-concept="3d6d5b03-14be-4baa-84e2-0c661a71f263^Purpose of teen clubs^99DCT"
-          value="656cce7e-977f-11e1-8993-905e29aff6c1^Other non-coded^99DCT" required="required">
-          <label for="other_purpose">Other</label>
+          <input id="other_purpose" type="checkbox" name="teen_club_purpose_query_ans" data-concept="5ab64ea0-61d0-40a2-a713-8bc580fc0993^Answer for Teens Club Purpose^99DCT"
+          value="Other non-coded" required="required">
+          <label for="other_purpose">Zina</label>
       </fieldset>
       </div>
 
@@ -646,81 +696,81 @@
     
 
       <div class="teen_club_topics_query">
-      </p><label for="obs.teen_club_topics_query"> What topics do you cover when you meet as teen clubs? <span class="required">*</span></label>
+      </p><label for="obs.teen_club_topics_query">Ndi maphunziro otani omwe mumaphunzira mukakumana ku teen kalabu? <span class="required">*</span></label>
       <fieldset id="obs.teen_club_topics_query" name="teen_club_topics_query">
          
           <input id="hiv_disclore_adherence" type="radio" name="teen_club_topics_query_ans" data-concept="0e9df979-802c-4e8b-8396-15a556424183^Topic covered in teen club^99DCT"
               value="383900ef-2863-4d95-a08a-3bf699586a56^HIV education, disclosure, adherence^99DCT" required="required">
-          <label for="hiv_disclore_adherence">HIV education, disclosure, adherence</label>&nbsp;&nbsp;
+          <label for="hiv_disclore_adherence">Maphunziro a HIV, kudziulula, kamwedwe ka mankhwala ka ndondomeko</label>&nbsp;&nbsp;
   
           <input id="goal_setting" type="radio" name="teen_club_topics_query_ans" data-concept="0e9df979-802c-4e8b-8396-15a556424183^Topic covered in teen club^99DCT"
               value="a3050ad2-d8ec-4fc6-b295-594055ca90cd^Goal-setting^99DCT" required="required">
-          <label for="goal_setting">Goal-setting</label>&nbsp;&nbsp;
+          <label for="goal_setting">Kukhazikitsa zolinga</label>&nbsp;&nbsp;
   
           <input id="sexual_and_repro_health" type="radio" name="teen_club_topics_query_ans" data-concept="0e9df979-802c-4e8b-8396-15a556424183^Topic covered in teen club^99DCT"
               value="049f6531-47ca-4378-b3b8-d8693cf97c84^Sexual and reproductive health^99DCT" required="required">
-          <label for="sexual_and_repro_health">Sexual and reproductive health</label>&nbsp;&nbsp;
+          <label for="sexual_and_repro_health">kudziletsa ndi ubereki wabwino</label>&nbsp;&nbsp;
   
           <input id="stigma_and_discrimination" type="radio" name="teen_club_topics_query_ans" data-concept="0e9df979-802c-4e8b-8396-15a556424183^Topic covered in teen club^99DCT"
               value="69cd9b84-3c76-4528-986b-22d473f2ea54^Coping with stigma and discrimination^99DCT" required="required">
-          <label for="stigma_and_discrimination">Coping with stigma and discrimination</label>&nbsp;&nbsp;
+          <label for="stigma_and_discrimination">Kulimbana ndi kusalidwa komanso tsankho</label>&nbsp;&nbsp;
   
           <input id="other_topics" type="radio" name="teen_club_topics_query_ans" data-concept="0e9df979-802c-4e8b-8396-15a556424183^Topic covered in teen club^99DCT"
               value="656cce7e-977f-11e1-8993-905e29aff6c1^Other non-coded^99DCT" required="required">
-          <label for="other_topics">Other</label>&nbsp;&nbsp;
+          <label for="other_topics">Zina</label>&nbsp;&nbsp;
   
       </fieldset>
       </div>
 
       <div class="any_social_support_query">
-      </p><label for="obs.any_social_support_query"> Did you get any social support from teens' club? <span class="required">*</span></label>
+      </p><label for="obs.any_social_support_query"> Kodi unalandirapo thandizo Lilironse kuchokera ku teen club? <span class="required">*</span></label>
       <fieldset id="obs.any_social_support_query" name="any_social_support_query">
   
          <input id="any_social_support_query_yes" type="radio" name="any_social_support_query_ans" data-concept="7ed120af-0973-4650-b184-ebd31f78f015^Social support from teen club^99DCT"
               value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
-         <label for="any_social_support_query_yes">Yes</label>&nbsp;&nbsp;
+         <label for="any_social_support_query_yes">Eya</label>&nbsp;&nbsp;
   
          <input id="any_social_support_query_no" type="radio" name="any_social_support_query_ans" data-concept="7ed120af-0973-4650-b184-ebd31f78f015^Social support from teen club^99DCT"
               value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
-        <label for="any_social_support_query_no">No</label>
+        <label for="any_social_support_query_no">Ayi</label>
       </fieldset>
       </div>
 
       <div class="kind_of_social_support_query">
-      </p><label for="obs.kind_of_social_support_query"> What kind of support? <span class="required">*</span></label>
+      </p><label for="obs.kind_of_social_support_query">Thandizo lotani <span class="required">*</span></label>
       <fieldset id="obs.kind_of_social_support_query" name="kind_of_social_support_query">
   
          <input id="school_support_kind" type="radio" name="kind_of_social_support_query_ans" data-concept="88220f57-2d23-4949-83cc-a9ddf9081a60^What support would you like to get from teens club?^99DCT"
           value="6eebff3c-37fb-4dd6-bc38-c2bbb508e3c6^School support^99DCT" required="required">
-         <label for="school_support_kind">School support</label>&nbsp;&nbsp;
+         <label for="school_support_kind">Thandizo lamaphunziro</label>&nbsp;&nbsp;
   
          <input id="accommodation" type="radio" name="kind_of_social_support_query_ans" data-concept="88220f57-2d23-4949-83cc-a9ddf9081a60^What support would you like to get from teens club?^99DCT"
           value="ab31cf84-823a-491f-8713-ed209e15eac0^Accommodation( housing repair and basic household items)^99DCT" required="required">
-         <label for="accommodation">Accommodation(housing repair and basic household items)</label>&nbsp;&nbsp;
+         <label for="accommodation">Pokhala (anatikhonzera nyumba ndikutipatsa zinthu zina zofunika pakhomo)</label>&nbsp;&nbsp;
   
          <input id="vocational_training" type="radio" name="kind_of_social_support_query_ans" data-concept="88220f57-2d23-4949-83cc-a9ddf9081a60^What support would you like to get from teens club?^99DCT"
           value="af310bb8-9593-4430-bd63-db91a557db99^vocational Training^99DCT" required="required">
-         <label for="vocational_training">Vocational training</label>&nbsp;&nbsp;
+         <label for="vocational_training">Maphunziro a zamaluso osiyanasiyana</label>&nbsp;&nbsp;
   
          <input id="agri_nutri_fishing" type="radio" name="kind_of_social_support_query_ans" data-concept="88220f57-2d23-4949-83cc-a9ddf9081a60^What support would you like to get from teens club?^99DCT"
           value="88e769d2-fea2-4500-abe5-d3b174607deb^Agriculture/nutrition support(Fishing)^99DCT" required="required">
-         <label for="agri_nutri_fishing">Agriculture/nutrition support(Fishing)</label>&nbsp;&nbsp;
+         <label for="agri_nutri_fishing">Zaulimi/zakadyedwe koyenera: o usodzi</label>&nbsp;&nbsp;
   
          <input id="agri_nutri_crop_farming" type="radio" name="kind_of_social_support_query_ans" data-concept="88220f57-2d23-4949-83cc-a9ddf9081a60^What support would you like to get from teens club?^99DCT"
           value="ec2f3f77-6a07-468b-ab68-da61a67ead2e^Agriculture/nutrition support(Crop Farming)^99DCT" required="required">
-         <label for="agri_nutri_crop_farming">Agriculture/nutrition support(Crop Farming)</label>&nbsp;&nbsp;
+         <label for="agri_nutri_crop_farming">Zaulimi/zakadyedwe koyenera; o ulimi wambeu</label>&nbsp;&nbsp;
   
          <input id="agri_nutri_animal_farming" type="radio" name="kind_of_social_support_query_ans" data-concept="88220f57-2d23-4949-83cc-a9ddf9081a60^What support would you like to get from teens club?^99DCT"
          value="a49c8069-789e-4cf9-bc68-f16cc7342696^Agriculture/nutrition support(Animal Farming)^99DCT" required="required">
-         <label for="agri_nutri_animal_farming">Agriculture/nutrition support(Animal Farming)</label>&nbsp;&nbsp;
+         <label for="agri_nutri_animal_farming">Zaulimi/zakadyedwe koyenera; o ulimi wa ziweto</label>&nbsp;&nbsp;
   
         <input id="linkage_to_jobs" type="radio" name="kind_of_social_support_query_ans" data-concept="88220f57-2d23-4949-83cc-a9ddf9081a60^What support would you like to get from teens club?^99DCT"
         value="23b50f00-e02e-43ea-89d2-ccf82ffd9a5f^Linkage to jobs^99DCT" required="required">
-        <label for="agri_nutri_animal_farming">Linkage to jobs</label>&nbsp;&nbsp;
+        <label for="agri_nutri_animal_farming">Kupezeredwa ntchito </label>&nbsp;&nbsp;
   
         <input id="other_kind_of_social_support" type="radio" name="kind_of_social_support_query_ans" data-concept="88220f57-2d23-4949-83cc-a9ddf9081a60^What support would you like to get from teens club?^99DCT"
         value="656cce7e-977f-11e1-8993-905e29aff6c1^Other non-coded^99DCT" required="required">
-        <label for="other_kind_of_social_support">Other</label>&nbsp;&nbsp;
+        <label for="other_kind_of_social_support">Zina</label>&nbsp;&nbsp;
   
       </fieldset>
       </div>
@@ -750,38 +800,38 @@
       </div>
 
       <div class="rate_social_support">
-        <label for="obs.rate_support_query"> How do you rate the support on a scale of 1 to 3? <span class="required">*</span></label>
+        <label for="obs.rate_support_query"> Thandizo unakhutira nalo bwanji?? <span class="required">*</span></label>
         <fieldset id="obs.rate_support_query" name="rate_support_query">
     
             <input id="very_satisfied" type="radio" name="rate_support_query_ans" data-concept="5a86edcb-21e8-4e3a-9472-de9a6d3fbb2b^How do you rate the support on a scale of 1 to 3?^99DCT"
                 value="8a723427-24ef-4d25-bc4c-539ddc1f8ae2^Very satisfied^99DCT" required="required">
-            <label for="very_satisfied">Very satisfied</label>&nbsp;&nbsp;
+            <label for="very_satisfied">kwambiri</label>&nbsp;&nbsp;
     
             <input id="not_satisfied" type="radio" name="rate_support_query_ans" data-concept="5a86edcb-21e8-4e3a-9472-de9a6d3fbb2b^How do you rate the support on a scale of 1 to 3?^99DCT"
                 value="a93e3448-d71a-4cba-851e-0d328a927b94^Not satisfied^99DCT" required="required">
-            <label for="not_satisfied">Not satisfied</label>&nbsp;&nbsp;
+            <label for="not_satisfied">wosakhutira</label>&nbsp;&nbsp;
     
             <input id="little_satisfied" type="radio" name="rate_support_query_ans" data-concept="5a86edcb-21e8-4e3a-9472-de9a6d3fbb2b^How do you rate the support on a scale of 1 to 3?^99DCT"
                 value="971caad2-d10f-4202-9d53-b6c80545a23c^Little satisfied^99DCT" required="required">
-            <label for="not_satisfied">Little satisfied</label>
+            <label for="not_satisfied">pang’ono</label>
         </fieldset>
       </div>
     
       <div class="rate_life_changes">
-        <label for="obs.rate_life_changes_query"> Can you rate the changes that happened to your life from the social support on a scale of 1 to 3? <span class="required">*</span></label>
+        <label for="obs.rate_life_changes_query"> Thandizo limeneli lakupindulira motani? <span class="required">*</span></label>
         <fieldset id="obs.rate_life_changes_query" name="rate_life_changes_query">
     
             <input id="very_satisfied" type="radio" name="rate_life_changes_query_ans" data-concept="4fbb5e58-b08a-4043-9798-ec22ff5571bf^Can you rate the changes that happened to your life from the social support a scale of 1 to 3?^99DCT"
                 value="8a723427-24ef-4d25-bc4c-539ddc1f8ae2^Very satisfied^99DCT" required="required">
-            <label for="very_satisfied">Very satisfied</label>&nbsp;&nbsp;
+            <label for="very_satisfied">kwambiri</label>&nbsp;&nbsp;
     
             <input id="not_satisfied" type="radio" name="rate_life_changes_query_ans" data-concept="4fbb5e58-b08a-4043-9798-ec22ff5571bf^Can you rate the changes that happened to your life from the social support a scale of 1 to 3?^99DCT"
                 value="a93e3448-d71a-4cba-851e-0d328a927b94^Not satisfied^99DCT" required="required">
-            <label for="not_satisfied">Not satisfied</label>&nbsp;&nbsp;
+            <label for="not_satisfied">silinandipindulire</label>&nbsp;&nbsp;
     
             <input id="little_satisfied" type="radio" name="rate_life_changes_query_ans" data-concept="4fbb5e58-b08a-4043-9798-ec22ff5571bf^Can you rate the changes that happened to your life from the social support a scale of 1 to 3?^99DCT"
                 value="971caad2-d10f-4202-9d53-b6c80545a23c^Little satisfied^99DCT" required="required">
-            <label for="not_satisfied">Little satisfied</label>
+            <label for="not_satisfied">landipindulira pang’ono</label>
         </fieldset>
     </div>
 
@@ -795,7 +845,7 @@
         </div>
 
         <div class="rate_hiv_knowledge">
-          <label for="obs.rate_hiv_knowledge_query"> How would you rate your level of knowledge about HIV? <span class="required">*</span></label>
+          <label for="obs.rate_hiv_knowledge_query">Umadziwa mochuluka bwanji zokhuzana ndi HIV? <span class="required">*</span></label>
           <fieldset id="obs.rate_hiv_knowledge_query" name="rate_hiv_knowledge_query">
       
               <input id="very_low" type="radio" name="rate_life_changes_query_ans" data-concept="5705c64d-41f8-4332-be83-c5ebb2df9693^Rate your HIV knowledge^99DCT"
@@ -804,233 +854,233 @@
       
               <input id="low" type="radio" name="rate_life_changes_query_ans" data-concept="5705c64d-41f8-4332-be83-c5ebb2df9693^Rate your HIV knowledge^99DCT"
                   value="05b2aac2-56c6-43da-a1dc-6c4eca4efaca^low^99DCT" required="required">
-              <label for="low">low</label>&nbsp;&nbsp;
+              <label for="low">Pang’ono</label>&nbsp;&nbsp;
   
               <input id="high" type="radio" name="rate_life_changes_query_ans" data-concept="5705c64d-41f8-4332-be83-c5ebb2df9693^Rate your HIV knowledge^99DCT"
                   value="a41eaeb1-1769-4b02-b511-8028e4ae85ec^High^99DCT" required="required">
-              <label for="high">High</label>&nbsp;&nbsp;
+              <label for="high">kwambiri</label>&nbsp;&nbsp;
   
               <input id="no_response" type="radio" name="rate_life_changes_query_ans" data-concept="5705c64d-41f8-4332-be83-c5ebb2df9693^Rate your HIV knowledge^99DCT"
                   value="81bc5d0f-6a58-4504-9f24-ea6345cb2647^No Response^99DCT" required="required">
-              <label for="no_response">No Response</label>
+              <label for="no_response">Palibe yankho</label>
           </fieldset>
       </div>
 
       <div class="hiv_transmission">
-        <label for="obs.hiv_transmission_query"> How is HIV transmitted? <span class="required">*</span></label>
+        <label for="obs.hiv_transmission_query"> Kodi HIV imafala bwanji?<span class="required">*</span></label>
         <fieldset id="obs.hiv_transmission_query" name="hiv_transmission_query">
     
-            <input id="mosquito_bite" type="radio" name="hiv_transmission_ans" data-concept="2aefa143-9f49-44c6-8848-56f2596ff1c5^How is HIV transmitted?^99DCT"
-                value="86daa7ce-0c8a-429a-9679-ad02d8fb0b73^Mosquito bite^99DCT" required="required">
+            <input id="mosquito_bite" type="checkbox" name="hiv_transmission_ans" data-concept="780658c4-3f9b-4e08-a511-fb1031dc988f^Answer for How HIV is transmitted^99DCT"
+                value="Mosquito bite" required="required">
             <label for="mosquito_bite">Mosquito bite</label>&nbsp;&nbsp;
 
-            <input id="kissing" type="radio" name="hiv_transmission_ans" data-concept="2aefa143-9f49-44c6-8848-56f2596ff1c5^How is HIV transmitted?^99DCT"
-                value="764ecc35-f17d-4193-bf18-d9d701b6d564^Kissing^99DCT" required="required">
+            <input id="kissing" type="checkbox" name="hiv_transmission_ans" data-concept="780658c4-3f9b-4e08-a511-fb1031dc988f^Answer for How HIV is transmitted^99DCT"
+                value="Kissing" required="required">
             <label for="kissing">Kissing</label>&nbsp;&nbsp;
 
-            <input id="sexual_intercourse" type="radio" name="hiv_transmission_ans" data-concept="2aefa143-9f49-44c6-8848-56f2596ff1c5^How is HIV transmitted?^99DCT"
-                value="eadc4425-2228-4741-950e-d1f3be048e65^Sexual Intercourse^99DCT" required="required">
+            <input id="sexual_intercourse" type="checkbox" name="hiv_transmission_ans" data-concept="780658c4-3f9b-4e08-a511-fb1031dc988f^Answer for How HIV is transmitted^99DCT"
+                value="Sexual Intercourse" required="required">
             <label for="sexual_intercourse">Sexual Intercourse</label>&nbsp;&nbsp;
 
-            <input id="through_blood_transfusion" type="radio" name="hiv_transmission_ans" data-concept="2aefa143-9f49-44c6-8848-56f2596ff1c5^How is HIV transmitted?^99DCT"
-                value="938d8bcb-d128-4ac7-8179-a5ccfd10604f^Through blood transfusion^99DCT" required="required">
+            <input id="through_blood_transfusion" type="checkbox" name="hiv_transmission_ans" data-concept="780658c4-3f9b-4e08-a511-fb1031dc988f^Answer for How HIV is transmitted^99DCT"
+                value="Through blood transfusion" required="required">
             <label for="through_blood_transfusion">Through blood transfusion</label>&nbsp;&nbsp;
 
-            <input id="mother_to_child_transmission" type="radio" name="hiv_transmission_ans" data-concept="2aefa143-9f49-44c6-8848-56f2596ff1c5^How is HIV transmitted?^99DCT"
-                value="2c01d171-701e-4848-acde-d5a2258d7b0e^Mother-to-child transmission^99DCT" required="required">
+            <input id="mother_to_child_transmission" type="checkbox" name="hiv_transmission_ans" data-concept="780658c4-3f9b-4e08-a511-fb1031dc988f^Answer for How HIV is transmitted^99DCT"
+                value="Mother-to-child transmission" required="required">
             <label for="mother_to_child_transmission">Mother-to-child transmission</label>&nbsp;&nbsp;
         </fieldset>
       </div>
 
       <div class="hiv_prevention">
-        <label for="obs.hiv_prevention_query"> How is HIV/AIDS prevented? <span class="required">*</span></label>
+        <label for="obs.hiv_prevention_query"> Kodi munthu anagapewe bwanji kutenga kachilombo ka HIV? <span class="required">*</span></label>
         <fieldset id="obs.hiv_prevention_query" name="hiv_prevention_query">
     
             <input id="condom" type="radio" name="hiv_prevention_ans" data-concept="302b77dd-f922-4f38-8f7a-6f76887dff8f^How is HIV/AIDS prevented?^99DCT"
                 value="3fbc0349-56aa-40c2-a03a-517da6aab82c^using condoms^99DCT" required="required">
-            <label for="condom">Condom</label>&nbsp;&nbsp;
+            <label for="condom">Kugwiritsa ntchito condom</label>&nbsp;&nbsp;
 
             <input id="abstinence" type="radio" name="hiv_prevention_ans" data-concept="302b77dd-f922-4f38-8f7a-6f76887dff8f^How is HIV/AIDS prevented?^99DCT"
             value="ceb54c50-7376-4449-87a1-f4051edde7e2^by abstinence^99DCT" required="required">
-            <label for="abstinence">Abstinence</label>&nbsp;&nbsp;
+            <label for="abstinence">Kudziletsa</label>&nbsp;&nbsp;
 
             <input id="fidelity" type="radio" name="hiv_prevention_ans" data-concept="302b77dd-f922-4f38-8f7a-6f76887dff8f^How is HIV/AIDS prevented?^99DCT"
             value="4c024160-1f3e-4146-8733-4795ed0c445e^Fidelity^99DCT" required="required">
-            <label for="fidelity">Fidelity</label>&nbsp;&nbsp;
+            <label for="fidelity">Kukhulupirika kwa wina ndi nzakes</label>&nbsp;&nbsp;
 
             <input id="dont_know" type="radio" name="hiv_prevention_ans" data-concept="302b77dd-f922-4f38-8f7a-6f76887dff8f^How is HIV/AIDS prevented?^99DCT"
             value="1fa4b4a6-b849-4442-94d0-f46f4460ce38^Don't Know^99DCT" required="required">
-            <label for="fidelity">Don't Know</label>&nbsp;&nbsp;
+            <label for="fidelity">Sindikudziwa</label>&nbsp;&nbsp;
 
           </fieldset>
       </div>
 
       <div class="hiv_cure_query">
-        <label for="obs.hiv_cure_query"> Can HIV/AIDS be cured? <span class="required">*</span></label>
+        <label for="obs.hiv_cure_query">Kodi HIV/AIDS ingachiritsidwe?<span class="required">*</span></label>
         <fieldset id="obs.hiv_cure_query" name="hiv_cure_query">
     
            <input id="hiv_cure_query_yes" type="radio" name="hiv_cure_query_ans" data-concept="0490d7ce-2def-48b0-b113-16e68aa19eba^Can HIV/AIDS be cured?^99DCT"
                 value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
-           <label for="hiv_cure_query_yes">Yes</label>&nbsp;&nbsp;
+           <label for="hiv_cure_query_yes">Eya</label>&nbsp;&nbsp;
     
            <input id="hiv_cure_query_no" type="radio" name="hiv_cure_query_ans" data-concept="0490d7ce-2def-48b0-b113-16e68aa19eba^Can HIV/AIDS be cured?^99DCT"
                 value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
-           <label for="hiv_cure_query_no">No</label>&nbsp;&nbsp;
+           <label for="hiv_cure_query_no">Ayi</label>&nbsp;&nbsp;
         </fieldset>
       </div>
 
       <div class="health_person_query">
-        <label for="obs.health_person_query"> Can a healthy-looking person have HIV infection? <span class="required">*</span></label>
+        <label for="obs.health_person_query"> Kodi munthu owoneka wanthanzi akhoza kukhala ndi HIV? <span class="required">*</span></label>
         <fieldset id="obs.health_person_query" name="health_person_query">
     
            <input id="health_person_query_yes" type="radio" name="health_person_query_ans" data-concept="626d3564-a7ff-48e4-a869-e3e347d55357^Can a healthy-looking person have HIV infection?^99DCT"
                 value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
-           <label for="health_person_query_yes">Yes</label>&nbsp;&nbsp;
+           <label for="health_person_query_yes">Eya</label>&nbsp;&nbsp;
 
            <input id="health_person_query_no" type="radio" name="health_person_query_ans" data-concept="626d3564-a7ff-48e4-a869-e3e347d55357^Can a healthy-looking person have HIV infection?^99DCT"
                 value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
-           <label for="health_person_query_no">No</label>&nbsp;&nbsp;
+           <label for="health_person_query_no">Ayi</label>&nbsp;&nbsp;
         </fieldset>
       </div>
 
       <div class="hiv_student_query">
-        <label for="obs.hiv_student_query"> Should an HIV+ student be allowed to continue studying at your school? <span class="required">*</span></label>
+        <label for="obs.hiv_student_query"> Ophunzira amene ali ndi HIV akuyenera kuloledwa kupitiliza maphunziro pa sukulu yanu?  <span class="required">*</span></label>
         <fieldset id="obs.hiv_student_query" name="hiv_student_query">
     
            <input id="hiv_student_query_yes" type="radio" name="hiv_student_query_ans" data-concept="d3ab4a01-7942-4925-848e-08a894d4c9f0^Should an HIV+ student be allowed to continue studying at your school?^99DCT"
                 value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
-           <label for="hiv_student_query_yes">Yes</label>&nbsp;&nbsp;
+           <label for="hiv_student_query_yes">Eya</label>&nbsp;&nbsp;
 
            <input id="hiv_student_query_no" type="radio" name="hiv_student_query_ans" data-concept="d3ab4a01-7942-4925-848e-08a894d4c9f0^Should an HIV+ student be allowed to continue studying at your school?^99DCT"
                value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
-           <label for="hiv_student_query_no">No</label>&nbsp;&nbsp;
+           <label for="hiv_student_query_no">Ayi</label>&nbsp;&nbsp;
         </fieldset>
       </div>
 
       <div class="punishment_query">
-        <label for="obs.punishment_query"> Is HIV is a punishment for bad behavior? <span class="required">*</span></label>
+        <label for="obs.punishment_query"> Kodi HIV ndi chilango cha khalidwe loyipa? <span class="required">*</span></label>
         <fieldset id="obs.punishment_query" name="punishment_query">
     
            <input id="punishment_query_yes" type="radio" name="punishment_query_ans" data-concept="da25f6e7-3816-40d7-8d1f-d91f8a157424^Is HIV is a punishment for bad behavior?^99DCT"
                 value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
-           <label for="punishment_query_yes">Yes</label>&nbsp;&nbsp;
+           <label for="punishment_query_yes">Eya</label>&nbsp;&nbsp;
 
            <input id="punishment_query_no" type="radio" name="punishment_query_ans" data-concept="da25f6e7-3816-40d7-8d1f-d91f8a157424^Is HIV is a punishment for bad behavior?^99DCT"
                 value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
-           <label for="punishment_query_no">No</label>&nbsp;&nbsp;
+           <label for="punishment_query_no">Ayi</label>&nbsp;&nbsp;
         </fieldset>
       </div>
 
       <div class="bad_luck_query">
-        <label for="obs.bad_luck_query"> Is HIV just a matter of bad luck? <span class="required">*</span></label>
+        <label for="obs.bad_luck_query"> Kodi kukhala ndi HIV ndi tsoka chabe? <span class="required">*</span></label>
         <fieldset id="obs.bad_luck_query" name="bad_luck_query">
     
            <input id="bad_luck_query_yes" type="radio" name="bad_luck_query_ans" data-concept="b317bada-e3fb-403d-bc6e-1d31a1203fbb^Is HIV just a matter of bad luck?^99DCT"
                 value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
-           <label for="bad_luck_query_yes">Yes</label>&nbsp;&nbsp;
+           <label for="bad_luck_query_yes">Eya</label>&nbsp;&nbsp;
 
            <input id="bad_luck_query_no" type="radio" name="bad_luck_query_ans" data-concept="b317bada-e3fb-403d-bc6e-1d31a1203fbb^Is HIV just a matter of bad luck?^99DCT"
            value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
-           <label for="bad_luck_query_no">No</label>&nbsp;&nbsp;
+           <label for="bad_luck_query_no">Ayi</label>&nbsp;&nbsp;
         </fieldset>
       </div>
 
       <div class="live_longer_query">
-        <label for="obs.live_longer_query"> Can HIV infected person live longer? <span class="required">*</span></label>
+        <label for="obs.live_longer_query">Kodi munthu amene ali HIV akhoza ndi moyo wautali?<span class="required">*</span></label>
         <fieldset id="obs.live_longer_query" name="live_longer_query">
     
            <input id="live_longer_query_yes" type="radio" name="live_longer_query_ans" data-concept="414489ec-b644-4579-a811-853dcdd4cb1e^Can an HIV infected person live longer?^99DCT"
                 value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
-           <label for="live_longer_query_yes">Yes</label>&nbsp;&nbsp;
+           <label for="live_longer_query_yes">Eya</label>&nbsp;&nbsp;
 
            <input id="live_longer_query_no" type="radio" name="live_longer_query_ans" data-concept="414489ec-b644-4579-a811-853dcdd4cb1e^Can an HIV infected person live longer?^99DCT"
            value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
-           <label for="live_longer_query_no">No</label>&nbsp;&nbsp;
+           <label for="live_longer_query_no">Ayi</label>&nbsp;&nbsp;
 
         </fieldset>
       </div>
 
       <div class="afraid_query">
-        <label for="obs.afraid_query"> Are people afraid to be around you? <span class="required">*</span></label>
+        <label for="obs.afraid_query">Kodi anthu amakhala ndi mantha kukhala pafupi nawe?<span class="required">*</span></label>
         <fieldset id="obs.afraid_query" name="afraid_query">
     
            <input id="afraid_query_yes" type="radio" name="afraid_query_ans" data-concept="ca1fd53c-5de9-4dfd-a106-ecb6fff92f6b^Are people afraid to be around you?^99DCT"
                 value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
-           <label for="afraid_query_yes">Yes</label>&nbsp;&nbsp;
+           <label for="afraid_query_yes">Eya</label>&nbsp;&nbsp;
 
            <input id="afraid_query_no" type="radio" name="afraid_query_ans" data-concept="ca1fd53c-5de9-4dfd-a106-ecb6fff92f6b^Are people afraid to be around you?^99DCT"
                 value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
-           <label for="afraid_query_no">No</label>&nbsp;&nbsp;
+           <label for="afraid_query_no">Ayi</label>&nbsp;&nbsp;
         </fieldset>
       </div>
 
       <div class="injectable_drugs_query">
-        <label for="obs.injectable_drugs_query"> Have you ever used injectable drugs? <span class="required">*</span></label>
+        <label for="obs.injectable_drugs_query">Kodi  umagwiritsa ntchito mankhwala obaya?<span class="required">*</span></label>
         <fieldset id="obs.injectable_drugs_query" name="injectable_drugs_query">
     
            <input id="injectable_drugs_query_yes" type="radio" name="injectable_drugs_query_ans" data-concept="abf95156-b5e8-40d7-8935-0ff78513065e^Have you ever used injectable drugs?^99DCT"
                 value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
-           <label for="injectable_drugs_query_yes">Yes</label>&nbsp;&nbsp;
+           <label for="injectable_drugs_query_yes">Eya</label>&nbsp;&nbsp;
 
            <input id="injectable_drugs_query_no" type="radio" name="injectable_drugs_query_ans" data-concept="abf95156-b5e8-40d7-8935-0ff78513065e^Have you ever used injectable drugs?^99DCT"
                 value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
-           <label for="injectable_drugs_query_no">No</label>&nbsp;&nbsp;
+           <label for="injectable_drugs_query_no">Ayi</label>&nbsp;&nbsp;
         </fieldset>
       </div>      
 
       <div class="elicit_drugs_query">
-        <label for="obs.elicit_drugs_query"> Have you ever used elicit drugs? <span class="required">*</span></label>
+        <label for="obs.elicit_drugs_query">Kodi  umagwiritsa ntchito mankhwala aliwonse ozunguza bongo?<span class="required">*</span></label>
         <fieldset id="obs.elicit_drugs_query" name="elicit_drugs_query">
     
            <input id="elicit_drugs_query_yes" type="radio" name="elicit_drugs_query_ans" data-concept="c0b66f98-7580-4c09-885f-cb4f538e6b2c^Have you ever used elicit drugs?^99DCT"
                 value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
-           <label for="elicit_drugs_query_yes">Yes</label>&nbsp;&nbsp;
+           <label for="elicit_drugs_query_yes">Eya</label>&nbsp;&nbsp;
 
            <input id="elicit_drugs_query_no" type="radio" name="elicit_drugs_query_ans" data-concept="c0b66f98-7580-4c09-885f-cb4f538e6b2c^Have you ever used elicit drugs?^99DCT"
                 value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
-           <label for="elicit_drugs_query_no">No</label>&nbsp;&nbsp;
+           <label for="elicit_drugs_query_no">Ayi</label>&nbsp;&nbsp;
         </fieldset>
       </div>      
 
       <div class="alcohol_influence_query">
-        <label for="obs.alcohol_influence_query"> Do you have sex when you are under the influence of alcohol? <span class="required">*</span></label>
+        <label for="obs.alcohol_influence_query">Kodi umatha kupanga zogonana utaledzera?<span class="required">*</span></label>
         <fieldset id="obs.alcohol_influence_query" name="alcohol_influence_query">
     
            <input id="alcohol_influence_query_yes" type="radio" name="alcohol_influence_query_ans" data-concept="bf68d511-2ebf-431e-99dc-e55b38bae7fe^Do you have sex when you're under the influence of alcohol?^99DCT"
                 value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
-           <label for="alcohol_influence_query_yes">Yes</label>&nbsp;&nbsp;
+           <label for="alcohol_influence_query_yes">Eya</label>&nbsp;&nbsp;
 
            <input id="alcohol_influence_query_no" type="radio" name="alcohol_influence_query_ans" data-concept="bf68d511-2ebf-431e-99dc-e55b38bae7fe^Do you have sex when you're under the influence of alcohol?^99DCT"
               value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
-           <label for="alcohol_influence_query_no">No</label>&nbsp;&nbsp;
+           <label for="alcohol_influence_query_no">Ayi</label>&nbsp;&nbsp;
         </fieldset>
       </div>
 
       <div class="exchange_query">
-        <label for="obs.exchange_query"> Did you ever had sex in exchange for money, goods or favor? <span class="required">*</span></label>
+        <label for="obs.exchange_query">Kodi unapangapo zogonana pofuna kusinthanitsa ndi ndalama, katundu, kapena thandizo la mtundu uliwonse?<span class="required">*</span></label>
         <fieldset id="obs.exchange_query" name="exchange_query">
     
            <input id="exchange_query_yes" type="radio" name="exchange_query_ans" data-concept="56c5db66-e09b-4f70-a6e3-5b684ac9c524^Did you have sex in exchange for money, goods or favor?^99DCT"
                 value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
-           <label for="exchange_query_yes">Yes</label>&nbsp;&nbsp;
+           <label for="exchange_query_yes">Eya</label>&nbsp;&nbsp;
 
            <input id="exchange_query_no" type="radio" name="exchange_query_ans" data-concept="56c5db66-e09b-4f70-a6e3-5b684ac9c524^Did you have sex in exchange for money, goods or favor?^99DCT"
                 value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
-           <label for="exchange_query_no">No</label>&nbsp;&nbsp;
+           <label for="exchange_query_no">Ayi</label>&nbsp;&nbsp;
         </fieldset>
       </div>
 
       <div class="older_query">
-        <label for="obs.older_query"> Did you ever had sex with someone who is younger or older than them by 5 years? <span class="required">*</span></label>
+        <label for="obs.older_query"> Unapangapo zogonana ndi munthu wina amene ali ndi zaka zochepera kapena zoposera 5?<span class="required">*</span></label>
         <fieldset id="obs.older_query" name="older_query">
     
            <input id="older_query_yes" type="radio" name="older_query_ans" data-concept="98759c39-5164-43fe-99ab-44dffb5cf966^Did you ever have sex with someone who is younger or you're older than them by 5 years?^99DCT"
                 value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
-           <label for="older_query_yes">Yes</label>&nbsp;&nbsp;
+           <label for="older_query_yes">Eya</label>&nbsp;&nbsp;
 
            <input id="older_query_no" type="radio" name="older_query_ans" data-concept="98759c39-5164-43fe-99ab-44dffb5cf966^Did you ever have sex with someone who is younger or you're older than them by 5 years?^99DCT"
            value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
-           <label for="older_query_no">No</label>&nbsp;&nbsp;
+           <label for="older_query_no">Ayi</label>&nbsp;&nbsp;
         </fieldset>
       </div>
 
@@ -1137,127 +1187,127 @@
     </div> -->
 
     <div class="name_of_role_model">
-      <label for="obs.name_of_role_model">What is the name of the role model in your preferred field? <span class="required">*</span></label>
+      <label for="obs.name_of_role_model">Ndi ndani yemwe umanfuna kuzakhala ngati iyeyo? <span class="required">*</span></label>
       <input class="form-control" id="obs.name_of_role_model" name="obs.name_of_role_model"
              type="text" data-concept="3530488d-4213-4316-adb3-9cf434400a79^Name of role model(s)^99DCT" required="required">
   </div>
 
   <div class="reason">
-    <label for="obs.reason">Why do you prefer him/her? <span class="required">*</span></label>
+    <label for="obs.reason">Chifukwa chani umamusilira? <span class="required">*</span></label>
     <input class="form-control" id="obs.reason" name="obs.reason"
            type="text" data-concept="128defcd-deab-4b34-a27d-9aac7e9d767a^Why do you prefer him/her?^99DCT" required="required">
   </div>
 
   <div class="future_after_teen_club">
-    <label for="obs.future_after_teen_club">How do you envision your future after teen club <span class="required">*</span></label>
+    <label for="obs.future_after_teen_club">Tsogolo lako ukuliwona bwanji ukamazachoka mu teen club? <span class="required">*</span></label>
     <input class="form-control" id="obs.future_after_teen_club" name="obs.future_after_teen_club"
            type="text" data-concept="aa63bd2e-6117-4106-adf7-e7b81327485a^How do you envision your future after teen club^99DCT" required="required">
   </div>
 
   <div class="parent_career">
-    <label for="obs.parent_career">What is your parent career today? <span class="required">*</span></label>
+    <label for="obs.parent_career">Makolo ako kapena okuyang'anira amagwira ntchito yanji? <span class="required">*</span></label>
     <input class="form-control" id="obs.parent_career" name="obs.parent_career"
            type="text" data-concept="afd95534-84e5-4dc7-8170-8da5f325d70a^What is your parent's career today?^99DCT" required="required">
   </div>
 
   <div class="source_of_income">
-    <label for="obs.source_of_income">What is the main source of income at your home? <span class="required">*</span></label>
+    <label for="obs.source_of_income">Nanga mumadalira chani kuti mupeze zosowa za tsiku ndi tsiku? <span class="required">*</span></label>
     <input class="form-control" id="obs.source_of_income" name="obs.source_of_income"
            type="text" data-concept="6d713ae5-457b-414c-a1d3-83a7d945236a^What is the main source of income at your home?^99DCT" required="required">
   </div>
 
   <div class="better_beyond">
-    <label for="obs.better_beyond">Do you expect to be better beyond your current family life? <span class="required">*</span></label>
+    <label for="obs.better_beyond">Mukuyembekezera kuzachita bwino kuposa m'mene zinthu ziliri panopa? <span class="required">*</span></label>
     <input class="form-control" id="obs.better_beyond" name="obs.better_beyond"
            type="text" data-concept="566efb82-87ed-4008-bedc-87f18662993c^Do you expect to be better beyond your current family life?^99DCT" required="required">
   </div>
 
   <div class="hopeful">
-    <label for="obs.hopeful_query">  Do you feel hopeful for your future based on teen club support?<span class="required">*</span></label>
+    <label for="obs.hopeful_query">Uli ndi chiyembekezo chabwino kuchokera kunthandizo laku teen club?<span class="required">*</span></label>
     <fieldset id="obs.hopeful_query" name="hopeful_query">
 
        <input id="hopeful_query_yes" type="radio" name="hopeful_query_ans" data-concept="03d9656d-07e1-478d-810e-7a21f1cf635c^Do you feel hopeful for your future based on teen club support?^99DCT"
             value="65576354-977f-11e1-8993-905e29aff6c1^Yes^99DCT" required="required">
-       <label for="hopeful_query_yes">Yes</label>&nbsp;&nbsp;
+       <label for="hopeful_query_yes">Eya</label>&nbsp;&nbsp;
 
        <input id="hopeful_query_no" type="radio" name="hopeful_query_ans" data-concept="03d9656d-07e1-478d-810e-7a21f1cf635c^Do you feel hopeful for your future based on teen club support?^99DCT"
             value="6557646c-977f-11e1-8993-905e29aff6c1^No^99DCT" required="required">
-       <label for="hopeful_query_no">No</label>&nbsp;&nbsp;
+       <label for="hopeful_query_no">Ayi</label>&nbsp;&nbsp;
     </fieldset>
   </div>
   
   <div class="resources">
-    <label for="obs.resources_query"> What kind of support or resources do you feel would be helpful in achieving your aspirations and goals? <span class="required">*</span></label>
+    <label for="obs.resources_query"> Ndi thandizo liti komanso zinthu ziti zomwe zingathandizire kukwanilitsa maloto amenewa? <span class="required">*</span></label>
     <fieldset id="obs.resources_query" name="resources_query">
 
         <input id="mentorship" type="radio" name="resources_query_ans" data-concept="78814f7a-151a-4298-86a4-c265675ab54a^What kind of support or resources do you feel would be helpful in achieving your aspirations and goals?^99DCT"
             value="1d0345e8-7565-454c-9bf7-19f4dfcfc61e^Mentorship and guidance from professionals or role models^99DCT" required="required">
-        <label for="mentorship">Mentorship and guidance from professionals or role models</label>&nbsp;&nbsp;
+        <label for="mentorship">Upangiri ndi ulangizi kuchokera kwa anthu omwe ndi zitsanzo zanga</label>&nbsp;&nbsp;
 
         <input id="scholarships" type="radio" name="resources_query_ans" data-concept="78814f7a-151a-4298-86a4-c265675ab54a^What kind of support or resources do you feel would be helpful in achieving your aspirations and goals?^99DCT"
             value="b1f909bc-7921-4f3d-aa57-d84f82334659^Access to educational scholarships or vocational training programs^99DCT" required="required">
-        <label for="scholarships">Access to educational scholarships or vocational training programs</label>&nbsp;&nbsp;
+        <label for="scholarships">Kuthekera kothandizidwa mmaphunziro komanso ukatswiri wa zamaluso</label>&nbsp;&nbsp;
 
         <input id="peer_support" type="radio" name="resources_query_ans" data-concept="78814f7a-151a-4298-86a4-c265675ab54a^What kind of support or resources do you feel would be helpful in achieving your aspirations and goals?^99DCT"
             value="ed2e3078-6b47-49dc-a6a4-ebfaf8648058^Peer support groups or networks^99DCT" required="required">
-        <label for="peer_support">Peer support groups or networks</label>&nbsp;&nbsp;
+        <label for="peer_support">Kuthandizana achimata tokhatokha mmagulu</label>&nbsp;&nbsp;
 
         <input id="financial_support" type="radio" name="resources_query_ans" data-concept="78814f7a-151a-4298-86a4-c265675ab54a^What kind of support or resources do you feel would be helpful in achieving your aspirations and goals?^99DCT"
             value="b198d051-b460-4330-a802-d558faf29432^Financial support^99DCT" required="required">
-        <label for="financial_support">Financial support</label>&nbsp;&nbsp;
+        <label for="financial_support">Thandizo la ndalama</label>&nbsp;&nbsp;
 
         <input id="other_resources" type="radio" name="resources_query_ans" data-concept="78814f7a-151a-4298-86a4-c265675ab54a^What kind of support or resources do you feel would be helpful in achieving your aspirations and goals?^99DCT"
             value="656cce7e-977f-11e1-8993-905e29aff6c1^Other non-coded^99DCT" required="required">
-        <label for="other_resources">Other</label>&nbsp;&nbsp;
+        <label for="other_resources">Zina</label>&nbsp;&nbsp;
     </fieldset>
     </div>
     <div class="certificates">
-      <label for="obs.certificates_query"> Have you obtained any vocational training or certifications in your desired field? <span class="required">*</span></label>
+      <label for="obs.certificates_query"> Kodi uli ndi maphunziro ogwirizana ndi ntchito za luso zomwe umafuna kudzagwira? <span class="required">*</span></label>
       <fieldset id="obs.certificates_query" name="certificates_query">
   
           <input id="yes_relevant_training" type="radio" name="certificates_query_ans" data-concept="6c05aef4-e1ca-4772-aef5-581266b44135^Have you obtained any vocational training or certifications in your desired field?^99DCT"
               value="240fe672-00be-4201-838b-3e0a686d05b3^Yes, I have relevant training or certifications^99DCT" required="required">
-          <label for="yes_relevant_training">Yes, I have relevant training or certifications</label>&nbsp;&nbsp;
+          <label for="yes_relevant_training">Inde, ndilinawo maphunziro oyenera ndi masatifiketi oyenereza</label>&nbsp;&nbsp;
 
           <input id="yes_planning" type="radio" name="certificates_query_ans" data-concept="6c05aef4-e1ca-4772-aef5-581266b44135^Have you obtained any vocational training or certifications in your desired field?^99DCT"
               value="8779854a-9e9e-40fe-b3e4-2594b79d2dd7^No, but I'm planning to pursue training or certifications^99DCT" required="required">
-          <label for="yes_planning">No, but I'm planning to pursue training or certifications</label>&nbsp;&nbsp;
+          <label for="yes_planning">Ayi, koma ndili ndi malingaliro opitiliza mphunziro ndikupeza masatifiketi oyenera</label>&nbsp;&nbsp;
 
           <input id="not_interested" type="radio" name="certificates_query_ans" data-concept="6c05aef4-e1ca-4772-aef5-581266b44135^Have you obtained any vocational training or certifications in your desired field?^99DCT"
               value="c024e008-b537-4f8f-83e9-03451e55f826^No, I am not interested in vocational training or certifications^99DCT" required="required">
-          <label for="not_interested">No, I am not interested in vocational training or certifications</label>
+          <label for="not_interested">Ayi, ndilibe chidwi mmaphunziro a zaluso amenewa</label>
       </fieldset>
   </div>
 
     <div class="course">
-    <label for="obs.course">what exactly do you want to do in life? <span class="required">*</span></label>
+    <label for="obs.course">Kwa amene anayankha kuti ayi pa funso loyamaba, ndichani chomwe umakhumba kupanga pa moyo wako? <span class="required">*</span></label>
     <input class="form-control" id="obs.course" name="obs.course"
            type="text" data-concept="7eaafacb-5a43-4f7a-abd7-3c340ea68420^What courses or what do you want to do life?^99DCT" required="required">
     </div>
 
     <div class="challenges_in_pursuing_goals_query">
-    <label for="obs.challenges_in_pursuing_goals_query"> What are some challenges you face or have faced in pursuing your career goals outsideof school? <span class="required">*</span></label>
+    <label for="obs.challenges_in_pursuing_goals_query"> Kodi ndi mavuto otani amene umakumana nawo pamene ukupanga zatsogolo lako? <span class="required">*</span></label>
     <fieldset id="obs.challenges_in_pursuing_goals_query" name="challenges_in_pursuing_goals_query">
 
         <input id="limited_opportunities" type="radio" name="challenges_in_pursuing_goals_query_ans" data-concept="9230e9b6-5d9e-4a9b-995c-c03bedd5eadd^What are some challenges you face or have faced in pursuing your career goals outside of school?^99DCT"
             value="a5d749ef-c840-4896-be3c-75cb9c13505d^Limited job opportunities^99DCT" required="required">
-        <label for="limited_opportunities">Limited job opportunities</label>&nbsp;&nbsp;
+        <label for="limited_opportunities">Kusowa kwa mwayi wantchito</label>&nbsp;&nbsp;
 
         <input id="lack_of_experience" type="radio" name="challenges_in_pursuing_goals_query_ans" data-concept="9230e9b6-5d9e-4a9b-995c-c03bedd5eadd^What are some challenges you face or have faced in pursuing your career goals outside of school?^99DCT"
             value="dee8c72b-c1fb-48fb-a3ef-f56fd40ad20d^Lack of experience or qualifications^99DCT" required="required">
-        <label for="lack_of_experience">Lack of experience or qualifications</label>&nbsp;&nbsp;
+        <label for="lack_of_experience">Kuperewera kwa chidziwitso ndi zotiyenereza</label>&nbsp;&nbsp;
 
         <input id="finacial_contraints" type="radio" name="challenges_in_pursuing_goals_query_ans" data-concept="9230e9b6-5d9e-4a9b-995c-c03bedd5eadd^What are some challenges you face or have faced in pursuing your career goals outside of school?^99DCT"
             value="a517de4c-093b-46eb-b6b4-a98a65b7422c^Finacial contraints^99DCT" required="required">
-        <label for="finacial_contraints">Finacial contraints</label>&nbsp;&nbsp;
+        <label for="finacial_contraints">Kusowa kwa ndalama</label>&nbsp;&nbsp;
 
         <input id="lack_of_guidance" type="radio" name="challenges_in_pursuing_goals_query_ans" data-concept="9230e9b6-5d9e-4a9b-995c-c03bedd5eadd^What are some challenges you face or have faced in pursuing your career goals outside of school?^99DCT"
             value="b4068cf3-ee69-4b23-b732-21cdfa321ba0^Lack of guidance or mentorship^99DCT" required="required">
-        <label for="lack_of_guidance">Lack of guidance or mentorship</label>&nbsp;&nbsp;
+        <label for="lack_of_guidance">Kusowa kwa upangiri komanso malangizo oyenera</label>&nbsp;&nbsp;
 
         <input id="other_challenges_in_pursuing_goals" type="radio" name="challenges_in_pursuing_goals_query_ans" data-concept="9230e9b6-5d9e-4a9b-995c-c03bedd5eadd^What are some challenges you face or have faced in pursuing your career goals outside of school?^99DCT"
             value="656cce7e-977f-11e1-8993-905e29aff6c1^Other non-coded^99DCT" required="required">
-        <label for="other_challenges_in_pursuing_goals">other</label>&nbsp;&nbsp;
+        <label for="other_challenges_in_pursuing_goals">zina</label>&nbsp;&nbsp;
 
     </fieldset>
     </div>
@@ -2083,6 +2133,8 @@
       $('.extracurricular_activities').hide()
       $('.particular_interest').hide()
       $('.resources').hide()
+      $('.primary_class_query').hide(); 
+      $('.secondary_class_query').hide();
       $('.in_school_query').change(function () {
             var id = $('input[name=in_school_ans]:checked').attr('id');
             if ( (id === 'in_school_yes')) {
@@ -2101,6 +2153,8 @@
             } else {
                 $('.class_your_in').hide();
                 $('.drop_out_class').show();
+                $('.primary_class_query').hide();
+                $('.secondary_class_query').hide();
                 $('.plans_after_school').hide();
                 $('.certificates').show();
                 $('.course').show();
@@ -2179,6 +2233,63 @@
                 $('.course').hide();
             }
         });
+        // $('.primary_class_query').hide(); 
+        // $('.secondary_class_query').hide();
+        $('.class_your_in').change(function(){
+          var id = $('input[name=in_school_level_ans]:checked').attr('id');
+          if( (id === 'primary_school')){
+            $('.primary_class_query').show();
+            $('.secondary_class_query').hide();
+          }
+          if ((id === 'secondary_school')){
+            $('.secondary_class_query').show();
+            $('.primary_class_query').hide();
+          }
+        })
+        $('.drop_out_class').change(function(){
+          var id = $('input[name=drop_out_school_level_ans]:checked').attr('id');
+          if( (id === 'primary_school')){
+            $('.primary_class_query').show();
+            $('.secondary_class_query').hide();
+          }
+          if ((id === 'secondary_school')){
+            $('.secondary_class_query').show();
+            $('.primary_class_query').hide();
+          }
+        })
+        // $('.class_your_in').change(function () {
+        //     var id = $('input[name=class_your_in]:checked').attr('id');
+        //     console.log(id)
+        //     if ( (id === 'primary_school')) {
+        //       $('.primary_class_query').show();
+        //       $('.secondary_class_query').hide();
+        //       // $('.dont_like').hide();
+        //       //   $('.like_most').show();
+        //     }
+        //     if ( (id === 'secondary_school')) {
+        //       $('.secondary_class_query').show();
+        //       $('.primary_class_query').hide();
+        //         // $('.like_most').hide();
+        //         // $('.dont_like').show();
+        //     }
+        // });
+        
+        // $('.school_level_query').change(function () {
+        //     var id = $('input[name=school_level_ans]:checked').attr('id');
+        //     console.log(id)
+        //     if ( (id === 'primary_school')) {
+        //       $('.primary_class_query').show();
+        //       $('.secondary_class_query').hide();
+        //       // $('.dont_like').hide();
+        //       //   $('.like_most').show();
+        //     }
+        //     if ( (id === 'secondary_school')) {
+        //       $('.secondary_class_query').show();
+        //       $('.primary_class_query').hide();
+        //         // $('.like_most').hide();
+        //         // $('.dont_like').show();
+        //     }
+        // });
       document.setupValidationForProvider(
         "$('#encounter\\.provider_id_select').val()",
         "encounter\\.provider_id"
